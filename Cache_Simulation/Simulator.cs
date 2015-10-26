@@ -106,5 +106,16 @@ namespace Cache_Simulation
             iTLB f2 = new iTLB();
             f2.ShowDialog(); // Shows Form2
         }
+
+        private void dl1_cache_show_Click(object sender, EventArgs e)
+        {
+            dL1Cache form_dl1cache = new dL1Cache();
+            form_dl1cache.ShowDialog(); // Shows Form2
+        }
+
+        private void il1_cache_show_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

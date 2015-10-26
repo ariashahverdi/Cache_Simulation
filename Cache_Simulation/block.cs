@@ -17,6 +17,7 @@ namespace Cache_Simulation
         byte[] payload;
         int PAYLOAD_SIZE;
 
+        //*
         public void block_init(int T_S, int P_S)
         {
             TAG_SIZE = T_S;
@@ -26,5 +27,18 @@ namespace Cache_Simulation
             payload = new byte[PAYLOAD_SIZE];
 
         }
+       // */
+       /*
+        public block(int T_S, int P_S)
+        {
+            TAG_SIZE = T_S;
+            tag = new bool[TAG_SIZE];
+
+            PAYLOAD_SIZE = P_S;
+            payload = new byte[PAYLOAD_SIZE];
+
+        }
+        */
     }
+
 }

@@ -18,8 +18,8 @@ namespace Cache_Simulation
         
         public cache(int BA_N, int BL_N, int T_S, int P_S)
         {
-            TAG_SIZE = T_S;
-            PAYLOAD_SIZE = P_S;
+            this.TAG_SIZE = T_S;
+            this.PAYLOAD_SIZE = P_S;
 
             BANK_NUM = BA_N;
             BLOCK_NUM = BL_N;
@@ -28,7 +28,9 @@ namespace Cache_Simulation
             for (int i = 0; i < BLOCK_NUM; i++)
                 for (int j = 0; j < BANK_NUM; j++)
                     bankS[i, j].block_init(TAG_SIZE, PAYLOAD_SIZE);
+        }
 
-        } 
+        public void access()
+        { }
     }
 }

@@ -94,6 +94,9 @@ namespace Cache_Simulation
                     break;
             }
             type.Text = inst_type;
+
+            //cache my_dl1cache = new cache(4, 128, 23, 64);
+
         }
 
         private void Simulator_Load(object sender, EventArgs e)

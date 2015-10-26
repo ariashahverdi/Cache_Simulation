@@ -51,7 +51,7 @@
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(326, 38);
+            this.start.Location = new System.Drawing.Point(318, 38);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(158, 68);
             this.start.TabIndex = 0;

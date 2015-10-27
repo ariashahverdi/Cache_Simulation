@@ -86,6 +86,7 @@
             this.l2cache_show.RowTemplate.Height = 28;
             this.l2cache_show.Size = new System.Drawing.Size(1785, 600);
             this.l2cache_show.TabIndex = 2;
+            this.l2cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.l2cache_show_CellContentClick);
             // 
             // num
             // 

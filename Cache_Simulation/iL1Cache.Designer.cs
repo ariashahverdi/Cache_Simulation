@@ -60,7 +60,7 @@
             this.il1cache_show.RowTemplate.Height = 28;
             this.il1cache_show.Size = new System.Drawing.Size(1000, 600);
             this.il1cache_show.TabIndex = 1;
-            this.il1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dl1cache_show_CellContentClick);
+            this.il1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.il1cache_show_CellContentClick);
             // 
             // num
             // 

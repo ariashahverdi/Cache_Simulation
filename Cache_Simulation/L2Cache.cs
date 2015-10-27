@@ -27,5 +27,11 @@ namespace Cache_Simulation
                 l2cache_show.FirstDisplayedScrollingRowIndex = l2cache_show.RowCount - 1;
             }
         }
+
+        private void l2cache_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (l2cache_show.CurrentCell != null && l2cache_show.CurrentCell.Value != null)
+                MessageBox.Show(l2cache_show.CurrentCell.Value.ToString());
+        }
     }
 }

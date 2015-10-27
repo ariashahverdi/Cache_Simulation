@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dl1cache_show = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tag1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payload1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.payload7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tag8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payload8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,16 +76,7 @@
             this.dl1cache_show.RowTemplate.Height = 28;
             this.dl1cache_show.Size = new System.Drawing.Size(1785, 600);
             this.dl1cache_show.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(885, 673);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Display";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dl1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dl1cache_show_CellContentClick);
             // 
             // num
             // 
@@ -171,6 +162,16 @@
             // 
             this.payload8.HeaderText = "Payload";
             this.payload8.Name = "payload8";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(885, 673);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 41);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Display";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dL1Cache
             // 

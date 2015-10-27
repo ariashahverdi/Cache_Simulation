@@ -22,7 +22,6 @@ namespace Cache_Simulation
         {
             TAG_SIZE = T_S;
             tag = new bool[TAG_SIZE];
-            //tag = new bool[TAG_SIZE];
 
             PAYLOAD_SIZE = P_S;
             payload = new byte[PAYLOAD_SIZE];

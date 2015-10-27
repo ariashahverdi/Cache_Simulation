@@ -28,9 +28,10 @@ namespace Cache_Simulation
             }
         }
 
-        private void dl1cache_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void il1cache_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+                    if (il1cache_show.CurrentCell != null && il1cache_show.CurrentCell.Value != null)
+                        MessageBox.Show(il1cache_show.CurrentCell.Value.ToString());
         }
     }
 }

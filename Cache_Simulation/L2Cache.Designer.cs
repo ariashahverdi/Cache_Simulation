@@ -1,6 +1,6 @@
 ﻿namespace Cache_Simulation
 {
-    partial class dL1Cache
+    partial class L2Cache
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dl1cache_show = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.l2cache_show = new System.Windows.Forms.DataGridView();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tag1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payload1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,13 +47,23 @@
             this.payload7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tag8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payload8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.l2cache_show)).BeginInit();
             this.SuspendLayout();
             // 
-            // dl1cache_show
+            // button1
             // 
-            this.dl1cache_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dl1cache_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.button1.Location = new System.Drawing.Point(891, 671);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 41);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Display";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // l2cache_show
+            // 
+            this.l2cache_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.l2cache_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
             this.tag1,
             this.payload1,
@@ -71,21 +81,11 @@
             this.payload7,
             this.tag8,
             this.payload8});
-            this.dl1cache_show.Location = new System.Drawing.Point(41, 35);
-            this.dl1cache_show.Name = "dl1cache_show";
-            this.dl1cache_show.RowTemplate.Height = 28;
-            this.dl1cache_show.Size = new System.Drawing.Size(1785, 600);
-            this.dl1cache_show.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(885, 673);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Display";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.l2cache_show.Location = new System.Drawing.Point(47, 33);
+            this.l2cache_show.Name = "l2cache_show";
+            this.l2cache_show.RowTemplate.Height = 28;
+            this.l2cache_show.Size = new System.Drawing.Size(1785, 600);
+            this.l2cache_show.TabIndex = 2;
             // 
             // num
             // 
@@ -172,24 +172,24 @@
             this.payload8.HeaderText = "Payload";
             this.payload8.Name = "payload8";
             // 
-            // dL1Cache
+            // L2Cache
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1878, 745);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dl1cache_show);
-            this.Name = "dL1Cache";
-            this.Text = "dL1Cache";
-            ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).EndInit();
+            this.Controls.Add(this.l2cache_show);
+            this.Name = "L2Cache";
+            this.Text = "L2Cache";
+            ((System.ComponentModel.ISupportInitialize)(this.l2cache_show)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dl1cache_show;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView l2cache_show;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn tag1;
         private System.Windows.Forms.DataGridViewTextBoxColumn payload1;

@@ -96,15 +96,23 @@ namespace Cache_Simulation
             f2.ShowDialog(); // Shows Form2
         }
 
+        private void il1_cache_show_Click(object sender, EventArgs e)
+        {
+            iL1Cache form_il1cache = new iL1Cache();
+            form_il1cache.ShowDialog(); // Shows Form2
+        }
+
         private void dl1_cache_show_Click(object sender, EventArgs e)
         {
             dL1Cache form_dl1cache = new dL1Cache();
             form_dl1cache.ShowDialog(); // Shows Form2
         }
 
-        private void il1_cache_show_Click(object sender, EventArgs e)
+        private void l2_cache_show_Click(object sender, EventArgs e)
         {
-
+            L2Cache form_l2cache = new L2Cache();
+            form_l2cache.ShowDialog(); // Shows Form2
         }
+
     }
 }

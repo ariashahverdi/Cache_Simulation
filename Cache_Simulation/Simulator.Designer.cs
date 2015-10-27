@@ -172,6 +172,7 @@
             this.l2_cache_show.TabIndex = 13;
             this.l2_cache_show.Text = "L2 Cache";
             this.l2_cache_show.UseVisualStyleBackColor = true;
+            this.l2_cache_show.Click += new System.EventHandler(this.l2_cache_show_Click);
             // 
             // l3_cache_show
             // 
@@ -235,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 411);
+            this.ClientSize = new System.Drawing.Size(824, 559);
             this.Controls.Add(this.tlb_show);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);

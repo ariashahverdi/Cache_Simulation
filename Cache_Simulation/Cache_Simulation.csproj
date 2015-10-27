@@ -54,11 +54,23 @@
     <Compile Include="dL1Cache.Designer.cs">
       <DependentUpon>dL1Cache.cs</DependentUpon>
     </Compile>
+    <Compile Include="iL1Cache.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iL1Cache.Designer.cs">
+      <DependentUpon>iL1Cache.cs</DependentUpon>
+    </Compile>
     <Compile Include="iTLB.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="iTLB.Designer.cs">
       <DependentUpon>iTLB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="L2Cache.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="L2Cache.Designer.cs">
+      <DependentUpon>L2Cache.cs</DependentUpon>
     </Compile>
     <Compile Include="Simulator.cs">
       <SubType>Form</SubType>
@@ -71,8 +83,14 @@
     <EmbeddedResource Include="dl1cache.resx">
       <DependentUpon>dL1Cache.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="iL1Cache.resx">
+      <DependentUpon>iL1Cache.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="iTLB.resx">
       <DependentUpon>iTLB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="L2Cache.resx">
+      <DependentUpon>L2Cache.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simulator.resx">
       <DependentUpon>Simulator.cs</DependentUpon>

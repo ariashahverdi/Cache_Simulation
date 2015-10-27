@@ -17,5 +17,15 @@ namespace Cache_Simulation
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Simulator.my_dl1cache.get_block_num(); i++)
+            {
+                string[] data = new string[8] {tag1.ToString(), payload1.ToString(), tag2.ToString(), payload2.ToString(), tag3.ToString(), payload3.ToString(), tag4.ToString(), payload4.ToString() };
+                data = new string[] { Simulator.my_dl1cache.get_block(i, 0).get_tag(), Simulator.my_dl1cache.get_block(i, 0).get_payload(), Simulator.my_dl1cache.get_block(i, 1).get_tag(), Simulator.my_dl1cache.get_block(i, 1).get_payload(), Simulator.my_dl1cache.get_block(i, 2).get_tag(), Simulator.my_dl1cache.get_block(i, 2).get_payload(), Simulator.my_dl1cache.get_block(i, 3).get_tag(), Simulator.my_dl1cache.get_block(i, 3).get_payload() };
+                dl1cache_show.Rows.Add(data);
+                dl1cache_show.FirstDisplayedScrollingRowIndex = dl1cache_show.RowCount - 1;
+            }
+        }
     }
 }

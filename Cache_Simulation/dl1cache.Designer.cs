@@ -28,86 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listView1 = new System.Windows.Forms.ListView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dl1cache_show = new System.Windows.Forms.DataGridView();
+            this.tag1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payload1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tag2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payload2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tag3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payload3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tag4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payload4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dl1cache_show
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(145, 195);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(648, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dl1cache_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dl1cache_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tag1,
+            this.payload1,
+            this.tag2,
+            this.payload2,
+            this.tag3,
+            this.payload3,
+            this.tag4,
+            this.payload4});
+            this.dl1cache_show.Location = new System.Drawing.Point(89, 57);
+            this.dl1cache_show.Name = "dl1cache_show";
+            this.dl1cache_show.RowTemplate.Height = 28;
+            this.dl1cache_show.Size = new System.Drawing.Size(844, 552);
+            this.dl1cache_show.TabIndex = 0;
             // 
-            // Column1
+            // tag1
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
+            this.tag1.HeaderText = "Tag";
+            this.tag1.Name = "tag1";
             // 
-            // Column2
+            // payload1
             // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
+            this.payload1.HeaderText = "Payload";
+            this.payload1.Name = "payload1";
             // 
-            // Column3
+            // tag2
             // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
+            this.tag2.HeaderText = "Tag";
+            this.tag2.Name = "tag2";
             // 
-            // Column4
+            // payload2
             // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
+            this.payload2.HeaderText = "Payload";
+            this.payload2.Name = "payload2";
             // 
-            // Column5
+            // tag3
             // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
+            this.tag3.HeaderText = "Tag";
+            this.tag3.Name = "tag3";
             // 
-            // listView1
+            // payload3
             // 
-            this.listView1.Location = new System.Drawing.Point(145, 387);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 97);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.payload3.HeaderText = "Payload";
+            this.payload3.Name = "payload3";
+            // 
+            // tag4
+            // 
+            this.tag4.HeaderText = "Tag";
+            this.tag4.Name = "tag4";
+            // 
+            // payload4
+            // 
+            this.payload4.HeaderText = "Payload";
+            this.payload4.Name = "payload4";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(463, 675);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 41);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Display";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dL1Cache
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 791);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dl1cache_show);
             this.Name = "dL1Cache";
             this.Text = "dL1Cache";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.DataGridView dl1cache_show;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tag1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payload1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tag2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payload2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tag3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payload3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tag4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payload4;
+        private System.Windows.Forms.Button button1;
     }
 }

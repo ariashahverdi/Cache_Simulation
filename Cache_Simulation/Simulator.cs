@@ -51,6 +51,24 @@ namespace Cache_Simulation
         private void start_Click(object sender, EventArgs e)
         {
 
+            ////////////////////////////////////////////////////////////
+            /* Samle Code to Work With Cache */
+            
+            bool[] tester_addr = new bool[Globals.PHYSICAL_ADD_LEN];
+            byte[] tester_data_read = new byte[Globals.DATA_BYTE_LEN];
+            byte[] tester_data_write = new byte[8*Globals.DATA_BYTE_LEN];
+
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++) tester_addr[i] = Convert.ToBoolean(rand.Next(2)); //random address
+
+            bool res;
+            res = my_dl1cache.read_from_cache(tester_addr, tester_data_read); //read from a location
+            res = my_dl1cache.write_to_cache(tester_addr, tester_data_write, false); //set a location to zero 
+            res = false;
+            for (int i = 0; i < Globals.DATA_BYTE_LEN; i++) tester_data_read[i] = (byte)rand.Next(256); //random address
+            res = my_dl1cache.read_from_cache(tester_addr, tester_data_read);
+            ////////////////////////////////////////////////////////////
+
+
             // Initialize the memory to some totally random instructions
             // Opcode can only be { 0:load | 1:store | 2:branch | 3:other }
             // We modify the first byte of each instruction to be one of these

@@ -9,8 +9,10 @@ namespace Cache_Simulation
 {
     public class block
     {
-        bool valid;
-        bool dirty;
+        int LRU;
+
+        bool valid; // 1 : valid || 0 : invalid
+        bool dirty; // 1 : dirty || 0 : clean
 
         bool [] tag;
         int TAG_SIZE;
@@ -20,6 +22,8 @@ namespace Cache_Simulation
 
         public block(int T_S, int P_S)
         {
+            LRU = 8; //LEAST RECENTLY USED
+
             TAG_SIZE = T_S;
             tag = new bool[TAG_SIZE];
 
@@ -37,7 +41,46 @@ namespace Cache_Simulation
 
         }
 
-        public int tag_val_calc(bool []tag)
+        public bool get_block(bool[] tag_in, byte [] payload_in)
+        {
+            bool hit = true;
+            for (int i=0;i<TAG_SIZE;i++)
+            {
+                if (tag_in[i] != tag[i]) hit = false;
+            }
+            if (hit) LRU = 0; //update the LRU policy
+            else if (LRU != 8) LRU++;
+            if (hit & valid & (!dirty))
+            {
+                for (int i = 0; i < PAYLOAD_SIZE; i++) payload_in[i] = payload[i];
+                return true;
+            }
+            else return false;
+
+        }
+
+        public bool set_block(bool[] tag_in, byte[] payload_in, bool dirty_in)
+        {
+            valid = true;
+            dirty = dirty_in; // if it's a write command the dirty should be set to true
+            LRU = 0;
+            for (int i = 0; i < TAG_SIZE; i++) tag[i] = tag_in[i];
+            for (int i = 0; i < PAYLOAD_SIZE; i++) payload[i] = payload_in[i];
+            return true;
+        }
+
+        public bool check_valid()
+        {
+            return valid;
+        }
+
+        public int get_LRU()
+        {
+            return LRU;
+        }
+
+        /*For printing purposes ...*/
+        public int give_me_int(bool[] tag)
         {
             int tag_val = 0;
             for (int i = 0; i < TAG_SIZE; i++) tag_val = 2 * tag_val + Convert.ToInt32(tag[i]);
@@ -46,13 +89,14 @@ namespace Cache_Simulation
 
         public string get_tag()
         {
-            return tag_val_calc(tag).ToString("X");
+            return give_me_int(tag).ToString("X");
         }
 
         public string get_payload()
         {
             return BitConverter.ToString(payload).Replace("-", "");
         }
+
 
 
     }

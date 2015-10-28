@@ -15,6 +15,11 @@ public static class Globals
 
     public static byte[] cur_inst = new byte[8];
 
+    public const int VIRTUAL_ADD_LEN = 48; // 48 bits
+    public const int PHYSICAL_ADD_LEN = 36; // 36 bits
+    public const int BYTE_OFF_LEN = 6; // 6 bits
+    public const int DATA_BYTE_LEN = 8; // 8 bytes
+
 }
 
 namespace Cache_Simulation

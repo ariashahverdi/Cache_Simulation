@@ -62,11 +62,14 @@ namespace Cache_Simulation
             for (int i = 0; i < INDEX_SIZE; i++) read_idx[i] = address[TAG_SIZE + i];
             for (int i = 0; i < (Globals.BYTE_OFF_LEN-3); i++) block_offset[i] = address[TAG_SIZE + INDEX_SIZE + i];
 
+            bool[] read_tag_out = new bool[TAG_SIZE]; //no use!!! pfff
+            bool dirty_check = false; //no use
+
             int read_idx_val = give_me_int(read_idx, INDEX_SIZE);
             int block_off_val = give_me_int(block_offset, 3); //<<<<<<<<<<<<<<
             for (int i = 0; i < BANK_NUM; i++)
             {
-                if (bankS[read_idx_val,i].get_block(read_tag, payload))
+                if (bankS[read_idx_val,i].get_block(read_tag, read_tag_out, payload, dirty_check))
                     {
                     for (int j=0; j < Globals.DATA_BYTE_LEN; j++) data[j] = payload[block_off_val * Globals.DATA_BYTE_LEN + j];
                     return true;
@@ -75,7 +78,7 @@ namespace Cache_Simulation
             return false;
         }
 
-        public bool write_to_cache(bool[] address, byte [] data, bool dirty)
+        public bool write_to_cache(bool[] address, byte [] data_in, bool dirty_in, bool[] tag_out, byte [] data_out, bool dirty_out)
         {
             bool[] write_tag = new bool[TAG_SIZE];
             bool[] write_idx = new bool[Globals.PHYSICAL_ADD_LEN - TAG_SIZE - Globals.BYTE_OFF_LEN];
@@ -84,6 +87,20 @@ namespace Cache_Simulation
             for (int i = 0; i < INDEX_SIZE; i++) write_idx[i] = address[TAG_SIZE + i];
 
             int write_idx_val = give_me_int(write_idx, INDEX_SIZE);
+
+            //*
+            //Hit on write
+            bool dirty_check =false;
+            for (int i = 0; i < BANK_NUM; i++)
+            {
+                if (bankS[write_idx_val, i].get_block(write_tag, tag_out, data_out, dirty_check)) //hit
+                {
+                    if (dirty_check) dirty_out = true; //dirty so it should be gone
+                    bankS[write_idx_val, i].set_block(write_tag, data_in, dirty_in);
+                    return true;
+                }
+            }
+            //*/
 
             int valid_cnt = 0;
             int[] valid_arr = new int[BANK_NUM];
@@ -99,7 +116,7 @@ namespace Cache_Simulation
             if (valid_cnt > 0)
             {
                 write_bank_idx = valid_arr[Simulator.rand.Next(valid_cnt)]; //select a random bank to write to
-                bankS[write_idx_val, write_bank_idx].set_block(write_tag, data, dirty);
+                bankS[write_idx_val, write_bank_idx].set_block(write_tag, data_in, dirty_in);
                 return true;
             }
             // Nothing is valid search for LRU
@@ -120,7 +137,7 @@ namespace Cache_Simulation
                     }
                 }
                 write_bank_idx = max_LRU_arr[Simulator.rand.Next(max_LRU_cnt)]; //select a random bank to write to
-                bankS[write_idx_val, write_bank_idx].set_block(write_tag, data, dirty);
+                bankS[write_idx_val, write_bank_idx].set_block(write_tag, data_in, dirty_in);
 
                 return true;
             }

@@ -41,22 +41,26 @@ namespace Cache_Simulation
 
         }
 
-        public bool get_block(bool[] tag_in, byte [] payload_in)
+        public bool get_block(bool[] tag_in, bool [] tag_out, byte [] payload_out, bool dirty_out)
         {
             bool hit = true;
-            for (int i=0;i<TAG_SIZE;i++)
+            for (int i=0; i<TAG_SIZE; i++)
             {
                 if (tag_in[i] != tag[i]) hit = false;
-            }
-            if (hit) LRU = 0; //update the LRU policy
-            else if (LRU != 8) LRU++;
-            if (hit & valid & (!dirty))
+            }           
+            if (hit & valid)
             {
-                for (int i = 0; i < PAYLOAD_SIZE; i++) payload_in[i] = payload[i];
+                LRU = 0; //update the LRU policy
+                dirty_out = dirty;
+                if (dirty)
+                {
+                    for (int i = 0; i < TAG_SIZE; i++) tag_out[i] = tag[i];
+                }
+                for (int i = 0; i < PAYLOAD_SIZE; i++) payload_out[i] = payload[i];
                 return true;
             }
-            else return false;
-
+            else if(!hit & valid) if (LRU != 8) LRU++;
+            return false;
         }
 
         public bool set_block(bool[] tag_in, byte[] payload_in, bool dirty_in)

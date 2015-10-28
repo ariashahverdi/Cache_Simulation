@@ -52,17 +52,35 @@ namespace Cache_Simulation
         {
 
             ////////////////////////////////////////////////////////////
-            /* Samle Code to Work With Cache */
-            
+
+            // **** ATTN **** //
+            // Address field should be bool[]  
+
+            // **** READ FROM CACHE **** //
+            // FUNCTION: public bool read_from_cache(bool[] address, byte[] data)
+            // send the address if the output is false then it was a miss, it the output is true the data you requested is in data
+
+            // **** WRITE TO CACHE **** //
+            // FUNCTION: public bool write_to_cache(bool[] address, byte[] data_in, bool dirty_in, bool[] tag_out, byte[] data_out, bool dirty_out)
+            // write to cache: send address and data_in also determine the write policy (so if it's write back set dirty_in to false so that we know what to do with data)
+            // then check if dirty_out == true then the tag_out and data_out is for the data dumped out of the cache. You have the address so just replace the tag
+            // portion of the address with tag_out and you can write it either to higher cache or memory. 
+
+
+            /* Sample Code to Work With Cache */
+
             bool[] tester_addr = new bool[Globals.PHYSICAL_ADD_LEN];
             byte[] tester_data_read = new byte[Globals.DATA_BYTE_LEN];
             byte[] tester_data_write = new byte[8*Globals.DATA_BYTE_LEN];
+            byte[] tester_data_write_out = new byte[8 * Globals.DATA_BYTE_LEN];
+            bool[] tag_out = new bool[24];
+            bool dirty_out = false;
 
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++) tester_addr[i] = Convert.ToBoolean(rand.Next(2)); //random address
 
             bool res;
             res = my_dl1cache.read_from_cache(tester_addr, tester_data_read); //read from a location
-            res = my_dl1cache.write_to_cache(tester_addr, tester_data_write, false); //set a location to zero 
+            res = my_dl1cache.write_to_cache(tester_addr, tester_data_write, false, tag_out,tester_data_write_out, dirty_out); //set a location to zero 
             res = false;
             for (int i = 0; i < Globals.DATA_BYTE_LEN; i++) tester_data_read[i] = (byte)rand.Next(256); //random address
             res = my_dl1cache.read_from_cache(tester_addr, tester_data_read);

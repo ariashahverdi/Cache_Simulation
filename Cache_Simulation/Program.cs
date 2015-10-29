@@ -4,12 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 public static class Globals
 {
-    public static ulong PC_INIT = 100;
+    public static ulong PC_INIT = 104;
 
-    public static int MEM_SIZE = 200;
+    public static int MEM_SIZE = 1024;
 
     public static byte[] cur_inst = new byte[8];
 
@@ -33,7 +32,6 @@ namespace Cache_Simulation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Simulator());
-            //Application.Run(new iTLB());
         }
     }
 }

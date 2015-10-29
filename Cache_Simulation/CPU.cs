@@ -31,9 +31,16 @@ namespace Cache_Simulation
 
         }
 
+        public void fetch()
+        {
+            for (ulong i = 0; i < 8; i++) { Simulator.my_cpu.IR1[i] = Simulator.my_memory.main_mem[Simulator.my_cpu.PC + i]; }
+            for (ulong i = 0; i < 8; i++) { Simulator.my_cpu.IR2[i] = Simulator.my_memory.main_mem[Simulator.my_cpu.PC + i + 8]; }
+            PC += 8;
+        }
+
         public void execute()
         {
-
+            
         }
     }
 }

@@ -13,6 +13,9 @@ namespace Cache_Simulation
     public partial class Simulator : Form
     {
         public static Random rand = new Random();
+        public static Memory_Controller my_memctrl = new Memory_Controller();
+        public static CPU my_cpu = new CPU();
+        public static Memory my_memory = new Memory(Globals.MEM_SIZE);
         public static cache my_il1cache = new cache(4, 128, 23, 64);
         public static cache my_dl1cache = new cache(8, 64, 24, 64);
         public static cache my_l2cache = new cache(8, 512, 21, 64);
@@ -25,7 +28,7 @@ namespace Cache_Simulation
         public void inst_show()
         {
             // Display the instruction type
-            int opcode = Globals.main_mem[Globals.pc_counter_val - Globals.PC_INIT];
+            int opcode = my_memory.main_mem[my_cpu.PC - Globals.PC_INIT];
             string inst_type;
             switch (opcode)
             {
@@ -48,8 +51,10 @@ namespace Cache_Simulation
             type.Text = inst_type;
         }
 
+
         private void start_Click(object sender, EventArgs e)
         {
+
 
             ////////////////////////////////////////////////////////////
 
@@ -68,7 +73,7 @@ namespace Cache_Simulation
 
 
             /* Sample Code to Work With Cache */
-
+            /*
             bool[] tester_addr = new bool[Globals.PHYSICAL_ADD_LEN];
             byte[] tester_data_read = new byte[Globals.DATA_BYTE_LEN];
             byte[] tester_data_write = new byte[8*Globals.DATA_BYTE_LEN];
@@ -85,25 +90,19 @@ namespace Cache_Simulation
             for (int i = 0; i < Globals.DATA_BYTE_LEN; i++) tester_data_read[i] = (byte)rand.Next(256); //random address
             res = my_dl1cache.read_from_cache(tester_addr, tester_data_read);
             ////////////////////////////////////////////////////////////
+            */
 
+            my_memory.random_initialize();
 
-            // Initialize the memory to some totally random instructions
-            // Opcode can only be { 0:load | 1:store | 2:branch | 3:other }
-            // We modify the first byte of each instruction to be one of these
-            for (int i=0;i<Globals.MEM_SIZE;i++)
-            {
-                if (i % 8 == 0) Globals.main_mem[i] = (byte)(rand.Next(256) % 4); //opcode
-                else Globals.main_mem[i] = (byte)rand.Next(256);
-            }
 
             // Initialize the Program Counter
-            Globals.pc_counter_val = Globals.PC_INIT;
-            pc_counter.Text = Globals.pc_counter_val.ToString();
+            my_cpu.PC = Globals.PC_INIT;
 
-            // Displying The First Instruction
-            for (int i = 0; i < 8; i++) { Globals.cur_inst[i] = Globals.main_mem[Globals.pc_counter_val - Globals.PC_INIT + i]; }
+
+            // Disply
+            pc_counter.Text = my_cpu.PC.ToString();
+            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC - Globals.PC_INIT + i]; }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
-
             inst_show();
 
         }
@@ -111,10 +110,10 @@ namespace Cache_Simulation
         // Display the instruction type
         private void nxt_inst_Click(object sender, EventArgs e)
         {
-            Globals.pc_counter_val += 8; 
-            pc_counter.Text = Globals.pc_counter_val.ToString();
+            my_cpu.PC += 8; 
+            pc_counter.Text = my_cpu.PC.ToString();
 
-            for (int i = 0; i < 8; i++) { Globals.cur_inst[i] = Globals.main_mem[Globals.pc_counter_val - Globals.PC_INIT + i]; }
+            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC - Globals.PC_INIT + i]; }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
 
             inst_show();

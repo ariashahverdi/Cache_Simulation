@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="block.cs" />
     <Compile Include="cache.cs" />
+    <Compile Include="CPU.cs" />
     <Compile Include="dL1Cache.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +73,8 @@
     <Compile Include="L2Cache.Designer.cs">
       <DependentUpon>L2Cache.cs</DependentUpon>
     </Compile>
+    <Compile Include="Memory.cs" />
+    <Compile Include="Memory_Controller.cs" />
     <Compile Include="pte.cs" />
     <Compile Include="Simulator.cs">
       <SubType>Form</SubType>

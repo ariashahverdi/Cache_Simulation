@@ -7,11 +7,9 @@ using System.Windows.Forms;
 
 public static class Globals
 {
-    public static int PC_INIT = 100;
-    public static int pc_counter_val;
+    public static ulong PC_INIT = 100;
 
     public static int MEM_SIZE = 200;
-    public static byte[] main_mem = new byte[MEM_SIZE]; // Main Memory
 
     public static byte[] cur_inst = new byte[8];
 

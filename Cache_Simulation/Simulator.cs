@@ -30,7 +30,9 @@ namespace Cache_Simulation
         public void inst_show()
         {
             // Display the instruction type
-            int opcode = my_memory.main_mem[my_cpu.PC];
+            int opcode = Globals.cur_inst[0];
+            opcode = (opcode >> 6);
+
             string inst_type;
             switch (opcode)
             {
@@ -117,7 +119,7 @@ namespace Cache_Simulation
 
             pc_counter.Text = my_cpu.PC.ToString();
 
-            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC+ i]; }
+            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC+ i-8]; }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
 
             inst_show();
@@ -156,6 +158,7 @@ namespace Cache_Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            form_cpu = new CPU_Frm();
             form_cpu.Show(); 
         }
     }

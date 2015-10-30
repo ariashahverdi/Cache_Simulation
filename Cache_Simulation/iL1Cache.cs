@@ -33,5 +33,10 @@ namespace Cache_Simulation
                     if (il1cache_show.CurrentCell != null && il1cache_show.CurrentCell.Value != null)
                         MessageBox.Show(il1cache_show.CurrentCell.Value.ToString());
         }
+
+        private void iL1Cache_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -8,7 +8,7 @@ public static class Globals
 {
     public static ulong PC_INIT = 104;
 
-    public static int MEM_SIZE = 1024;
+    public static int MEM_SIZE = 65536;
 
     public static byte[] cur_inst = new byte[8];
 

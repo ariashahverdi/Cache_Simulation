@@ -55,10 +55,11 @@
             this.payload3,
             this.tag4,
             this.payload4});
-            this.il1cache_show.Location = new System.Drawing.Point(37, 37);
+            this.il1cache_show.Location = new System.Drawing.Point(25, 24);
+            this.il1cache_show.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.il1cache_show.Name = "il1cache_show";
             this.il1cache_show.RowTemplate.Height = 28;
-            this.il1cache_show.Size = new System.Drawing.Size(1000, 600);
+            this.il1cache_show.Size = new System.Drawing.Size(667, 390);
             this.il1cache_show.TabIndex = 1;
             this.il1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.il1cache_show_CellContentClick);
             // 
@@ -109,9 +110,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(489, 681);
+            this.button1.Location = new System.Drawing.Point(326, 443);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 41);
+            this.button1.Size = new System.Drawing.Size(65, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "Display";
             this.button1.UseVisualStyleBackColor = true;
@@ -119,13 +121,15 @@
             // 
             // iL1Cache
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 745);
+            this.ClientSize = new System.Drawing.Size(719, 484);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.il1cache_show);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "iL1Cache";
             this.Text = "iL1Cache";
+            this.Load += new System.EventHandler(this.iL1Cache_Load);
             ((System.ComponentModel.ISupportInitialize)(this.il1cache_show)).EndInit();
             this.ResumeLayout(false);
 

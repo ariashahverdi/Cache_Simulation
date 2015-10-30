@@ -78,23 +78,28 @@ namespace Cache_Simulation
             return false;
         }
 
-        public bool write_to_cache(bool[] address, byte [] data_in, bool dirty_in, bool[] tag_out, byte [] data_out, bool dirty_out)
+        public bool write_to_cache(bool[] address_in, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
         {
             bool[] write_tag = new bool[TAG_SIZE];
             bool[] write_idx = new bool[Globals.PHYSICAL_ADD_LEN - TAG_SIZE - Globals.BYTE_OFF_LEN];
 
-            for (int i = 0; i < TAG_SIZE; i++) write_tag[i] = address[i];
-            for (int i = 0; i < INDEX_SIZE; i++) write_idx[i] = address[TAG_SIZE + i];
+            for (int i = 0; i < TAG_SIZE; i++) write_tag[i] = address_in[i];
+            for (int i = 0; i < INDEX_SIZE; i++) write_idx[i] = address_in[TAG_SIZE + i];
 
             int write_idx_val = give_me_int(write_idx, INDEX_SIZE);
 
             //*
             //Hit on write
             bool dirty_check =false;
+            bool[] tag_out = new bool[TAG_SIZE];
             for (int i = 0; i < BANK_NUM; i++)
             {
                 if (bankS[write_idx_val, i].get_block(write_tag, tag_out, data_out, dirty_check)) //hit
                 {
+                    //bool[] addr_out_temp = new bool[Globals.PHYSICAL_ADD_LEN];
+                    for (int j = 0; j < Globals.PHYSICAL_ADD_LEN; j++) address_out[j] = false;
+                    for (int j = 0; j < TAG_SIZE; j++) address_out[j] = address_out[j] = tag_out[i];
+                    for (int j = 0; j < INDEX_SIZE; j++) address_out[j] = address_out[TAG_SIZE+j] = write_idx[i];
                     if (dirty_check) dirty_out = true; //dirty so it should be gone
                     bankS[write_idx_val, i].set_block(write_tag, data_in, dirty_in);
                     return true;

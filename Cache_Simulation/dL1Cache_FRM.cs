@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Cache_Simulation
 {
-    public partial class dL1Cache : Form
+    public partial class dL1Cache_FRM : Form
     {
-        public dL1Cache()
+        public dL1Cache_FRM()
         {
             InitializeComponent();
             dl1cache_show.AllowUserToAddRows = false; //Disable The last Row

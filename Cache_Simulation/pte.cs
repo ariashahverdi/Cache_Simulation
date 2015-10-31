@@ -60,9 +60,10 @@ namespace Cache_Simulation
             return false;
         }
 
-        public bool set_pte(bool[] page_addr_tag_in, bool[] physical_addr_in)
+        public bool set_pte(bool[] page_addr_tag_in, bool[] physical_addr_in, bool[] prot_in)
         {
             valid = true;
+            for (int i = 0; i < 4; i++) prot[i] = prot_in[i];
             for (int i = 0; i < VIRTUAL_SIZE; i++) page_addr_tag[i] = page_addr_tag_in[i];
             for (int i = 0; i < PHYSICAL_SIZE; i++) phys_addr[i] = physical_addr_in[i];
             return true;

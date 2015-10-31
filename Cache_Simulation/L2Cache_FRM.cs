@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Cache_Simulation
 {
-    public partial class L2Cache : Form
+    public partial class L2Cache_FRM : Form
     {
-        public L2Cache()
+        public L2Cache_FRM()
         {
             InitializeComponent();
             l2cache_show.AllowUserToAddRows = false; //Disable The last Row

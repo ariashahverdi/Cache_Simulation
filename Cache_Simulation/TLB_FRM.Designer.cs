@@ -1,6 +1,6 @@
 ﻿namespace Cache_Simulation
 {
-    partial class dL1Cache
+    partial class TLB_FRM
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dl1cache_show = new System.Windows.Forms.DataGridView();
+            this.tlb_show = new System.Windows.Forms.DataGridView();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bank1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bank2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bank3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bank4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bank5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bank6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bank7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bank8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlb_show)).BeginInit();
             this.SuspendLayout();
             // 
-            // dl1cache_show
+            // tlb_show
             // 
-            this.dl1cache_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dl1cache_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tlb_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tlb_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
             this.bank1,
             this.bank2,
             this.bank3,
-            this.bank4,
-            this.bank5,
-            this.bank6,
-            this.bank7,
-            this.bank8});
-            this.dl1cache_show.Location = new System.Drawing.Point(43, 59);
-            this.dl1cache_show.Name = "dl1cache_show";
-            this.dl1cache_show.RowTemplate.Height = 28;
-            this.dl1cache_show.Size = new System.Drawing.Size(1000, 600);
-            this.dl1cache_show.TabIndex = 0;
-            this.dl1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dl1cache_show_CellContentClick);
+            this.bank4});
+            this.tlb_show.Location = new System.Drawing.Point(54, 37);
+            this.tlb_show.Name = "tlb_show";
+            this.tlb_show.RowTemplate.Height = 28;
+            this.tlb_show.Size = new System.Drawing.Size(570, 930);
+            this.tlb_show.TabIndex = 4;
             // 
             // num
             // 
@@ -86,50 +77,26 @@
             this.bank4.HeaderText = "Bank 4";
             this.bank4.Name = "bank4";
             // 
-            // bank5
-            // 
-            this.bank5.HeaderText = "Bank 5";
-            this.bank5.Name = "bank5";
-            // 
-            // bank6
-            // 
-            this.bank6.HeaderText = "Bank 6";
-            this.bank6.Name = "bank6";
-            // 
-            // bank7
-            // 
-            this.bank7.HeaderText = "Bank 7";
-            this.bank7.Name = "bank7";
-            // 
-            // bank8
-            // 
-            this.bank8.HeaderText = "Bank 8";
-            this.bank8.Name = "bank8";
-            // 
-            // dL1Cache
+            // TLB_FRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 745);
-            this.Controls.Add(this.dl1cache_show);
-            this.Name = "dL1Cache";
-            this.Text = "dL1Cache";
-            ((System.ComponentModel.ISupportInitialize)(this.dl1cache_show)).EndInit();
+            this.ClientSize = new System.Drawing.Size(678, 1005);
+            this.Controls.Add(this.tlb_show);
+            this.Name = "TLB_FRM";
+            this.Text = "TLB_RFM";
+            ((System.ComponentModel.ISupportInitialize)(this.tlb_show)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dl1cache_show;
+        private System.Windows.Forms.DataGridView tlb_show;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn bank1;
         private System.Windows.Forms.DataGridViewTextBoxColumn bank2;
         private System.Windows.Forms.DataGridViewTextBoxColumn bank3;
         private System.Windows.Forms.DataGridViewTextBoxColumn bank4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bank5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bank6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bank7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bank8;
     }
 }

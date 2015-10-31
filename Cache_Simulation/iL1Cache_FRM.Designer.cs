@@ -1,6 +1,6 @@
 ﻿namespace Cache_Simulation
 {
-    partial class iL1Cache
+    partial class iL1Cache_FRM
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             this.bank2,
             this.bank3,
             this.bank4});
-            this.il1cache_show.Location = new System.Drawing.Point(68, 67);
+            this.il1cache_show.Location = new System.Drawing.Point(64, 64);
             this.il1cache_show.Name = "il1cache_show";
             this.il1cache_show.RowTemplate.Height = 28;
             this.il1cache_show.Size = new System.Drawing.Size(600, 600);
@@ -78,13 +78,13 @@
             this.bank4.HeaderText = "Bank 4";
             this.bank4.Name = "bank4";
             // 
-            // iL1Cache
+            // iL1Cache_FRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 745);
             this.Controls.Add(this.il1cache_show);
-            this.Name = "iL1Cache";
+            this.Name = "iL1Cache_FRM";
             this.Text = "iL1Cache";
             ((System.ComponentModel.ISupportInitialize)(this.il1cache_show)).EndInit();
             this.ResumeLayout(false);

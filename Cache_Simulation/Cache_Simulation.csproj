@@ -61,29 +61,35 @@
     <Compile Include="CPU_Frm.Designer.cs">
       <DependentUpon>CPU_Frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="dL1Cache.cs">
+    <Compile Include="dL1Cache_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dL1Cache.Designer.cs">
-      <DependentUpon>dL1Cache.cs</DependentUpon>
+    <Compile Include="dL1Cache_FRM.Designer.cs">
+      <DependentUpon>dL1Cache_FRM.cs</DependentUpon>
     </Compile>
-    <Compile Include="iL1Cache.cs">
+    <Compile Include="dTLB_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="iL1Cache.Designer.cs">
-      <DependentUpon>iL1Cache.cs</DependentUpon>
+    <Compile Include="dTLB_FRM.Designer.cs">
+      <DependentUpon>dTLB_FRM.cs</DependentUpon>
     </Compile>
-    <Compile Include="iTLB.cs">
+    <Compile Include="iL1Cache_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="iTLB.Designer.cs">
-      <DependentUpon>iTLB.cs</DependentUpon>
+    <Compile Include="iL1Cache_FRM.Designer.cs">
+      <DependentUpon>iL1Cache_FRM.cs</DependentUpon>
     </Compile>
-    <Compile Include="L2Cache.cs">
+    <Compile Include="iTLB_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="L2Cache.Designer.cs">
-      <DependentUpon>L2Cache.cs</DependentUpon>
+    <Compile Include="iTLB_FRM.Designer.cs">
+      <DependentUpon>iTLB_FRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="L2Cache_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="L2Cache_FRM.Designer.cs">
+      <DependentUpon>L2Cache_FRM.cs</DependentUpon>
     </Compile>
     <Compile Include="Memory.cs" />
     <Compile Include="Memory_Controller.cs" />
@@ -97,23 +103,32 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tlb.cs" />
+    <Compile Include="TLB_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TLB_FRM.Designer.cs">
+      <DependentUpon>TLB_FRM.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="cache_block.resx">
       <DependentUpon>cache_block.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CPU_Frm.resx">
       <DependentUpon>CPU_Frm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dl1cache.resx">
-      <DependentUpon>dL1Cache.cs</DependentUpon>
+    <EmbeddedResource Include="dL1Cache_FRM.resx">
+      <DependentUpon>dL1Cache_FRM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="iL1Cache.resx">
-      <DependentUpon>iL1Cache.cs</DependentUpon>
+    <EmbeddedResource Include="dTLB_FRM.resx">
+      <DependentUpon>dTLB_FRM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="iTLB.resx">
-      <DependentUpon>iTLB.cs</DependentUpon>
+    <EmbeddedResource Include="iL1Cache_FRM.resx">
+      <DependentUpon>iL1Cache_FRM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="L2Cache.resx">
-      <DependentUpon>L2Cache.cs</DependentUpon>
+    <EmbeddedResource Include="iTLB_FRM.resx">
+      <DependentUpon>iTLB_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="L2Cache_FRM.resx">
+      <DependentUpon>L2Cache_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simulator.resx">
       <DependentUpon>Simulator.cs</DependentUpon>
@@ -127,6 +142,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TLB_FRM.resx">
+      <DependentUpon>TLB_FRM.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

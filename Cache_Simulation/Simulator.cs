@@ -16,6 +16,11 @@ namespace Cache_Simulation
         public static Memory_Controller my_memctrl = new Memory_Controller();
         public static CPU my_cpu = new CPU();
         public static Memory my_memory = new Memory(Globals.MEM_SIZE);
+
+        public static tlb my_itlb = new tlb(4,32,31,24);
+        public static tlb my_dtlb = new tlb(4,16,31,24);
+        public static tlb my_tlb = new tlb(4,128,29,24);
+
         public static cache my_il1cache = new cache(4, 128, 23, 64);
         public static cache my_dl1cache = new cache(8, 64, 24, 64);
         public static cache my_l2cache = new cache(8, 512, 21, 64);
@@ -134,26 +139,38 @@ namespace Cache_Simulation
 
         private void itlb_show_Click(object sender, EventArgs e)
         {
-            iTLB f2 = new iTLB();
-            f2.ShowDialog(); // Shows Form2
+            iTLB_FRM form_itlb = new iTLB_FRM();
+            form_itlb.ShowDialog(); 
+        }
+
+        private void dtlb_Click(object sender, EventArgs e)
+        {
+            dTLB_FRM form_dtlb = new dTLB_FRM();
+            form_dtlb.ShowDialog();
+        }
+
+        private void tlb_show_Click(object sender, EventArgs e)
+        {
+            TLB_FRM form_tlb = new TLB_FRM();
+            form_tlb.ShowDialog();
         }
 
         private void il1_cache_show_Click(object sender, EventArgs e)
         {
-            iL1Cache form_il1cache = new iL1Cache();
-            form_il1cache.ShowDialog(); // Shows Form2
+            iL1Cache_FRM form_il1cache = new iL1Cache_FRM();
+            form_il1cache.ShowDialog();
         }
 
         private void dl1_cache_show_Click(object sender, EventArgs e)
         {
-            dL1Cache form_dl1cache = new dL1Cache();
-            form_dl1cache.Show(); // Shows Form2
+            dL1Cache_FRM form_dl1cache = new dL1Cache_FRM();
+            form_dl1cache.ShowDialog(); 
         }
 
         private void l2_cache_show_Click(object sender, EventArgs e)
         {
-            L2Cache form_l2cache = new L2Cache();
-            form_l2cache.ShowDialog(); // Shows Form2
+            L2Cache_FRM form_l2cache = new L2Cache_FRM();
+            form_l2cache.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -161,5 +178,7 @@ namespace Cache_Simulation
             form_cpu = new CPU_Frm();
             form_cpu.Show(); 
         }
+
+
     }
 }

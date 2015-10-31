@@ -37,10 +37,8 @@ namespace Cache_Simulation
 
         private void il1cache_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-                    if (il1cache_show.CurrentCell != null && il1cache_show.CurrentCell.Value != null && il1cache_show.CurrentCell.ColumnIndex != 0)
+             if (il1cache_show.CurrentCell != null && il1cache_show.CurrentCell.Value != null && il1cache_show.CurrentCell.ColumnIndex != 0)
             {
-                int a = il1cache_show.CurrentCell.RowIndex;
-                int b = il1cache_show.CurrentCell.ColumnIndex;
                 cache_block form_cache_block = new cache_block(Simulator.my_il1cache, il1cache_show.CurrentCell.RowIndex, il1cache_show.CurrentCell.ColumnIndex - 1);
                 form_cache_block.ShowDialog();
             }

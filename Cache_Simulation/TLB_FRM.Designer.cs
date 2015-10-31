@@ -46,11 +46,12 @@
             this.bank2,
             this.bank3,
             this.bank4});
-            this.tlb_show.Location = new System.Drawing.Point(54, 37);
+            this.tlb_show.Location = new System.Drawing.Point(55, 40);
             this.tlb_show.Name = "tlb_show";
             this.tlb_show.RowTemplate.Height = 28;
             this.tlb_show.Size = new System.Drawing.Size(570, 930);
             this.tlb_show.TabIndex = 4;
+            this.tlb_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tlb_show_CellContentClick);
             // 
             // num
             // 

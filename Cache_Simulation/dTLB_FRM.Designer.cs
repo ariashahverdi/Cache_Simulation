@@ -51,6 +51,7 @@
             this.dtlb_show.RowTemplate.Height = 28;
             this.dtlb_show.Size = new System.Drawing.Size(545, 480);
             this.dtlb_show.TabIndex = 2;
+            this.dtlb_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtlb_show_CellContentClick);
             // 
             // num
             // 

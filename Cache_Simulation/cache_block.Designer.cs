@@ -300,7 +300,6 @@ namespace Cache_Simulation
             this.Controls.Add(this.label1);
             this.Name = "cache_block";
             this.Text = "cache_block";
-            this.Load += new System.EventHandler(this.cache_block_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

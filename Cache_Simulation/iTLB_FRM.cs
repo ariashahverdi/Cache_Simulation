@@ -34,5 +34,13 @@ namespace Cache_Simulation
             }
         }
 
+        private void itlb_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (itlb_show.CurrentCell != null && itlb_show.CurrentCell.Value != null && itlb_show.CurrentCell.ColumnIndex != 0)
+            {
+                tlb_pte form_tlb_pte = new tlb_pte(Simulator.my_itlb, itlb_show.CurrentCell.RowIndex, itlb_show.CurrentCell.ColumnIndex - 1);
+                form_tlb_pte.ShowDialog();
+            }
+        }
     }
 }

@@ -48,11 +48,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tlb_show = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(318, 38);
+            this.start.Location = new System.Drawing.Point(1146, 44);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(158, 68);
             this.start.TabIndex = 0;
@@ -63,14 +66,14 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(404, 163);
+            this.label1.Location = new System.Drawing.Point(667, 767);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 1;
             // 
             // nxt_inst
             // 
-            this.nxt_inst.Location = new System.Drawing.Point(288, 149);
+            this.nxt_inst.Location = new System.Drawing.Point(1112, 148);
             this.nxt_inst.Name = "nxt_inst";
             this.nxt_inst.Size = new System.Drawing.Size(232, 38);
             this.nxt_inst.TabIndex = 2;
@@ -82,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(306, 222);
+            this.label2.Location = new System.Drawing.Point(1083, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 20);
             this.label2.TabIndex = 3;
@@ -91,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(452, 222);
+            this.label3.Location = new System.Drawing.Point(1313, 201);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 20);
             this.label3.TabIndex = 4;
@@ -99,7 +102,7 @@
             // pc_counter
             // 
             this.pc_counter.AutoSize = true;
-            this.pc_counter.Location = new System.Drawing.Point(458, 222);
+            this.pc_counter.Location = new System.Drawing.Point(1297, 213);
             this.pc_counter.Name = "pc_counter";
             this.pc_counter.Size = new System.Drawing.Size(18, 20);
             this.pc_counter.TabIndex = 5;
@@ -109,7 +112,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(256, 285);
+            this.label4.Location = new System.Drawing.Point(1108, 266);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 20);
             this.label4.TabIndex = 6;
@@ -118,7 +121,7 @@
             // inst
             // 
             this.inst.AutoSize = true;
-            this.inst.Location = new System.Drawing.Point(374, 285);
+            this.inst.Location = new System.Drawing.Point(1226, 266);
             this.inst.Name = "inst";
             this.inst.Size = new System.Drawing.Size(181, 20);
             this.inst.TabIndex = 7;
@@ -128,7 +131,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(278, 340);
+            this.label5.Location = new System.Drawing.Point(1132, 319);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 20);
             this.label5.TabIndex = 8;
@@ -139,7 +142,7 @@
             this.type.AutoSize = true;
             this.type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.type.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.type.Location = new System.Drawing.Point(412, 340);
+            this.type.Location = new System.Drawing.Point(1297, 319);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(33, 20);
             this.type.TabIndex = 9;
@@ -147,9 +150,9 @@
             // 
             // il1_cache_show
             // 
-            this.il1_cache_show.Location = new System.Drawing.Point(70, 155);
+            this.il1_cache_show.Location = new System.Drawing.Point(818, 107);
             this.il1_cache_show.Name = "il1_cache_show";
-            this.il1_cache_show.Size = new System.Drawing.Size(94, 34);
+            this.il1_cache_show.Size = new System.Drawing.Size(95, 35);
             this.il1_cache_show.TabIndex = 10;
             this.il1_cache_show.Text = "iL1 Cache";
             this.il1_cache_show.UseVisualStyleBackColor = true;
@@ -157,9 +160,9 @@
             // 
             // dl1_cache_show
             // 
-            this.dl1_cache_show.Location = new System.Drawing.Point(656, 155);
+            this.dl1_cache_show.Location = new System.Drawing.Point(818, 184);
             this.dl1_cache_show.Name = "dl1_cache_show";
-            this.dl1_cache_show.Size = new System.Drawing.Size(94, 34);
+            this.dl1_cache_show.Size = new System.Drawing.Size(95, 35);
             this.dl1_cache_show.TabIndex = 11;
             this.dl1_cache_show.Text = "dL1 Cache";
             this.dl1_cache_show.UseVisualStyleBackColor = true;
@@ -167,9 +170,9 @@
             // 
             // l2_cache_show
             // 
-            this.l2_cache_show.Location = new System.Drawing.Point(638, 228);
+            this.l2_cache_show.Location = new System.Drawing.Point(805, 261);
             this.l2_cache_show.Name = "l2_cache_show";
-            this.l2_cache_show.Size = new System.Drawing.Size(128, 48);
+            this.l2_cache_show.Size = new System.Drawing.Size(120, 50);
             this.l2_cache_show.TabIndex = 13;
             this.l2_cache_show.Text = "L2 Cache";
             this.l2_cache_show.UseVisualStyleBackColor = true;
@@ -177,7 +180,7 @@
             // 
             // l3_cache_show
             // 
-            this.l3_cache_show.Location = new System.Drawing.Point(616, 312);
+            this.l3_cache_show.Location = new System.Drawing.Point(780, 353);
             this.l3_cache_show.Name = "l3_cache_show";
             this.l3_cache_show.Size = new System.Drawing.Size(170, 60);
             this.l3_cache_show.TabIndex = 15;
@@ -186,9 +189,9 @@
             // 
             // itlb_show
             // 
-            this.itlb_show.Location = new System.Drawing.Point(84, 72);
+            this.itlb_show.Location = new System.Drawing.Point(76, 107);
             this.itlb_show.Name = "itlb_show";
-            this.itlb_show.Size = new System.Drawing.Size(68, 34);
+            this.itlb_show.Size = new System.Drawing.Size(70, 35);
             this.itlb_show.TabIndex = 16;
             this.itlb_show.Text = "iTLB";
             this.itlb_show.UseVisualStyleBackColor = true;
@@ -196,9 +199,9 @@
             // 
             // dtlb
             // 
-            this.dtlb.Location = new System.Drawing.Point(669, 72);
+            this.dtlb.Location = new System.Drawing.Point(76, 184);
             this.dtlb.Name = "dtlb";
-            this.dtlb.Size = new System.Drawing.Size(68, 34);
+            this.dtlb.Size = new System.Drawing.Size(70, 35);
             this.dtlb.TabIndex = 17;
             this.dtlb.Text = "dTLB";
             this.dtlb.UseVisualStyleBackColor = true;
@@ -208,28 +211,28 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(663, 9);
+            this.label7.Location = new System.Drawing.Point(814, 33);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 32);
+            this.label7.Size = new System.Drawing.Size(102, 32);
             this.label7.TabIndex = 19;
-            this.label7.Text = "Data";
+            this.label7.Text = "Cache";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(39, 9);
+            this.label6.Location = new System.Drawing.Point(76, 33);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 32);
+            this.label6.Size = new System.Drawing.Size(70, 32);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Instruction";
+            this.label6.Text = "TLB";
             // 
             // tlb_show
             // 
-            this.tlb_show.Location = new System.Drawing.Point(70, 248);
+            this.tlb_show.Location = new System.Drawing.Point(51, 261);
             this.tlb_show.Name = "tlb_show";
-            this.tlb_show.Size = new System.Drawing.Size(104, 58);
+            this.tlb_show.Size = new System.Drawing.Size(120, 50);
             this.tlb_show.TabIndex = 20;
             this.tlb_show.Text = "TLB";
             this.tlb_show.UseVisualStyleBackColor = true;
@@ -237,20 +240,50 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(45, 355);
+            this.button1.Location = new System.Drawing.Point(420, 173);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 75);
+            this.button1.Size = new System.Drawing.Size(100, 100);
             this.button1.TabIndex = 21;
             this.button1.Text = "CPU";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(26, 353);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(170, 60);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Page Table";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(382, 381);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(200, 80);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Main Memory";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(357, 523);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(250, 120);
+            this.button4.TabIndex = 24;
+            this.button4.Text = "Disk";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 558);
+            this.ClientSize = new System.Drawing.Size(1440, 718);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tlb_show);
             this.Controls.Add(this.label7);
@@ -301,6 +334,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button tlb_show;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

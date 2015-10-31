@@ -30,6 +30,18 @@ namespace Cache_Simulation
         public Simulator()
         {
             InitializeComponent();
+
+
+        }
+
+        public void DrawLine()
+        {
+            System.Drawing.Pen myPen;
+            myPen = new System.Drawing.Pen(System.Drawing.Color.Red);
+            System.Drawing.Graphics formGraphics = this.CreateGraphics();
+            formGraphics.DrawLine(myPen, 0, 0, 200, 200);
+            myPen.Dispose();
+            formGraphics.Dispose();
         }
 
         public void inst_show()
@@ -63,8 +75,6 @@ namespace Cache_Simulation
 
         private void start_Click(object sender, EventArgs e)
         {
-
-
             ////////////////////////////////////////////////////////////
 
             // **** ATTN **** //

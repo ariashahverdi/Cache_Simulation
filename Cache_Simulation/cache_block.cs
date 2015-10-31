@@ -19,7 +19,7 @@ namespace Cache_Simulation
             textBox1.Text = Convert.ToString(my_cache.get_block(row, col).get_valid());
             textBox2.Text = Convert.ToString(my_cache.get_block(row, col).get_dirty());
             textBox3.Text = (my_cache.get_block(row, col).get_tag());
-            //byte[] payload = new byte[my_cache.get_block(row,col).get_payload_size()];
+
             string payload = my_cache.get_block(row, col).get_payload();
             textBox4.Text = (payload.Substring(0,16));
             textBox5.Text = (payload.Substring(16, 16));
@@ -32,9 +32,6 @@ namespace Cache_Simulation
             textBox10.Text = (payload.Substring(112, 16));
         }
 
-        private void cache_block_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -38,8 +38,6 @@ namespace Cache_Simulation
         {
             if (l2cache_show.CurrentCell != null && l2cache_show.CurrentCell.Value != null && l2cache_show.CurrentCell.ColumnIndex != 0)
             {
-                int a = l2cache_show.CurrentCell.RowIndex;
-                int b = l2cache_show.CurrentCell.ColumnIndex;
                 cache_block form_cache_block = new cache_block(Simulator.my_l2cache, l2cache_show.CurrentCell.RowIndex, l2cache_show.CurrentCell.ColumnIndex - 1);
                 form_cache_block.ShowDialog();
             }

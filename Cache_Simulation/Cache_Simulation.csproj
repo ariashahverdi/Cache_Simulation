@@ -109,6 +109,12 @@
     <Compile Include="TLB_FRM.Designer.cs">
       <DependentUpon>TLB_FRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="tlb_pte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tlb_pte.Designer.cs">
+      <DependentUpon>tlb_pte.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="cache_block.resx">
       <DependentUpon>cache_block.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="TLB_FRM.resx">
       <DependentUpon>TLB_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tlb_pte.resx">
+      <DependentUpon>tlb_pte.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

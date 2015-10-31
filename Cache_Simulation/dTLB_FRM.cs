@@ -36,15 +36,11 @@ namespace Cache_Simulation
 
         private void dtlb_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*
             if (dtlb_show.CurrentCell != null && dtlb_show.CurrentCell.Value != null && dtlb_show.CurrentCell.ColumnIndex != 0)
             {
-                int a = dtlb_show.CurrentCell.RowIndex;
-                int b = dtlb_show.CurrentCell.ColumnIndex;
-                cache_block form_cache_block = new cache_block(Simulator.my_dtlb, dtlb_show.CurrentCell.RowIndex, dtlb_show.CurrentCell.ColumnIndex - 1);
-                form_cache_block.ShowDialog();
+                tlb_pte form_tlb_pte = new tlb_pte(Simulator.my_dtlb, dtlb_show.CurrentCell.RowIndex, dtlb_show.CurrentCell.ColumnIndex - 1);
+                form_tlb_pte.ShowDialog();
             }
-            */
         }
     }
     

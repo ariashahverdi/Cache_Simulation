@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="block.cs" />
     <Compile Include="cache.cs" />
+    <Compile Include="cache_block.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cache_block.Designer.cs">
+      <DependentUpon>cache_block.cs</DependentUpon>
+    </Compile>
     <Compile Include="CPU.cs" />
     <Compile Include="CPU_Frm.cs">
       <SubType>Form</SubType>
@@ -91,6 +97,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tlb.cs" />
+    <EmbeddedResource Include="cache_block.resx">
+      <DependentUpon>cache_block.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CPU_Frm.resx">
       <DependentUpon>CPU_Frm.cs</DependentUpon>
     </EmbeddedResource>

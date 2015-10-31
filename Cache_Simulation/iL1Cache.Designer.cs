@@ -30,15 +30,10 @@
         {
             this.il1cache_show = new System.Windows.Forms.DataGridView();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tag1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payload1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tag2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payload2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tag3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payload3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tag4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payload4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bank1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bank2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bank3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bank4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.il1cache_show)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,19 +42,14 @@
             this.il1cache_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.il1cache_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
-            this.tag1,
-            this.payload1,
-            this.tag2,
-            this.payload2,
-            this.tag3,
-            this.payload3,
-            this.tag4,
-            this.payload4});
-            this.il1cache_show.Location = new System.Drawing.Point(25, 24);
-            this.il1cache_show.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bank1,
+            this.bank2,
+            this.bank3,
+            this.bank4});
+            this.il1cache_show.Location = new System.Drawing.Point(68, 67);
             this.il1cache_show.Name = "il1cache_show";
             this.il1cache_show.RowTemplate.Height = 28;
-            this.il1cache_show.Size = new System.Drawing.Size(667, 390);
+            this.il1cache_show.Size = new System.Drawing.Size(600, 600);
             this.il1cache_show.TabIndex = 1;
             this.il1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.il1cache_show_CellContentClick);
             // 
@@ -68,85 +58,45 @@
             this.num.HeaderText = "#";
             this.num.Name = "num";
             // 
-            // tag1
+            // bank1
             // 
-            this.tag1.HeaderText = "Tag";
-            this.tag1.Name = "tag1";
+            this.bank1.HeaderText = "Bank 1";
+            this.bank1.Name = "bank1";
             // 
-            // payload1
+            // bank2
             // 
-            this.payload1.HeaderText = "Payload";
-            this.payload1.Name = "payload1";
+            this.bank2.HeaderText = "Bank 2";
+            this.bank2.Name = "bank2";
             // 
-            // tag2
+            // bank3
             // 
-            this.tag2.HeaderText = "Tag";
-            this.tag2.Name = "tag2";
+            this.bank3.HeaderText = "Bank 3";
+            this.bank3.Name = "bank3";
             // 
-            // payload2
+            // bank4
             // 
-            this.payload2.HeaderText = "Payload";
-            this.payload2.Name = "payload2";
-            // 
-            // tag3
-            // 
-            this.tag3.HeaderText = "Tag";
-            this.tag3.Name = "tag3";
-            // 
-            // payload3
-            // 
-            this.payload3.HeaderText = "Payload";
-            this.payload3.Name = "payload3";
-            // 
-            // tag4
-            // 
-            this.tag4.HeaderText = "Tag";
-            this.tag4.Name = "tag4";
-            // 
-            // payload4
-            // 
-            this.payload4.HeaderText = "Payload";
-            this.payload4.Name = "payload4";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(326, 443);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 27);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Display";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bank4.HeaderText = "Bank 4";
+            this.bank4.Name = "bank4";
             // 
             // iL1Cache
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 484);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(728, 745);
             this.Controls.Add(this.il1cache_show);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "iL1Cache";
             this.Text = "iL1Cache";
-            this.Load += new System.EventHandler(this.iL1Cache_Load);
             ((System.ComponentModel.ISupportInitialize)(this.il1cache_show)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
         private System.Windows.Forms.DataGridView il1cache_show;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tag1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payload1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tag2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payload2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tag3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payload3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tag4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payload4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bank1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bank2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bank3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bank4;
     }
 }

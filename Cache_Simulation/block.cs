@@ -98,10 +98,28 @@ namespace Cache_Simulation
 
         public string get_payload()
         {
-            return BitConverter.ToString(payload).Replace("-", "");
+            return BitConverter.ToString(payload).Replace("-", "").PadLeft(PAYLOAD_SIZE,'0');
         }
 
+        public string get_tag_payload()
+        {
+            return get_tag() + get_payload();
+        }
 
+        public bool get_valid()
+        {
+            return valid;
+        }
+
+        public bool get_dirty()
+        {
+            return dirty;
+        }
+
+        public int get_payload_size()
+        {
+            return PAYLOAD_SIZE;
+        }
 
     }
 

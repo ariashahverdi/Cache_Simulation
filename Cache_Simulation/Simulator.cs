@@ -12,7 +12,7 @@ namespace Cache_Simulation
 {
     public partial class Simulator : Form
     {
-        public static Random rand = new Random(10);
+        public static Random rand = new Random(10); // DO NOT TOUCH THIS LINE PLEASE! 
         public static Memory_Controller my_memctrl = new Memory_Controller();
         public static CPU my_cpu = new CPU();
         public static Memory my_memory = new Memory(Globals.MEM_SIZE);
@@ -97,25 +97,31 @@ namespace Cache_Simulation
             byte[] tester_data_read = new byte[num];
             byte[] tester_data_write = new byte[num];
             byte[] tester_data_write_out = new byte[num];
-            bool[] tag_out = new bool[24];
+            bool[] addr_out = new bool[Globals.PHYSICAL_ADD_LEN];
             bool dirty_out = false;
 
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++) tester_addr[i] = false;// Convert.ToBoolean(rand.Next(2)); //random address
-            tester_addr[0] =false ; tester_addr[1] = false; tester_addr[2] = false; tester_addr[3] = true;
-            tester_addr[4] = true; tester_addr[5] = true; tester_addr[6] = false; tester_addr[7] = false;
-            tester_addr[8] = true; tester_addr[9] = false; tester_addr[10] = true; tester_addr[11] = true;
+            tester_addr[0] = true ; tester_addr[1] = false; tester_addr[2] = true; tester_addr[3] = false; //A
+            tester_addr[4] = true; tester_addr[5] = true; tester_addr[6] = false; tester_addr[7] = true; //D
+            tester_addr[8] = true; tester_addr[9] = true; tester_addr[10] = true; tester_addr[11] = true; //F
 
-            tester_addr[12] = true; tester_addr[13] = true; tester_addr[14] = true; tester_addr[15] = true;
-            tester_addr[16] = true; tester_addr[17] = true; tester_addr[18] = false; tester_addr[19] = true;
-            tester_addr[20] = true; tester_addr[21] = false; tester_addr[22] = false; tester_addr[23] = false;
+            tester_addr[12] = true; tester_addr[13] = true; tester_addr[14] = true; tester_addr[15] = false; //E
+            tester_addr[16] = false; tester_addr[17] = true; tester_addr[18] = true; tester_addr[19] = true; //7
+            tester_addr[20] = true; tester_addr[21] = true; tester_addr[22] = true; tester_addr[23] = true; //F
+
+
+            tester_addr[30] = true; tester_addr[31] = false; tester_addr[32] = true; //0
+            tester_addr[33] = true; tester_addr[34] = true; tester_addr[35] = true; //7
 
 
             bool res;
-            res = my_il1cache.read_from_cache(tester_addr, 64, tester_data_read); //read from a location
-            res = my_il1cache.write_to_cache(tester_addr, 64, tester_data_write, false, tag_out,tester_data_write_out, ref dirty_out); //set a location to zero 
+            res = my_dl1cache.read_from_cache(tester_addr, 64, tester_data_read); //read from a location
+            res = my_dl1cache.write_to_cache(tester_addr, 8, tester_data_write, true, addr_out,tester_data_write_out, ref dirty_out); //set a location to zero 
+            res = my_dl1cache.write_to_cache(tester_addr, 8, tester_data_write, true, addr_out,tester_data_write_out, ref dirty_out); //set a location to zero
             res = false;
-            for (int i = 0; i < Globals.DATA_BYTE_LEN; i++) tester_data_read[i] = (byte)rand.Next(256); //random address
-            res = my_dl1cache.read_from_cache(tester_addr, 64, tester_data_read);
+            tester_addr[0] = true; tester_addr[1] = true; tester_addr[2] = true; tester_addr[3] = true; //A
+            res = my_dl1cache.write_to_cache(tester_addr, 64, tester_data_write, false, addr_out, tester_data_write_out, ref dirty_out); //set a location to zero
+
             ////////////////////////////////////////////////////////////
             
 

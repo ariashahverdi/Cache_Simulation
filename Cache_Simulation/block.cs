@@ -41,7 +41,7 @@ namespace Cache_Simulation
 
         }
 
-        public bool get_block(bool[] tag_in, bool [] tag_out, byte [] payload_out, bool dirty_out)
+        public bool get_block(bool[] tag_in, bool [] tag_out, byte [] payload_out, ref bool dirty_out)
         {
             bool hit = true;
             for (int i=0; i<TAG_SIZE; i++)
@@ -66,7 +66,7 @@ namespace Cache_Simulation
         public bool set_block(bool[] tag_in, byte[] payload_in, bool dirty_in)
         {
             valid = true;
-            dirty = dirty_in; // if it's a write command the dirty should be set to true
+            this.dirty = dirty_in; // if it's a write command the dirty should be set to true
             LRU = 0;
             for (int i = 0; i < TAG_SIZE; i++) tag[i] = tag_in[i];
             for (int i = 0; i < PAYLOAD_SIZE; i++) payload[i] = payload_in[i];

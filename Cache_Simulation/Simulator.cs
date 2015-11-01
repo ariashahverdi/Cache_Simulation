@@ -12,7 +12,7 @@ namespace Cache_Simulation
 {
     public partial class Simulator : Form
     {
-        public static Random rand = new Random();
+        public static Random rand = new Random(10);
         public static Memory_Controller my_memctrl = new Memory_Controller();
         public static CPU my_cpu = new CPU();
         public static Memory my_memory = new Memory(Globals.MEM_SIZE);
@@ -92,24 +92,32 @@ namespace Cache_Simulation
 
 
             /* Sample Code to Work With Cache */
-            /*
+            int num = 64;
             bool[] tester_addr = new bool[Globals.PHYSICAL_ADD_LEN];
-            byte[] tester_data_read = new byte[Globals.DATA_BYTE_LEN];
-            byte[] tester_data_write = new byte[8*Globals.DATA_BYTE_LEN];
-            byte[] tester_data_write_out = new byte[8 * Globals.DATA_BYTE_LEN];
+            byte[] tester_data_read = new byte[num];
+            byte[] tester_data_write = new byte[num];
+            byte[] tester_data_write_out = new byte[num];
             bool[] tag_out = new bool[24];
             bool dirty_out = false;
 
-            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++) tester_addr[i] = Convert.ToBoolean(rand.Next(2)); //random address
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++) tester_addr[i] = false;// Convert.ToBoolean(rand.Next(2)); //random address
+            tester_addr[0] =false ; tester_addr[1] = false; tester_addr[2] = false; tester_addr[3] = true;
+            tester_addr[4] = true; tester_addr[5] = true; tester_addr[6] = false; tester_addr[7] = false;
+            tester_addr[8] = true; tester_addr[9] = false; tester_addr[10] = true; tester_addr[11] = true;
+
+            tester_addr[12] = true; tester_addr[13] = true; tester_addr[14] = true; tester_addr[15] = true;
+            tester_addr[16] = true; tester_addr[17] = true; tester_addr[18] = false; tester_addr[19] = true;
+            tester_addr[20] = true; tester_addr[21] = false; tester_addr[22] = false; tester_addr[23] = false;
+
 
             bool res;
-            res = my_dl1cache.read_from_cache(tester_addr, tester_data_read); //read from a location
-            res = my_dl1cache.write_to_cache(tester_addr, tester_data_write, false, tag_out,tester_data_write_out, dirty_out); //set a location to zero 
+            res = my_il1cache.read_from_cache(tester_addr, 64, tester_data_read); //read from a location
+            res = my_il1cache.write_to_cache(tester_addr, 64, tester_data_write, false, tag_out,tester_data_write_out, ref dirty_out); //set a location to zero 
             res = false;
             for (int i = 0; i < Globals.DATA_BYTE_LEN; i++) tester_data_read[i] = (byte)rand.Next(256); //random address
-            res = my_dl1cache.read_from_cache(tester_addr, tester_data_read);
+            res = my_dl1cache.read_from_cache(tester_addr, 64, tester_data_read);
             ////////////////////////////////////////////////////////////
-            */
+            
 
             my_memory.random_initialize();
 
@@ -123,6 +131,7 @@ namespace Cache_Simulation
             for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC + i]; }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
             inst_show();
+
 
            
         }
@@ -139,7 +148,6 @@ namespace Cache_Simulation
 
             inst_show();
             form_cpu.Refresh();
-
         }
 
         private void Simulator_Load(object sender, EventArgs e)
@@ -186,7 +194,7 @@ namespace Cache_Simulation
         private void button1_Click(object sender, EventArgs e)
         {
             form_cpu = new CPU_Frm();
-            form_cpu.Show(); 
+            form_cpu.Show();
         }
 
 

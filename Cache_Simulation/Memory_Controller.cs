@@ -29,10 +29,10 @@ namespace Cache_Simulation
             }
 
             //check for il1 cache
-            if (!(Simulator.my_il1cache.read_from_cache(address, ir1)))
+            if (!(Simulator.my_il1cache.read_from_cache(address, 64, ir1))) //Amir --> Aria Modiefied this Line
             {
                 //check for l2 cache
-                if (!(Simulator.my_l2cache.read_from_cache(address, ir1)))
+                if (!(Simulator.my_l2cache.read_from_cache(address, 64, ir1)))//Amir --> Aria Modiefied this Line
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, ir1, 8);
@@ -41,10 +41,10 @@ namespace Cache_Simulation
                     // write a block to IL1 cache 
                 }
             }
-            if (!(Simulator.my_il1cache.read_from_cache(next_address, ir2)))
+            if (!(Simulator.my_il1cache.read_from_cache(next_address, 64, ir2)))//Amir --> Aria Modiefied this Line
             {
                 //check for l2 cache
-                if (!(Simulator.my_l2cache.read_from_cache(next_address, ir2)))
+                if (!(Simulator.my_l2cache.read_from_cache(next_address, 64, ir2)))//Amir --> Aria Modiefied this Line
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(next_address, ir2, 8);
@@ -67,10 +67,10 @@ namespace Cache_Simulation
             }
 
             //check for il1 cache
-            if (!(Simulator.my_il1cache.read_from_cache(address, temp_data)))
+            if (!(Simulator.my_il1cache.read_from_cache(address, 64, temp_data)))//Amir --> Aria Modiefied this Line
             {
                 //check for l2 cache
-                if (!(Simulator.my_l2cache.read_from_cache(address, temp_data)))
+                if (!(Simulator.my_l2cache.read_from_cache(address, 64, temp_data)))//Amir --> Aria Modiefied this Line
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, temp_data, 8);

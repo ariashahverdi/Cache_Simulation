@@ -19,7 +19,7 @@ namespace Cache_Simulation
             for (int i = 0; i < Simulator.my_l2cache.get_block_num(); i++)
             {
                 string[] data = new string[9] { num.ToString(), bank1.ToString(), bank2.ToString(), bank3.ToString(), bank4.ToString(), bank5.ToString(), bank6.ToString(), bank7.ToString(), bank8.ToString() };
-                data = new string[] { i.ToString(), Simulator.my_l2cache.get_block(i, 0).get_tag_payload(), Simulator.my_l2cache.get_block(i, 1).get_tag_payload(), Simulator.my_dl1cache.get_block(i, 2).get_tag_payload(), Simulator.my_l2cache.get_block(i, 3).get_tag_payload(), Simulator.my_l2cache.get_block(i, 4).get_tag_payload(), Simulator.my_l2cache.get_block(i, 5).get_tag_payload(), Simulator.my_l2cache.get_block(i, 6).get_tag_payload(), Simulator.my_l2cache.get_block(i, 7).get_tag_payload() };
+                data = new string[] { i.ToString(), Simulator.my_l2cache.get_block(i, 0).get_tag_payload(), Simulator.my_l2cache.get_block(i, 1).get_tag_payload(), Simulator.my_l2cache.get_block(i, 2).get_tag_payload(), Simulator.my_l2cache.get_block(i, 3).get_tag_payload(), Simulator.my_l2cache.get_block(i, 4).get_tag_payload(), Simulator.my_l2cache.get_block(i, 5).get_tag_payload(), Simulator.my_l2cache.get_block(i, 6).get_tag_payload(), Simulator.my_l2cache.get_block(i, 7).get_tag_payload() };
                 l2cache_show.Rows.Add(data);
                 l2cache_show.FirstDisplayedScrollingRowIndex = l2cache_show.RowCount - 1;
             }

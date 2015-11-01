@@ -15,7 +15,7 @@ namespace Cache_Simulation
         int BANK_NUM;
         int BLOCK_NUM;
 
-        public static block[,] bankS;
+        public /*static*/ block[,] bankS;
         
         public cache(int BA_N, int BL_N, int T_S, int P_S)
         {
@@ -51,34 +51,57 @@ namespace Cache_Simulation
             return ret_val;
         }
 
-        public bool read_from_cache(bool[] address, byte[] data)
-        { 
+        public int give_off_bit(int num)
+        {
+            int offset_bit = 0;
+            switch (num)
+            {
+                case 1:
+                    offset_bit = 6;
+                    break;
+                case 8:
+                    offset_bit = 3;
+                    break;
+                case 64:
+                    offset_bit = 0;
+                    break;
+                default:
+                    offset_bit = 0;
+                    break;
+            }
+            return offset_bit;
+        }
+
+        public bool read_from_cache(bool[] address, int num, byte[] data)
+        {
+            int off_bit = give_off_bit(num);
             bool[] read_tag = new bool[TAG_SIZE];
             bool[] read_idx = new bool[Globals.PHYSICAL_ADD_LEN - TAG_SIZE - Globals.BYTE_OFF_LEN];
-            bool[] block_offset = new bool[Globals.BYTE_OFF_LEN-3];
+            bool[] block_offset = new bool[off_bit];
             byte[] payload = new byte[PAYLOAD_SIZE];
 
             for (int i = 0; i < TAG_SIZE; i++) read_tag[i] = address[i];
             for (int i = 0; i < INDEX_SIZE; i++) read_idx[i] = address[TAG_SIZE + i];
-            for (int i = 0; i < (Globals.BYTE_OFF_LEN-3); i++) block_offset[i] = address[TAG_SIZE + INDEX_SIZE + i];
+            for (int i = 0; i < off_bit; i++) block_offset[i] = address[TAG_SIZE + INDEX_SIZE + i];
+            int block_off_val = give_me_int(block_offset, give_off_bit(num));
 
-            bool[] read_tag_out = new bool[TAG_SIZE]; //no use!!! pfff
+            bool[] read_tag_out = new bool[TAG_SIZE]; 
             bool dirty_check = false; //no use
 
             int read_idx_val = give_me_int(read_idx, INDEX_SIZE);
-            int block_off_val = give_me_int(block_offset, 3); //<<<<<<<<<<<<<<
+            
             for (int i = 0; i < BANK_NUM; i++)
             {
                 if (bankS[read_idx_val,i].get_block(read_tag, read_tag_out, payload, dirty_check))
                     {
-                    for (int j=0; j < Globals.DATA_BYTE_LEN; j++) data[j] = payload[block_off_val * Globals.DATA_BYTE_LEN + j];
+                    for (int j=0; j < num; j++) data[j] = payload[block_off_val * Globals.DATA_BYTE_LEN + j];
                     return true;
                 }
             }
             return false;
         }
 
-        public bool write_to_cache(bool[] address_in, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
+        public bool write_to_cache(bool[] address_in, int num, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
         {
             bool[] write_tag = new bool[TAG_SIZE];
             bool[] write_idx = new bool[Globals.PHYSICAL_ADD_LEN - TAG_SIZE - Globals.BYTE_OFF_LEN];
@@ -87,6 +110,8 @@ namespace Cache_Simulation
             for (int i = 0; i < INDEX_SIZE; i++) write_idx[i] = address_in[TAG_SIZE + i];
 
             int write_idx_val = give_me_int(write_idx, INDEX_SIZE);
+
+
 
             //*
             //Hit on write
@@ -112,7 +137,7 @@ namespace Cache_Simulation
             int write_bank_idx;
             for (int i = 0; i < BANK_NUM; i++)
             {
-                if (!bankS[write_idx_val, i].check_valid())
+                if (!bankS[write_idx_val, i].get_valid() && !bankS[write_idx_val, i].get_dirty())
                 {
                     valid_arr[valid_cnt] = i;
                     valid_cnt++;
@@ -133,12 +158,15 @@ namespace Cache_Simulation
                 int cur_LRU;
                 for (int i = 0; i < BANK_NUM; i++)
                 {
-                    cur_LRU = bankS[write_idx_val, i].get_LRU();
-                    if (cur_LRU > max_LRU)
+                    if (!bankS[write_idx_val, i].get_valid())
                     {
-                        max_LRU = cur_LRU;
-                        max_LRU_arr[max_LRU_cnt] = i;
-                        max_LRU_cnt++;
+                        cur_LRU = bankS[write_idx_val, i].get_LRU();
+                        if (cur_LRU > max_LRU)
+                        {
+                            max_LRU = cur_LRU;
+                            max_LRU_arr[max_LRU_cnt] = i;
+                            max_LRU_cnt++;
+                        }
                     }
                 }
                 write_bank_idx = max_LRU_arr[Simulator.rand.Next(max_LRU_cnt)]; //select a random bank to write to

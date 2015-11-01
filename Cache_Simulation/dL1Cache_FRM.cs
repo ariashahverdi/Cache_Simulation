@@ -16,6 +16,7 @@ namespace Cache_Simulation
         {
             InitializeComponent();
             dl1cache_show.AllowUserToAddRows = false; //Disable The last Row
+            int a = Simulator.my_dl1cache.get_block_num();
             for (int i = 0; i < Simulator.my_dl1cache.get_block_num(); i++)
             {
                 string[] data = new string[9] { num.ToString(), bank1.ToString(), bank2.ToString(), bank3.ToString(), bank4.ToString(), bank5.ToString(), bank6.ToString(), bank7.ToString(), bank8.ToString() };
@@ -27,7 +28,7 @@ namespace Cache_Simulation
             {
                 for (int j = 1; j < 9; j++)
                 {
-                    if (Simulator.my_il1cache.get_block(i, j - 1).get_dirty() == true) dl1cache_show.Rows[i].Cells[j].Style.BackColor = Color.LightPink;
+                    if (Simulator.my_dl1cache.get_block(i, j - 1).get_dirty() == true) dl1cache_show.Rows[i].Cells[j].Style.BackColor = Color.LightPink;
                     else if (Simulator.my_dl1cache.get_block(i, j - 1).get_valid() == false) dl1cache_show.Rows[i].Cells[j].Style.BackColor = Color.LightGray;
                     else if (Simulator.my_dl1cache.get_block(i, j - 1).get_valid() == true) dl1cache_show.Rows[i].Cells[j].Style.BackColor = Color.LightGreen;
                 }

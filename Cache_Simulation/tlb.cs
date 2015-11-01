@@ -15,7 +15,7 @@ namespace Cache_Simulation
         int BANK_NUM;
         int PTE_NUM;
 
-        public static pte[,] bankS_pte;
+        public /*static*/ pte[,] bankS_pte;
 
         public tlb(int BA_N, int PT_N, int V_T_S, int P_T_S)
         {

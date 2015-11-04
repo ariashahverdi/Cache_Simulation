@@ -8,27 +8,50 @@ namespace Cache_Simulation
 {
     public class CPU
     {
-        public ulong R0;
-        public ulong R1;
-        public ulong R2;
-        public ulong R3;
+        public ulong[] R;
 
         public byte[] IR1;
         public byte[] IR2;
 
         public ulong PC;
 
+        private int opcode;
+        private int src1_add_mode;
+        private int src2_add_mode;
+        private int dst_add_mode;
+        private int src1_reg;
+        private int src2_reg;
+        private int dst_reg;
+        private ulong inst_addr;
+
+        private void opcode_decoder()
+        {
+            opcode = IR1[0] >> 6;
+            src1_add_mode = (IR1[0] & (0x30)) >> 4;
+            src2_add_mode = (IR1[0] & (0x0C)) >> 2;
+            dst_add_mode = (IR1[0] & (0x03));
+            src1_reg = IR1[1] >> 6;
+            src2_reg = (IR1[1] & (0x30)) >> 4;
+            dst_reg = (IR1[1] & (0x0C)) >> 2;
+
+            inst_addr = 0;
+            for (int i = 2; i < 8; i++)
+            {
+                ulong temp = Convert.ToUInt64(IR1[i]);
+                inst_addr |= temp << (8 * (7 - i));
+            }
+        }
 
         public CPU()
         {
-            R0 = 0;
-            R1 = 0;
-            R2 = 0;
-            R3 = 0;
+            R = new ulong[4];
+            R[0] = 0;
+            R[1] = 0;
+            R[2] = 0;
+            R[3] = 0;
             IR1 = new byte[8];
             IR2 = new byte[8];
             PC = 0;
-
         }
 
         public void fetch()
@@ -36,53 +59,40 @@ namespace Cache_Simulation
             Simulator.my_memctrl.fetch_instructions(PC, IR1, IR2);
             PC += 8;
             execute();
+            return;
         }
 
         public void execute()
         {
-            int opcode;
-            opcode = (IR1[0] & (3 << 6));
+            opcode_decoder();
             switch (opcode)
             {
-
                 case 0: // load instruction
-                    int dest_register = (IR1[1] & (12));
-                    dest_register = dest_register >> 2;
-                    ulong load_address = 0;
                     ulong in_data = 0;
-                    for(int i=2; i<8; i++)
+                    Simulator.my_memctrl.read_operand(inst_addr, ref in_data);
+                    R[dst_reg] = in_data;
+                    break;
+               case 1: // store insruction
+                    Simulator.my_memctrl.write_operand(inst_addr, R[src1_reg]);
+                    break;
+                case 2: // branch instruction
+                    if(R[src1_reg] != R[src2_reg])
                     {
-                        ulong temp = Convert.ToUInt64(IR1[i]);
-                        load_address |= temp << (8 * (7-i));
-                    }
-                    Simulator.my_memctrl.read_operand(load_address, ref in_data);
-                    switch (dest_register)
-                    {
-                        case 0:
-                            R0 = in_data;
-                            break;
-                        case 1:
-                            R1 = in_data;
-                            break;
-                        case 2:
-                            R2 = in_data;
-                            break;
-                        case 3:
-                            R3 = in_data;
-                            break;
+                        PC = inst_addr;
                     }
                     break;
-               case 1:
-
+                case 3: // add instruction
+                    if(src2_add_mode == 0)
+                    {
+                        R[dst_reg] = R[src1_reg] + R[src2_reg];
+                    }
+                    else if(src2_add_mode == 1)
+                    {
+                        R[dst_reg] = R[src1_reg] + inst_addr;
+                    }
                     break;
-                case 2:
-
-                    break;
-                case 3:
-
-                    break;
-                default:
-
+                default: // bad opcode
+                    Environment.Exit(0);
                     break;
             }
         }

@@ -63,7 +63,7 @@ namespace Cache_Simulation
                     inst_type = "Branch";
                     break;
                 case 3:
-                    inst_type = "Other";
+                    inst_type = "Add";
                     break;
                 default:
                     inst_type = "Nothing";
@@ -137,9 +137,9 @@ namespace Cache_Simulation
             for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC + i]; }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
             inst_show();
+            form_cpu.Refresh();
 
 
-           
         }
 
         // Display the instruction type

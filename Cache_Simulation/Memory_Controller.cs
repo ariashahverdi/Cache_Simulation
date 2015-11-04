@@ -29,10 +29,10 @@ namespace Cache_Simulation
             }
 
             //check for il1 cache
-            if (!(Simulator.my_il1cache.read_from_cache(address, 64, ir1))) //Amir --> Aria Modiefied this Line
+            if (!(Simulator.my_il1cache.read_from_cache(address, 8, ir1))) 
             {
                 //check for l2 cache
-                if (!(Simulator.my_l2cache.read_from_cache(address, 64, ir1)))//Amir --> Aria Modiefied this Line
+                if (!(Simulator.my_l2cache.read_from_cache(address, 8, ir1)))
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, ir1, 8);
@@ -41,10 +41,10 @@ namespace Cache_Simulation
                     // write a block to IL1 cache 
                 }
             }
-            if (!(Simulator.my_il1cache.read_from_cache(next_address, 64, ir2)))//Amir --> Aria Modiefied this Line
+            if (!(Simulator.my_il1cache.read_from_cache(next_address, 8, ir2)))
             {
                 //check for l2 cache
-                if (!(Simulator.my_l2cache.read_from_cache(next_address, 64, ir2)))//Amir --> Aria Modiefied this Line
+                if (!(Simulator.my_l2cache.read_from_cache(next_address, 8, ir2)))
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(next_address, ir2, 8);
@@ -79,31 +79,39 @@ namespace Cache_Simulation
                     // write a block to IL1 cache 
                 }
             }
-            data = BitConverter.ToUInt64(temp_data,0);
+            data = 0;
+            for(int i=0; i<8; i++)
+            {
+                data |= (Convert.ToUInt64(temp_data[i]) << (8 * (7-i))); 
+            }
         }
 
         public void write_operand(ulong cpu_address, ulong data)
         {
-            ulong temp_address = cpu_address;
             byte[] temp_data = new byte[8];
             bool[] address = new bool[64];
             for (int i = 0; i < 64; i++)
             {
-                address[i] = ((temp_address >> i) & 1) == 1;
+                address[i] = (((cpu_address >> i) & 1) == 1);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ulong constant = 0xFF;
+                temp_data[i] = Convert.ToByte((data & (constant << (8 * (7 - i)))) >> (8 * (7 - i)));
             }
 
             //check for il1 cache
             //if (!(Simulator.my_il1cache.read_from_cache(address, temp_data)))
             //{
-                //check for l2 cache
-                //if (!(Simulator.my_l2cache.read_from_cache(address, temp_data)))
-                //{
-                    //check for memory
-                    //Simulator.my_memory.read_from_memory(address, temp_data, 8);
-                    // read 64 bytes from main memory
-                    // write a block to L2 cache
-                    // write a block to IL1 cache 
-                //}
+            //check for l2 cache
+            //if (!(Simulator.my_l2cache.read_from_cache(address, temp_data)))
+            //{
+            //check for memory
+            Simulator.my_memory.write_to_memory(address, temp_data, 8);
+            // read 64 bytes from main memory
+            // write a block to L2 cache
+            // write a block to IL1 cache 
+            //}
             //}
         }
     }

@@ -46,10 +46,11 @@
             this.bank2,
             this.bank3,
             this.bank4});
-            this.il1cache_show.Location = new System.Drawing.Point(64, 64);
+            this.il1cache_show.Location = new System.Drawing.Point(43, 42);
+            this.il1cache_show.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.il1cache_show.Name = "il1cache_show";
             this.il1cache_show.RowTemplate.Height = 28;
-            this.il1cache_show.Size = new System.Drawing.Size(600, 600);
+            this.il1cache_show.Size = new System.Drawing.Size(661, 570);
             this.il1cache_show.TabIndex = 1;
             this.il1cache_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.il1cache_show_CellContentClick);
             // 
@@ -80,10 +81,11 @@
             // 
             // iL1Cache_FRM
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 745);
+            this.ClientSize = new System.Drawing.Size(731, 623);
             this.Controls.Add(this.il1cache_show);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "iL1Cache_FRM";
             this.Text = "iL1Cache";
             ((System.ComponentModel.ISupportInitialize)(this.il1cache_show)).EndInit();

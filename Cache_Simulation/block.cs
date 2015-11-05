@@ -31,8 +31,8 @@ namespace Cache_Simulation
             payload = new byte[PAYLOAD_SIZE];
 
             //Initialize the cache randomly
-            valid = Convert.ToBoolean(Simulator.rand.Next(2));
-            dirty = Convert.ToBoolean(Simulator.rand.Next(2));
+            valid = false; // Convert.ToBoolean(Simulator.rand.Next(2));
+            dirty = false; // Convert.ToBoolean(Simulator.rand.Next(2));
             for (int i = 0; i < TAG_SIZE; i++) tag[i] = Convert.ToBoolean(Simulator.rand.Next(2));
             for (int i = 0; i < PAYLOAD_SIZE; i++) payload[i] = (byte)Simulator.rand.Next(256);
 

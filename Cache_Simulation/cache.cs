@@ -8,12 +8,12 @@ namespace Cache_Simulation
 {
     public class cache
     {
-        int TAG_SIZE;
-        int INDEX_SIZE;
-        int PAYLOAD_SIZE;
+        public int TAG_SIZE;
+        public int INDEX_SIZE;
+        public int PAYLOAD_SIZE;
 
-        int BANK_NUM;
-        int BLOCK_NUM;
+        public int BANK_NUM;
+        public int BLOCK_NUM;
 
         public /*static*/ block[,] bankS;
         

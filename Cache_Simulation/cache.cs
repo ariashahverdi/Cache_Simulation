@@ -100,7 +100,7 @@ namespace Cache_Simulation
             for (int i = 0; i < BANK_NUM; i++)
             {
                 if (bankS[read_idx_val,i].get_block(read_tag, read_tag_out, payload, ref dirty_check))
-                    {
+                {
                     for (int j=0; j < num; j++) data[j] = payload[off_bit + j];
                     return true;
                 }

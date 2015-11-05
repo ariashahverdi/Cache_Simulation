@@ -21,7 +21,7 @@ namespace Cache_Simulation
             bool[] next_address = new bool[64];
             for (int i = 0; i < 64; i++)
             {
-                address[i] = ((temp_pc >> i) & 1) == 1;
+                address[i] = (((temp_pc >> i) & 1) == 1);
             }
             for (int i = 0; i < 64; i++)
             {

@@ -52,9 +52,9 @@ namespace Cache_Simulation
         public void read_from_memory(bool[] in_address, byte[] data, int block_size)
         {
             ulong temp_address = 0;
-            for (int i = 0; i < in_address.Length; i++)
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                if (in_address[i])
+                if (in_address[Globals.PHYSICAL_ADD_LEN - i - 1])
                 {
                     temp_address |= Convert.ToUInt64(1 << i);
                 }
@@ -71,7 +71,7 @@ namespace Cache_Simulation
             ulong temp_address = 0;
             for (int i = 0; i < in_address.Length; i++)
             {
-                if (in_address[i])
+                if (in_address[Globals.PHYSICAL_ADD_LEN - i - 1])
                 {
                     temp_address |= Convert.ToUInt64(1 << i);
                 }

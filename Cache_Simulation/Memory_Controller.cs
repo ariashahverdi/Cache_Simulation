@@ -17,15 +17,15 @@ namespace Cache_Simulation
         public void fetch_instructions(ulong cpu_pc, byte[] ir1, byte[] ir2)
         {
             ulong temp_pc = cpu_pc;
-            bool[] address = new bool[64];
-            bool[] next_address = new bool[64];
-            for (int i = 0; i < 64; i++)
+            bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
+            bool[] next_address = new bool[Globals.PHYSICAL_ADD_LEN];
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                address[i] = (((temp_pc >> i) & 1) == 1);
+                address[Globals.PHYSICAL_ADD_LEN-i-1] = (((temp_pc >> i) & 1) == 1);
             }
-            for (int i = 0; i < 64; i++)
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                next_address[i] = (((temp_pc+8) >> i) & 1) == 1;
+                next_address[Globals.PHYSICAL_ADD_LEN - i - 1] = (((temp_pc+8) >> i) & 1) == 1;
             }
 
             //check for il1 cache
@@ -36,7 +36,7 @@ namespace Cache_Simulation
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, ir1, 8);
-
+                    
                     // read 64 bytes from main memory
                     byte[] temp_block = new byte[64];
                     Simulator.my_memory.read_from_memory(address, temp_block, 64);
@@ -59,6 +59,10 @@ namespace Cache_Simulation
                     }
                 }
             }
+            else
+            {
+                int nop = 0;
+            }
             if (!(Simulator.my_il1cache.read_from_cache(next_address, 8, ir2)))
             {
                 //check for l2 cache
@@ -78,23 +82,41 @@ namespace Cache_Simulation
         {
             ulong temp_address = cpu_address;
             byte[] temp_data = new byte[8];
-            bool[] address = new bool[64];
-            for (int i = 0; i < 64; i++)
+            bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                address[i] = ((temp_address >> i) & 1) == 1;
+                address[Globals.PHYSICAL_ADD_LEN-i-1] = ((temp_address >> i) & 1) == 1;
             }
 
-            //check for il1 cache
-            if (!(Simulator.my_il1cache.read_from_cache(address, 64, temp_data)))//Amir --> Aria Modiefied this Line
+            //check for dl1 cache
+            if (!(Simulator.my_dl1cache.read_from_cache(address, 8, temp_data)))
             {
                 //check for l2 cache
-                if (!(Simulator.my_l2cache.read_from_cache(address, 64, temp_data)))//Amir --> Aria Modiefied this Line
+                if (!(Simulator.my_l2cache.read_from_cache(address, 8, temp_data)))
                 {
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, temp_data, 8);
+
                     // read 64 bytes from main memory
-                    // write a block to L2 cache
+                    byte[] temp_block = new byte[64];
+                    Simulator.my_memory.read_from_memory(address, temp_block, 64);
+                    //////// write a block to L2 cache
+                    //bool write_to_cache(bool[] address_in, int num, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
+                    bool drt_in = false;
+                    bool[] ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
+                    byte[] dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
+                    bool drt_out = false;
+                    if (!(Simulator.my_l2cache.write_to_cache(address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    {
+                        int nop = 0;
+                    }
                     // write a block to IL1 cache 
+                    drt_in = false;
+                    drt_out = false;
+                    if (!(Simulator.my_dl1cache.write_to_cache(address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    {
+                        int nop = 0;
+                    }
                 }
             }
             data = 0;
@@ -107,10 +129,10 @@ namespace Cache_Simulation
         public void write_operand(ulong cpu_address, ulong data)
         {
             byte[] temp_data = new byte[8];
-            bool[] address = new bool[64];
-            for (int i = 0; i < 64; i++)
+            bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                address[i] = (((cpu_address >> i) & 1) == 1);
+                address[Globals.PHYSICAL_ADD_LEN-i-1] = (((cpu_address >> i) & 1) == 1);
             }
             for (int i = 0; i < 8; i++)
             {

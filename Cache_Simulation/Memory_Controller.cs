@@ -40,9 +40,13 @@ namespace Cache_Simulation
                     // read 64 bytes from main memory
                     byte[] temp_block = new byte[64];
                     bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
-                    for(int i=0; i<Globals.BYTE_OFF_LEN; i++)
+                    for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
                     {
-                        temp_block_address[i] = false;
+                        temp_block_address[i] = address[i];
+                    }
+                    for (int i=0; i<Globals.BYTE_OFF_LEN; i++)
+                    {
+                        temp_block_address[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
                     }
                     Simulator.my_memory.read_from_memory(temp_block_address, temp_block, 64);
                     //////// write a block to L2 cache
@@ -105,9 +109,13 @@ namespace Cache_Simulation
                     // read 64 bytes from main memory
                     byte[] temp_block = new byte[64];
                     bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
+                    for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                    {
+                        temp_block_address[i] = address[i];
+                    }
                     for (int i = 0; i < Globals.BYTE_OFF_LEN; i++)
                     {
-                        temp_block_address[i] = false;
+                        temp_block_address[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
                     }
                     Simulator.my_memory.read_from_memory(temp_block_address, temp_block, 64);
                     //////// write a block to L2 cache

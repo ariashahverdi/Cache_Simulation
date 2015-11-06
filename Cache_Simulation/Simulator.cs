@@ -92,6 +92,7 @@ namespace Cache_Simulation
 
 
             /* Sample Code to Work With Cache */
+            /*
             int num = 64;
             bool[] tester_addr = new bool[Globals.PHYSICAL_ADD_LEN];
             byte[] tester_data_read = new byte[num];
@@ -121,7 +122,7 @@ namespace Cache_Simulation
             res = false;
             tester_addr[0] = true; tester_addr[1] = true; tester_addr[2] = true; tester_addr[3] = true; //A
             res = my_dl1cache.write_to_cache(tester_addr, 64, tester_data_write, false, addr_out, tester_data_write_out, ref dirty_out); //set a location to zero
-
+            */
             ////////////////////////////////////////////////////////////
             
 

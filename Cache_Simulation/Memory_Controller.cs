@@ -34,6 +34,7 @@ namespace Cache_Simulation
                 //check for l2 cache
                 if (!(Simulator.my_l2cache.read_from_cache(address, 8, ir1)))
                 {
+                    // L2 is missed
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, ir1, 8);
                     
@@ -50,7 +51,6 @@ namespace Cache_Simulation
                     }
                     Simulator.my_memory.read_from_memory(temp_block_address, temp_block, 64);
                     //////// write a block to L2 cache
-                    //bool write_to_cache(bool[] address_in, int num, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
                     bool drt_in = false;
                     bool[] ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
                     byte[] dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
@@ -67,11 +67,37 @@ namespace Cache_Simulation
                         int nop = 0;
                     }
                 }
+                else
+                {
+                    // L2 is hit
+                    // read the block from L2 cache and write the value to iL1
+                    // read 64 bytes from main memory
+                    byte[] temp_block = new byte[64];
+                    bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
+                    for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                    {
+                        temp_block_address[i] = address[i];
+                    }
+                    for (int i = 0; i < Globals.BYTE_OFF_LEN; i++)
+                    {
+                        temp_block_address[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
+                    }
+                    Simulator.my_l2cache.read_from_cache(temp_block_address, 64, temp_block);
+                    // write a block to IL1 cache 
+                    //////// write a block to L2 cache
+                    bool drt_in = false;
+                    bool[] ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
+                    byte[] dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
+                    bool drt_out = false;
+                    if (!(Simulator.my_il1cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    {
+                        int nop = 0;
+                        
+                    }
+                }
+
             }
-            else
-            {
-                int nop = 0;
-            }
+            /*
             if (!(Simulator.my_il1cache.read_from_cache(next_address, 8, ir2)))
             {
                 //check for l2 cache
@@ -84,7 +110,7 @@ namespace Cache_Simulation
                     // write a block to IL1 cache 
                 }
             }
-
+            */
         }
 
         public void read_operand(ulong cpu_address, ref ulong data)

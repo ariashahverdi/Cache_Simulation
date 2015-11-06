@@ -39,21 +39,26 @@ namespace Cache_Simulation
                     
                     // read 64 bytes from main memory
                     byte[] temp_block = new byte[64];
-                    Simulator.my_memory.read_from_memory(address, temp_block, 64);
+                    bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
+                    for(int i=0; i<Globals.BYTE_OFF_LEN; i++)
+                    {
+                        temp_block_address[i] = false;
+                    }
+                    Simulator.my_memory.read_from_memory(temp_block_address, temp_block, 64);
                     //////// write a block to L2 cache
                     //bool write_to_cache(bool[] address_in, int num, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
                     bool drt_in = false;
                     bool[] ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
                     byte[] dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
                     bool drt_out = false;
-                    if (!(Simulator.my_l2cache.write_to_cache(address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    if (!(Simulator.my_l2cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
                     {
                         int nop = 0;
                     }
                     // write a block to IL1 cache 
                     drt_in = false;
                     drt_out = false;
-                    if (!(Simulator.my_il1cache.write_to_cache(address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    if (!(Simulator.my_il1cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
                     {
                         int nop = 0;
                     }
@@ -99,21 +104,26 @@ namespace Cache_Simulation
 
                     // read 64 bytes from main memory
                     byte[] temp_block = new byte[64];
-                    Simulator.my_memory.read_from_memory(address, temp_block, 64);
+                    bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
+                    for (int i = 0; i < Globals.BYTE_OFF_LEN; i++)
+                    {
+                        temp_block_address[i] = false;
+                    }
+                    Simulator.my_memory.read_from_memory(temp_block_address, temp_block, 64);
                     //////// write a block to L2 cache
                     //bool write_to_cache(bool[] address_in, int num, byte [] data_in, bool dirty_in, bool[] address_out, byte [] data_out, ref bool dirty_out)
                     bool drt_in = false;
                     bool[] ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
                     byte[] dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
                     bool drt_out = false;
-                    if (!(Simulator.my_l2cache.write_to_cache(address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    if (!(Simulator.my_l2cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
                     {
                         int nop = 0;
                     }
                     // write a block to IL1 cache 
                     drt_in = false;
                     drt_out = false;
-                    if (!(Simulator.my_dl1cache.write_to_cache(address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
+                    if (!(Simulator.my_dl1cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out)))
                     {
                         int nop = 0;
                     }

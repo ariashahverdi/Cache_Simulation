@@ -83,7 +83,7 @@ namespace Cache_Simulation
             formGraphics.DrawLine(myPen3, dest_x, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y);
             myPen3.Dispose();
 
-            mysim.addr_show(addr);
+            mysim.addr_show(addr, size);
             mysim.hit_miss_show(hit_miss);
 
             Thread.Sleep(mysim.get_speed());

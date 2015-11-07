@@ -253,12 +253,12 @@ namespace Cache_Simulation
            hit_miss_stat.Visible = true;
             if (stat)
             {
-                hit_miss_stat.Text = "Hit";
+                hit_miss_stat.Text = "H";
                 hit_miss_stat.ForeColor = Color.Green;
             }
             else
             {
-                hit_miss_stat.Text = "Miss";
+                hit_miss_stat.Text = "M";
                 hit_miss_stat.ForeColor = Color.Red;
             }
             hit_miss_stat.Refresh();
@@ -270,7 +270,7 @@ namespace Cache_Simulation
             hit_miss_stat.Refresh();
         }
 
-        public void addr_show(bool []addr)
+        public void addr_show(bool []addr, int size)
         {
             int bytes = addr.Length / 8;
             if ((addr.Length % 8) != 0) bytes++;
@@ -289,15 +289,26 @@ namespace Cache_Simulation
                     byteIndex++;
                 }
             }
-            addr_stat.Text = BitConverter.ToString(arr2).Replace("-", " ");
-            addr_stat.Visible = true;
-            addr_stat.Refresh();
+            if (size == Globals.VIRTUAL_ADD_LEN)
+            {
+                v_addr_stat.Text = BitConverter.ToString(arr2).Replace("-", " ");
+                v_addr_stat.Visible = true;
+                v_addr_stat.Refresh();
+            }
+            else
+            {
+                p_addr_stat.Text = BitConverter.ToString(arr2).Replace("-", " ");
+                p_addr_stat.Visible = true;
+                p_addr_stat.Refresh();
+            }
         }
 
         public void addr_hide()
         {
-            addr_stat.Visible = false;
-            addr_stat.Refresh();
+            v_addr_stat.Visible = false;
+            v_addr_stat.Refresh();
+            p_addr_stat.Visible = false;
+            p_addr_stat.Refresh();
         }
 
         public int get_speed()

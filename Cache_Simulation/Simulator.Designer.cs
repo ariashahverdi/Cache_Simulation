@@ -51,6 +51,8 @@
             this.pt_show = new System.Windows.Forms.Button();
             this.mem_show = new System.Windows.Forms.Button();
             this.disk_show = new System.Windows.Forms.Button();
+            this.hit_miss_stat = new System.Windows.Forms.Label();
+            this.addr = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // start
@@ -276,11 +278,35 @@
             this.disk_show.Text = "Disk";
             this.disk_show.UseVisualStyleBackColor = true;
             // 
+            // hit_miss_stat
+            // 
+            this.hit_miss_stat.AutoSize = true;
+            this.hit_miss_stat.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hit_miss_stat.Location = new System.Drawing.Point(434, 111);
+            this.hit_miss_stat.Name = "hit_miss_stat";
+            this.hit_miss_stat.Size = new System.Drawing.Size(45, 32);
+            this.hit_miss_stat.TabIndex = 25;
+            this.hit_miss_stat.Text = "---";
+            this.hit_miss_stat.Visible = false;
+            // 
+            // addr
+            // 
+            this.addr.AutoSize = true;
+            this.addr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addr.Location = new System.Drawing.Point(409, 59);
+            this.addr.Name = "addr";
+            this.addr.Size = new System.Drawing.Size(126, 32);
+            this.addr.TabIndex = 26;
+            this.addr.Text = "Address";
+            this.addr.Visible = false;
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1544, 763);
+            this.Controls.Add(this.addr);
+            this.Controls.Add(this.hit_miss_stat);
             this.Controls.Add(this.disk_show);
             this.Controls.Add(this.mem_show);
             this.Controls.Add(this.pt_show);
@@ -337,6 +363,8 @@
         private System.Windows.Forms.Button pt_show;
         private System.Windows.Forms.Button mem_show;
         private System.Windows.Forms.Button disk_show;
+        private System.Windows.Forms.Label addr;
+        private System.Windows.Forms.Label hit_miss_stat;
     }
 }
 

@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Cache_Simulation
 {
@@ -17,9 +19,9 @@ namespace Cache_Simulation
         public static CPU my_cpu = new CPU();
         public static Memory my_memory = new Memory(Globals.MEM_SIZE);
 
-        public static tlb my_itlb = new tlb(4,32,31,24);
-        public static tlb my_dtlb = new tlb(4,16,31,24);
-        public static tlb my_tlb = new tlb(4,128,29,24);
+        public static tlb my_itlb = new tlb(4, 32, 31, 24);
+        public static tlb my_dtlb = new tlb(4, 16, 31, 24);
+        public static tlb my_tlb = new tlb(4, 128, 29, 24);
 
         public static cache my_il1cache = new cache(4, 128, 23, 64);
         public static cache my_dl1cache = new cache(8, 64, 24, 64);
@@ -30,8 +32,6 @@ namespace Cache_Simulation
         public Simulator()
         {
             InitializeComponent();
-
-
         }
 
         public void DrawLine()
@@ -75,8 +75,9 @@ namespace Cache_Simulation
 
         private void start_Click(object sender, EventArgs e)
         {
-            animation my_anim = new animation(this);
-            for (int i=1;i<11;i++) my_anim.DrawLine(this,i);
+            //animation my_anim = new animation(this);
+
+            DrawLine(rand.Next(12),  Convert.ToBoolean(Simulator.rand.Next(2)));
             ////////////////////////////////////////////////////////////
 
             // **** ATTN **** //
@@ -126,7 +127,7 @@ namespace Cache_Simulation
             res = my_dl1cache.write_to_cache(tester_addr, 64, tester_data_write, false, addr_out, tester_data_write_out, ref dirty_out); //set a location to zero
             */
             ////////////////////////////////////////////////////////////
-            
+
 
             my_memory.random_initialize();
 
@@ -152,7 +153,7 @@ namespace Cache_Simulation
 
             pc_counter.Text = my_cpu.PC.ToString();
 
-            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC+ i-8]; }
+            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC + i - 8]; }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
 
             inst_show();
@@ -167,7 +168,7 @@ namespace Cache_Simulation
         private void itlb_show_Click(object sender, EventArgs e)
         {
             iTLB_FRM form_itlb = new iTLB_FRM();
-            form_itlb.ShowDialog(); 
+            form_itlb.ShowDialog();
         }
 
         private void dtlb_Click(object sender, EventArgs e)
@@ -191,7 +192,7 @@ namespace Cache_Simulation
         private void dl1_cache_show_Click(object sender, EventArgs e)
         {
             dL1Cache_FRM form_dl1cache = new dL1Cache_FRM();
-            form_dl1cache.ShowDialog(); 
+            form_dl1cache.ShowDialog();
         }
 
         private void l2_cache_show_Click(object sender, EventArgs e)
@@ -206,7 +207,65 @@ namespace Cache_Simulation
             form_cpu.Show();
         }
 
-        public void set_location (int[] loc)
+
+        public void DrawLine(int idx, bool hit_miss/*, bool [] addr*/)
+        {
+            int[] loc;
+            loc = new int[24];
+            set_location(loc);
+            int cpu_x = loc[0];
+            int cpu_y = loc[1];
+
+            set_location(loc);
+
+                if (idx >= 5 && idx <= 9)
+            {
+                cpu_x = loc[22];
+                cpu_y = loc[23];
+            }
+            else
+            {
+                cpu_x = loc[0];
+                cpu_y = loc[1];
+            }
+            int dest_x = loc[2 * idx];
+            int dest_y = loc[2 * idx + 1];
+
+            int tempx;
+            if (idx == 9) tempx = 100;
+            else if (idx == 10) tempx = -90;
+            else tempx = 0;
+
+            System.Drawing.Pen myPen1;
+            System.Drawing.Pen myPen2;
+            System.Drawing.Pen myPen3;
+            myPen1 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
+            myPen2 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
+            myPen3 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
+            System.Drawing.Graphics formGraphics = CreateGraphics();
+
+            myPen1.EndCap = LineCap.RoundAnchor;
+            formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
+            myPen1.Dispose();
+
+            formGraphics.DrawLine(myPen2, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y);
+            myPen2.Dispose();
+
+            myPen3.StartCap = LineCap.ArrowAnchor;
+            formGraphics.DrawLine(myPen3, dest_x, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y);
+            myPen3.Dispose();
+
+            hit_miss_show(hit_miss);
+
+           //for (int i = 0; i < 100000; i++) for (int j = 0; j < 1000; j++) ;
+            Thread.Sleep(1000); //10 seconds
+
+            formGraphics.Clear(BackColor);
+
+            hit_miss_hide();
+        }
+
+        public void set_location(int[] loc)
         {
             loc[0] = cpu_show.Location.X; //CPU = 0
             loc[1] = cpu_show.Location.Y + cpu_show.Size.Height / 2;
@@ -241,8 +300,32 @@ namespace Cache_Simulation
             loc[20] = disk_show.Location.X; //disk_show = 10
             loc[21] = disk_show.Location.Y + disk_show.Size.Height / 2;
 
-            loc[22] = cpu_show.Location.X + cpu_show.Size.Width; 
+            loc[22] = cpu_show.Location.X + cpu_show.Size.Width;
             loc[23] = cpu_show.Location.Y + cpu_show.Size.Height / 2;
         }
+
+        public void hit_miss_show(bool stat)
+        {
+           hit_miss_stat.Visible = true;
+            if (stat)
+            {
+                hit_miss_stat.Text = "Hit";
+                hit_miss_stat.ForeColor = Color.Green;
+            }
+            else
+            {
+                hit_miss_stat.Text = "Miss";
+                hit_miss_stat.ForeColor = Color.Red;
+            }
+            hit_miss_stat.Refresh();
+         }
+
+        public void hit_miss_hide()
+        {
+            hit_miss_stat.Visible = false;
+            hit_miss_stat.Refresh();
+        }
+
+
     }
 }

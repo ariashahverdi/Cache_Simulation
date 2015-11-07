@@ -75,6 +75,8 @@ namespace Cache_Simulation
 
         private void start_Click(object sender, EventArgs e)
         {
+            animation my_anim = new animation(this);
+            for (int i=1;i<11;i++) my_anim.DrawLine(this,i);
             ////////////////////////////////////////////////////////////
 
             // **** ATTN **** //
@@ -204,6 +206,43 @@ namespace Cache_Simulation
             form_cpu.Show();
         }
 
+        public void set_location (int[] loc)
+        {
+            loc[0] = cpu_show.Location.X; //CPU = 0
+            loc[1] = cpu_show.Location.Y + cpu_show.Size.Height / 2;
 
+            loc[2] = itlb_show.Location.X + itlb_show.Size.Width; //itlb = 1
+            loc[3] = itlb_show.Location.Y + itlb_show.Size.Height / 2;
+
+            loc[4] = dtlb_show.Location.X + dtlb_show.Size.Width; //dtlb = 2
+            loc[5] = dtlb_show.Location.Y + dtlb_show.Size.Height / 2;
+
+            loc[6] = tlb_show.Location.X + tlb_show.Size.Width; //tlb = 3
+            loc[7] = tlb_show.Location.Y + tlb_show.Size.Height / 2;
+
+            loc[8] = pt_show.Location.X + pt_show.Size.Width; //pt_show = 4
+            loc[9] = pt_show.Location.Y + pt_show.Size.Height / 2;
+
+            loc[10] = il1_cache_show.Location.X; //il1cache = 5
+            loc[11] = il1_cache_show.Location.Y + il1_cache_show.Size.Height / 2;
+
+            loc[12] = dl1_cache_show.Location.X; //dl1_cache = 6
+            loc[13] = dl1_cache_show.Location.Y + dl1_cache_show.Size.Height / 2;
+
+            loc[14] = l2_cache_show.Location.X; //l2_cache = 7
+            loc[15] = l2_cache_show.Location.Y + l2_cache_show.Size.Height / 2;
+
+            loc[16] = l3_cache_show.Location.X; //l3_cache = 8
+            loc[17] = l3_cache_show.Location.Y + l3_cache_show.Size.Height / 2;
+
+            loc[18] = mem_show.Location.X + mem_show.Size.Width; //mem_show = 9
+            loc[19] = mem_show.Location.Y + mem_show.Size.Height / 2;
+
+            loc[20] = disk_show.Location.X; //disk_show = 10
+            loc[21] = disk_show.Location.Y + disk_show.Size.Height / 2;
+
+            loc[22] = cpu_show.Location.X + cpu_show.Size.Width; 
+            loc[23] = cpu_show.Location.Y + cpu_show.Size.Height / 2;
+        }
     }
 }

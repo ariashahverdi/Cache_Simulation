@@ -52,12 +52,14 @@
             this.mem_show = new System.Windows.Forms.Button();
             this.disk_show = new System.Windows.Forms.Button();
             this.hit_miss_stat = new System.Windows.Forms.Label();
-            this.addr = new System.Windows.Forms.Label();
+            this.addr_stat = new System.Windows.Forms.Label();
+            this.speed = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(1146, 45);
+            this.start.Location = new System.Drawing.Point(897, 55);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(158, 68);
             this.start.TabIndex = 0;
@@ -75,7 +77,7 @@
             // 
             // nxt_inst
             // 
-            this.nxt_inst.Location = new System.Drawing.Point(1112, 148);
+            this.nxt_inst.Location = new System.Drawing.Point(863, 158);
             this.nxt_inst.Name = "nxt_inst";
             this.nxt_inst.Size = new System.Drawing.Size(232, 38);
             this.nxt_inst.TabIndex = 2;
@@ -87,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1083, 212);
+            this.label2.Location = new System.Drawing.Point(834, 222);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 20);
             this.label2.TabIndex = 3;
@@ -96,7 +98,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1312, 202);
+            this.label3.Location = new System.Drawing.Point(1063, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 20);
             this.label3.TabIndex = 4;
@@ -104,7 +106,7 @@
             // pc_counter
             // 
             this.pc_counter.AutoSize = true;
-            this.pc_counter.Location = new System.Drawing.Point(1298, 212);
+            this.pc_counter.Location = new System.Drawing.Point(1049, 222);
             this.pc_counter.Name = "pc_counter";
             this.pc_counter.Size = new System.Drawing.Size(18, 20);
             this.pc_counter.TabIndex = 5;
@@ -114,7 +116,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1108, 266);
+            this.label4.Location = new System.Drawing.Point(859, 276);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 20);
             this.label4.TabIndex = 6;
@@ -123,7 +125,7 @@
             // inst
             // 
             this.inst.AutoSize = true;
-            this.inst.Location = new System.Drawing.Point(1226, 266);
+            this.inst.Location = new System.Drawing.Point(977, 276);
             this.inst.Name = "inst";
             this.inst.Size = new System.Drawing.Size(181, 20);
             this.inst.TabIndex = 7;
@@ -133,7 +135,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1132, 318);
+            this.label5.Location = new System.Drawing.Point(883, 328);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 20);
             this.label5.TabIndex = 8;
@@ -144,7 +146,7 @@
             this.type.AutoSize = true;
             this.type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.type.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.type.Location = new System.Drawing.Point(1298, 318);
+            this.type.Location = new System.Drawing.Point(1049, 328);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(33, 20);
             this.type.TabIndex = 9;
@@ -152,7 +154,7 @@
             // 
             // il1_cache_show
             // 
-            this.il1_cache_show.Location = new System.Drawing.Point(818, 108);
+            this.il1_cache_show.Location = new System.Drawing.Point(646, 108);
             this.il1_cache_show.Name = "il1_cache_show";
             this.il1_cache_show.Size = new System.Drawing.Size(94, 35);
             this.il1_cache_show.TabIndex = 10;
@@ -162,7 +164,7 @@
             // 
             // dl1_cache_show
             // 
-            this.dl1_cache_show.Location = new System.Drawing.Point(818, 185);
+            this.dl1_cache_show.Location = new System.Drawing.Point(646, 185);
             this.dl1_cache_show.Name = "dl1_cache_show";
             this.dl1_cache_show.Size = new System.Drawing.Size(94, 35);
             this.dl1_cache_show.TabIndex = 11;
@@ -172,7 +174,7 @@
             // 
             // l2_cache_show
             // 
-            this.l2_cache_show.Location = new System.Drawing.Point(806, 262);
+            this.l2_cache_show.Location = new System.Drawing.Point(634, 262);
             this.l2_cache_show.Name = "l2_cache_show";
             this.l2_cache_show.Size = new System.Drawing.Size(120, 49);
             this.l2_cache_show.TabIndex = 13;
@@ -182,7 +184,7 @@
             // 
             // l3_cache_show
             // 
-            this.l3_cache_show.Location = new System.Drawing.Point(780, 352);
+            this.l3_cache_show.Location = new System.Drawing.Point(608, 352);
             this.l3_cache_show.Name = "l3_cache_show";
             this.l3_cache_show.Size = new System.Drawing.Size(170, 60);
             this.l3_cache_show.TabIndex = 15;
@@ -191,7 +193,7 @@
             // 
             // itlb_show
             // 
-            this.itlb_show.Location = new System.Drawing.Point(76, 108);
+            this.itlb_show.Location = new System.Drawing.Point(80, 108);
             this.itlb_show.Name = "itlb_show";
             this.itlb_show.Size = new System.Drawing.Size(70, 35);
             this.itlb_show.TabIndex = 16;
@@ -201,7 +203,7 @@
             // 
             // dtlb_show
             // 
-            this.dtlb_show.Location = new System.Drawing.Point(76, 185);
+            this.dtlb_show.Location = new System.Drawing.Point(80, 185);
             this.dtlb_show.Name = "dtlb_show";
             this.dtlb_show.Size = new System.Drawing.Size(70, 35);
             this.dtlb_show.TabIndex = 17;
@@ -213,7 +215,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(814, 32);
+            this.label7.Location = new System.Drawing.Point(642, 32);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 32);
             this.label7.TabIndex = 19;
@@ -224,7 +226,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(76, 32);
+            this.label6.Location = new System.Drawing.Point(80, 32);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 32);
             this.label6.TabIndex = 18;
@@ -232,7 +234,7 @@
             // 
             // tlb_show
             // 
-            this.tlb_show.Location = new System.Drawing.Point(51, 262);
+            this.tlb_show.Location = new System.Drawing.Point(55, 262);
             this.tlb_show.Name = "tlb_show";
             this.tlb_show.Size = new System.Drawing.Size(120, 49);
             this.tlb_show.TabIndex = 20;
@@ -242,7 +244,7 @@
             // 
             // cpu_show
             // 
-            this.cpu_show.Location = new System.Drawing.Point(420, 172);
+            this.cpu_show.Location = new System.Drawing.Point(363, 152);
             this.cpu_show.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cpu_show.Name = "cpu_show";
             this.cpu_show.Size = new System.Drawing.Size(100, 100);
@@ -253,7 +255,7 @@
             // 
             // pt_show
             // 
-            this.pt_show.Location = new System.Drawing.Point(26, 352);
+            this.pt_show.Location = new System.Drawing.Point(30, 352);
             this.pt_show.Name = "pt_show";
             this.pt_show.Size = new System.Drawing.Size(170, 60);
             this.pt_show.TabIndex = 22;
@@ -262,7 +264,7 @@
             // 
             // mem_show
             // 
-            this.mem_show.Location = new System.Drawing.Point(382, 382);
+            this.mem_show.Location = new System.Drawing.Point(313, 351);
             this.mem_show.Name = "mem_show";
             this.mem_show.Size = new System.Drawing.Size(200, 80);
             this.mem_show.TabIndex = 23;
@@ -271,7 +273,7 @@
             // 
             // disk_show
             // 
-            this.disk_show.Location = new System.Drawing.Point(357, 523);
+            this.disk_show.Location = new System.Drawing.Point(288, 478);
             this.disk_show.Name = "disk_show";
             this.disk_show.Size = new System.Drawing.Size(250, 120);
             this.disk_show.TabIndex = 24;
@@ -282,30 +284,53 @@
             // 
             this.hit_miss_stat.AutoSize = true;
             this.hit_miss_stat.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hit_miss_stat.Location = new System.Drawing.Point(434, 111);
+            this.hit_miss_stat.Location = new System.Drawing.Point(391, 91);
             this.hit_miss_stat.Name = "hit_miss_stat";
             this.hit_miss_stat.Size = new System.Drawing.Size(45, 32);
             this.hit_miss_stat.TabIndex = 25;
             this.hit_miss_stat.Text = "---";
             this.hit_miss_stat.Visible = false;
             // 
-            // addr
+            // addr_stat
             // 
-            this.addr.AutoSize = true;
-            this.addr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addr.Location = new System.Drawing.Point(409, 59);
-            this.addr.Name = "addr";
-            this.addr.Size = new System.Drawing.Size(126, 32);
-            this.addr.TabIndex = 26;
-            this.addr.Text = "Address";
-            this.addr.Visible = false;
+            this.addr_stat.AutoSize = true;
+            this.addr_stat.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addr_stat.Location = new System.Drawing.Point(350, 39);
+            this.addr_stat.Name = "addr_stat";
+            this.addr_stat.Size = new System.Drawing.Size(126, 32);
+            this.addr_stat.TabIndex = 26;
+            this.addr_stat.Text = "Address";
+            this.addr_stat.Visible = false;
+            // 
+            // speed
+            // 
+            this.speed.Location = new System.Drawing.Point(70, 517);
+            this.speed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.speed.Name = "speed";
+            this.speed.Size = new System.Drawing.Size(90, 26);
+            this.speed.TabIndex = 27;
+            this.speed.Text = "1000";
+            this.speed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.Control;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(46, 470);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(139, 29);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Speed (ms)";
             // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1544, 763);
-            this.Controls.Add(this.addr);
+            this.ClientSize = new System.Drawing.Size(1208, 649);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.speed);
+            this.Controls.Add(this.addr_stat);
             this.Controls.Add(this.hit_miss_stat);
             this.Controls.Add(this.disk_show);
             this.Controls.Add(this.mem_show);
@@ -363,8 +388,10 @@
         private System.Windows.Forms.Button pt_show;
         private System.Windows.Forms.Button mem_show;
         private System.Windows.Forms.Button disk_show;
-        private System.Windows.Forms.Label addr;
+        private System.Windows.Forms.Label addr_stat;
         private System.Windows.Forms.Label hit_miss_stat;
+        private System.Windows.Forms.TextBox speed;
+        private System.Windows.Forms.Label label8;
     }
 }
 

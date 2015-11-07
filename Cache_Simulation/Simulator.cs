@@ -29,19 +29,11 @@ namespace Cache_Simulation
 
         public CPU_Frm form_cpu = new CPU_Frm();
 
+        int speed_val;
+
         public Simulator()
         {
             InitializeComponent();
-        }
-
-        public void DrawLine()
-        {
-            System.Drawing.Pen myPen;
-            myPen = new System.Drawing.Pen(System.Drawing.Color.Red);
-            System.Drawing.Graphics formGraphics = this.CreateGraphics();
-            formGraphics.DrawLine(myPen, 0, 0, 200, 200);
-            myPen.Dispose();
-            formGraphics.Dispose();
         }
 
         public void inst_show()
@@ -75,9 +67,19 @@ namespace Cache_Simulation
 
         private void start_Click(object sender, EventArgs e)
         {
-            //animation my_anim = new animation(this);
-
-            DrawLine(rand.Next(12),  Convert.ToBoolean(Simulator.rand.Next(2)));
+            /// ANIMATION ////////
+            animation my_anim = new animation(this);
+            string[] buttons = {"itlb", "dtlb", "tlb", "pt", "il1cache", "dl1cache", "l2cache", "l3cache", "mem", "disk"};
+            bool[] addr;
+            int size;
+            for (int i = 1; i < 11; i++)
+            {
+                if (i < 5) size = Globals.VIRTUAL_ADD_LEN;
+                else size = Globals.PHYSICAL_ADD_LEN;
+                addr = new bool[size];
+                for (int j = 0; j < size; j++) addr[j] = Convert.ToBoolean(Simulator.rand.Next(2));
+                my_anim.DrawLine(this, buttons[i-1], size, addr, Convert.ToBoolean(Simulator.rand.Next(2)));
+            }
             ////////////////////////////////////////////////////////////
 
             // **** ATTN **** //
@@ -207,64 +209,6 @@ namespace Cache_Simulation
             form_cpu.Show();
         }
 
-
-        public void DrawLine(int idx, bool hit_miss/*, bool [] addr*/)
-        {
-            int[] loc;
-            loc = new int[24];
-            set_location(loc);
-            int cpu_x = loc[0];
-            int cpu_y = loc[1];
-
-            set_location(loc);
-
-                if (idx >= 5 && idx <= 9)
-            {
-                cpu_x = loc[22];
-                cpu_y = loc[23];
-            }
-            else
-            {
-                cpu_x = loc[0];
-                cpu_y = loc[1];
-            }
-            int dest_x = loc[2 * idx];
-            int dest_y = loc[2 * idx + 1];
-
-            int tempx;
-            if (idx == 9) tempx = 100;
-            else if (idx == 10) tempx = -90;
-            else tempx = 0;
-
-            System.Drawing.Pen myPen1;
-            System.Drawing.Pen myPen2;
-            System.Drawing.Pen myPen3;
-            myPen1 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
-            myPen2 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
-            myPen3 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
-            System.Drawing.Graphics formGraphics = CreateGraphics();
-
-            myPen1.EndCap = LineCap.RoundAnchor;
-            formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
-            myPen1.Dispose();
-
-            formGraphics.DrawLine(myPen2, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y);
-            myPen2.Dispose();
-
-            myPen3.StartCap = LineCap.ArrowAnchor;
-            formGraphics.DrawLine(myPen3, dest_x, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y);
-            myPen3.Dispose();
-
-            hit_miss_show(hit_miss);
-
-           //for (int i = 0; i < 100000; i++) for (int j = 0; j < 1000; j++) ;
-            Thread.Sleep(1000); //10 seconds
-
-            formGraphics.Clear(BackColor);
-
-            hit_miss_hide();
-        }
-
         public void set_location(int[] loc)
         {
             loc[0] = cpu_show.Location.X; //CPU = 0
@@ -326,6 +270,40 @@ namespace Cache_Simulation
             hit_miss_stat.Refresh();
         }
 
+        public void addr_show(bool []addr)
+        {
+            int bytes = addr.Length / 8;
+            if ((addr.Length % 8) != 0) bytes++;
+            byte[] arr2 = new byte[bytes];
+            int bitIndex = 0, byteIndex = 0;
+            for (int i = 0; i < addr.Length; i++)
+            {
+                if (addr[i])
+                {
+                    arr2[byteIndex] |= (byte)(((byte)1) << bitIndex);
+                }
+                bitIndex++;
+                if (bitIndex == 8)
+                {
+                    bitIndex = 0;
+                    byteIndex++;
+                }
+            }
+            addr_stat.Text = BitConverter.ToString(arr2).Replace("-", " ");
+            addr_stat.Visible = true;
+            addr_stat.Refresh();
+        }
+
+        public void addr_hide()
+        {
+            addr_stat.Visible = false;
+            addr_stat.Refresh();
+        }
+
+        public int get_speed()
+        {
+            return Convert.ToInt32(speed.Text);
+        }
 
     }
 }

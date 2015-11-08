@@ -56,6 +56,7 @@
             this.speed = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.p_addr_stat = new System.Windows.Forms.Label();
+            this.read_write_stat = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // start
@@ -245,7 +246,7 @@
             // 
             // cpu_show
             // 
-            this.cpu_show.Location = new System.Drawing.Point(359, 152);
+            this.cpu_show.Location = new System.Drawing.Point(357, 152);
             this.cpu_show.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cpu_show.Name = "cpu_show";
             this.cpu_show.Size = new System.Drawing.Size(100, 100);
@@ -265,7 +266,7 @@
             // 
             // mem_show
             // 
-            this.mem_show.Location = new System.Drawing.Point(309, 351);
+            this.mem_show.Location = new System.Drawing.Point(307, 351);
             this.mem_show.Name = "mem_show";
             this.mem_show.Size = new System.Drawing.Size(200, 80);
             this.mem_show.TabIndex = 23;
@@ -274,7 +275,7 @@
             // 
             // disk_show
             // 
-            this.disk_show.Location = new System.Drawing.Point(284, 478);
+            this.disk_show.Location = new System.Drawing.Point(282, 478);
             this.disk_show.Name = "disk_show";
             this.disk_show.Size = new System.Drawing.Size(250, 120);
             this.disk_show.TabIndex = 24;
@@ -285,7 +286,7 @@
             // 
             this.hit_miss_stat.AutoSize = true;
             this.hit_miss_stat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hit_miss_stat.Location = new System.Drawing.Point(394, 98);
+            this.hit_miss_stat.Location = new System.Drawing.Point(392, 102);
             this.hit_miss_stat.Name = "hit_miss_stat";
             this.hit_miss_stat.Size = new System.Drawing.Size(30, 29);
             this.hit_miss_stat.TabIndex = 25;
@@ -298,7 +299,7 @@
             this.v_addr_stat.AutoSize = true;
             this.v_addr_stat.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.v_addr_stat.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.v_addr_stat.Location = new System.Drawing.Point(277, 20);
+            this.v_addr_stat.Location = new System.Drawing.Point(275, 20);
             this.v_addr_stat.Name = "v_addr_stat";
             this.v_addr_stat.Size = new System.Drawing.Size(264, 27);
             this.v_addr_stat.TabIndex = 26;
@@ -332,7 +333,7 @@
             this.p_addr_stat.AutoSize = true;
             this.p_addr_stat.BackColor = System.Drawing.Color.DarkOrange;
             this.p_addr_stat.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.p_addr_stat.Location = new System.Drawing.Point(298, 57);
+            this.p_addr_stat.Location = new System.Drawing.Point(296, 57);
             this.p_addr_stat.Name = "p_addr_stat";
             this.p_addr_stat.Size = new System.Drawing.Size(222, 27);
             this.p_addr_stat.TabIndex = 29;
@@ -340,11 +341,24 @@
             this.p_addr_stat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.p_addr_stat.Visible = false;
             // 
+            // read_write_stat
+            // 
+            this.read_write_stat.AutoSize = true;
+            this.read_write_stat.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.read_write_stat.Location = new System.Drawing.Point(368, 276);
+            this.read_write_stat.Name = "read_write_stat";
+            this.read_write_stat.Size = new System.Drawing.Size(82, 27);
+            this.read_write_stat.TabIndex = 30;
+            this.read_write_stat.Text = "_____";
+            this.read_write_stat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.read_write_stat.Visible = false;
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 649);
+            this.Controls.Add(this.read_write_stat);
             this.Controls.Add(this.p_addr_stat);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.speed);
@@ -411,6 +425,7 @@
         private System.Windows.Forms.TextBox speed;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label p_addr_stat;
+        private System.Windows.Forms.Label read_write_stat;
     }
 }
 

@@ -134,7 +134,43 @@ namespace Cache_Simulation
             */
             ////////////////////////////////////////////////////////////
 
+            ////////////////////////////////////////////////////////////
 
+            // **** ATTN **** //
+
+            /* Sample Code to Work With TLB */
+            /*
+            int num = 64;
+            bool[] v_addr = new bool[Globals.VIRTUAL_ADD_LEN];
+            bool[] p_addr = new bool[Globals.PHYSICAL_ADD_LEN];
+            bool[] prot = new bool[4];
+            prot[0] = true; prot[1] = true; prot[2] = false; prot[3] = false;
+
+            for (int i = 0; i < Globals.VIRTUAL_ADD_LEN; i++) v_addr[i] = false;// Convert.ToBoolean(rand.Next(2)); //random address
+            v_addr[0] = true; v_addr[1] = false; v_addr[2] = true; v_addr[3] = false; //A
+            v_addr[4] = true; v_addr[5] = true; v_addr[6] = false; v_addr[7] = true; //D
+            v_addr[8] = true; v_addr[9] = true; v_addr[10] = true; v_addr[11] = true; //F
+
+            v_addr[12] = true; v_addr[13] = true; v_addr[14] = true; v_addr[15] = false; //E
+            v_addr[16] = false; v_addr[17] = true; v_addr[18] = true; v_addr[19] = true; //7
+            v_addr[20] = true; v_addr[21] = true; v_addr[22] = true; v_addr[23] = true; //F
+
+
+            v_addr[30] = true; v_addr[31] = false; v_addr[32] = true; //0
+            v_addr[33] = true; v_addr[34] = true; v_addr[35] = true; //7
+
+
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++) p_addr[i] = Convert.ToBoolean(Simulator.rand.Next(2));
+
+            bool res;
+            res = my_itlb.read_from_tlb(v_addr, p_addr, prot); //read from a location
+            res = my_itlb.write_to_tlb(v_addr, p_addr, prot); //write a location
+            res = false;
+            res = my_itlb.read_from_tlb(v_addr, p_addr, prot); //read from a location
+
+            int a = 0;
+            */
+            ////////////////////////////////////////////////////////////
             my_memory.random_initialize();
 
 
@@ -271,7 +307,7 @@ namespace Cache_Simulation
             loc[23] = cpu_show.Location.Y + cpu_show.Size.Height / 2;
         }
 
-        public void DrawLine(string block, int size, bool[] addr, bool hit_miss/*, bool [] addr*/)
+        public void DrawLine(string block, int size, bool[] addr, bool hit_miss, string read_write)
         {
             set_location(loc);
             int cpu_x = loc[0];
@@ -317,6 +353,7 @@ namespace Cache_Simulation
 
             addr_show(addr, size);
             hit_miss_show(hit_miss);
+            rw_show(read_write);
 
             Thread.Sleep(get_speed());
 
@@ -324,6 +361,7 @@ namespace Cache_Simulation
 
             addr_hide();
             hit_miss_hide();
+            rw_hide();
         }
 
 
@@ -388,6 +426,20 @@ namespace Cache_Simulation
             v_addr_stat.Refresh();
             p_addr_stat.Visible = false;
             p_addr_stat.Refresh();
+        }
+
+        public void rw_show(string rw)
+        {
+            if (rw == "read") read_write_stat.Text = "read";
+            else if (rw == "write") read_write_stat.Text = "write";
+            read_write_stat.Visible = true;
+            read_write_stat.Refresh();
+        }
+
+        public void rw_hide()
+        {
+            read_write_stat.Visible = false;
+            read_write_stat.Refresh();
         }
 
         public int get_speed()

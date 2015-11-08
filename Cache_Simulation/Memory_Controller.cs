@@ -31,7 +31,7 @@ namespace Cache_Simulation
             //check for il1 cache
             if (!(Simulator.my_il1cache.read_from_cache(address, 8, ir1))) 
             {
-                //my_anim.DrawLine(Program.my_sim, "il1cache", Globals.PHYSICAL_ADD_LEN, address, false);
+                Program.my_sim.DrawLine("il1cache", Globals.PHYSICAL_ADD_LEN, address, false);
                 //check for l2 cache
                 if (!(Simulator.my_l2cache.read_from_cache(address, 8, ir1)))
                 {

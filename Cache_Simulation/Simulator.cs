@@ -30,6 +30,8 @@ namespace Cache_Simulation
         public CPU_Frm form_cpu = new CPU_Frm();
 
         int speed_val;
+        int [] loc = new int[24];
+
 
         public Simulator()
         {
@@ -69,8 +71,7 @@ namespace Cache_Simulation
         {
             /// ANIMATION ////////
             /// 
-            /*
-            animation my_anim = new animation(this);
+           /*
             string[] buttons = {"itlb", "dtlb", "tlb", "pt", "il1cache", "dl1cache", "l2cache", "l3cache", "mem", "disk"};
             bool[] addr;
             int size;
@@ -80,7 +81,7 @@ namespace Cache_Simulation
                 else size = Globals.PHYSICAL_ADD_LEN;
                 addr = new bool[size];
                 for (int j = 0; j < size; j++) addr[j] = Convert.ToBoolean(Simulator.rand.Next(2));
-                my_anim.DrawLine(this, buttons[i-1], size, addr, Convert.ToBoolean(Simulator.rand.Next(2)));
+                DrawLine( buttons[i-1], size, addr, Convert.ToBoolean(Simulator.rand.Next(2)));
             }
             */
             ////////////////////////////////////////////////////////////
@@ -212,6 +213,25 @@ namespace Cache_Simulation
             form_cpu.Show();
         }
 
+        public int get_idx(string indata)
+        {
+            switch (indata)
+            {
+                case "itlb": return 1;
+                case "dtlb": return 2;
+                case "tlb": return 3;
+                case "pt": return 4;
+                case "il1cache": return 5;
+                case "dl1cache": return 6;
+                case "l2cache": return 7;
+                case "l3cache": return 8;
+                case "mem": return 9;
+                case "disk": return 10;
+
+                default: return 0;
+            }
+        }
+
         public void set_location(int[] loc)
         {
             loc[0] = cpu_show.Location.X; //CPU = 0
@@ -250,6 +270,62 @@ namespace Cache_Simulation
             loc[22] = cpu_show.Location.X + cpu_show.Size.Width;
             loc[23] = cpu_show.Location.Y + cpu_show.Size.Height / 2;
         }
+
+        public void DrawLine(string block, int size, bool[] addr, bool hit_miss/*, bool [] addr*/)
+        {
+            set_location(loc);
+            int cpu_x = loc[0];
+            int cpu_y = loc[1];
+
+            int idx = get_idx(block);
+            if (idx >= 5 && idx <= 9)
+            {
+                cpu_x = loc[22];
+                cpu_y = loc[23];
+            }
+            else
+            {
+                cpu_x = loc[0];
+                cpu_y = loc[1];
+            }
+            int dest_x = loc[2 * idx];
+            int dest_y = loc[2 * idx + 1];
+
+            int tempx;
+            if (idx == 9) tempx = 40;
+            else if (idx == 10) tempx = -50;
+            else tempx = 0;
+
+            System.Drawing.Pen myPen1;
+            System.Drawing.Pen myPen2;
+            System.Drawing.Pen myPen3;
+            myPen1 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
+            myPen2 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
+            myPen3 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
+            System.Drawing.Graphics formGraphics = CreateGraphics();
+
+            myPen1.EndCap = LineCap.RoundAnchor;
+            formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
+            myPen1.Dispose();
+
+            formGraphics.DrawLine(myPen2, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y);
+            myPen2.Dispose();
+
+            myPen3.StartCap = LineCap.ArrowAnchor;
+            formGraphics.DrawLine(myPen3, dest_x, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y);
+            myPen3.Dispose();
+
+            addr_show(addr, size);
+            hit_miss_show(hit_miss);
+
+            Thread.Sleep(get_speed());
+
+            formGraphics.Clear(BackColor);
+
+            addr_hide();
+            hit_miss_hide();
+        }
+
 
         public void hit_miss_show(bool stat)
         {
@@ -318,6 +394,8 @@ namespace Cache_Simulation
         {
             return Convert.ToInt32(speed.Text);
         }
+
+
 
     }
 }

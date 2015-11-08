@@ -24,6 +24,7 @@ namespace Cache_Simulation
 {
     static class Program
     {
+        public static Simulator my_sim;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -32,7 +33,8 @@ namespace Cache_Simulation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Simulator());
+            my_sim = new Simulator();
+            Application.Run(my_sim);
         }
     }
 }

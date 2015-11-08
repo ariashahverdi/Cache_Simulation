@@ -68,6 +68,8 @@ namespace Cache_Simulation
         private void start_Click(object sender, EventArgs e)
         {
             /// ANIMATION ////////
+            /// 
+            /*
             animation my_anim = new animation(this);
             string[] buttons = {"itlb", "dtlb", "tlb", "pt", "il1cache", "dl1cache", "l2cache", "l3cache", "mem", "disk"};
             bool[] addr;
@@ -80,6 +82,7 @@ namespace Cache_Simulation
                 for (int j = 0; j < size; j++) addr[j] = Convert.ToBoolean(Simulator.rand.Next(2));
                 my_anim.DrawLine(this, buttons[i-1], size, addr, Convert.ToBoolean(Simulator.rand.Next(2)));
             }
+            */
             ////////////////////////////////////////////////////////////
 
             // **** ATTN **** //

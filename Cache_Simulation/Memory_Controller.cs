@@ -217,7 +217,7 @@ namespace Cache_Simulation
                 temp_data[i] = Convert.ToByte((data & (constant << (8 * (7 - i)))) >> (8 * (7 - i)));
             }
 
-            //write to il1 cache
+            //write to dl1 cache
             bool drt_in = false; // write-through
             bool[] ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
             byte[] dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
@@ -231,10 +231,37 @@ namespace Cache_Simulation
                 drt_out = false;
                 if (!(Simulator.my_l2cache.write_to_cache(address, 8, temp_data, drt_in, ad_out, dt_out, ref drt_out)))
                 {
+                    //write to l2 has not been successful
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, false);
+                    //now let's write to memory
+                    Simulator.my_memory.write_to_memory(address, temp_data, 8);
+                    Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true);
+                    // now lets read 64 bytes from memory
+                    byte[] temp_block = new byte[64];
+                    bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
+                    for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                    {
+                        temp_block_address[i] = address[i];
+                    }
+                    for (int i = 0; i < Globals.BYTE_OFF_LEN; i++)
+                    {
+                        temp_block_address[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
+                    }
+                    Simulator.my_memory.read_from_memory(temp_block_address, temp_block, 64);
+                    //////// write a block to L1 & L2 cache
+                    drt_in = false;
+                    drt_out = false;
+                    Simulator.my_l2cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out);
+                    Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true);
+                    Simulator.my_dl1cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out);
+                    Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, true);
+                }
+                else
+                {
                     //write to l2 has been successful
-                    //now let's write to dl1 cache
-                    // read 64 bytes from L2 Cache
+                    Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true);
+                    // now lets write 64 bytes to dl1
+                    // read 64 bytes from l2
                     byte[] temp_block = new byte[64];
                     bool[] temp_block_address = new bool[Globals.PHYSICAL_ADD_LEN];
                     for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
@@ -246,18 +273,28 @@ namespace Cache_Simulation
                         temp_block_address[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
                     }
                     Simulator.my_l2cache.read_from_cache(temp_block_address, 64, temp_block);
-                    Program.my_sim.DrawLine("12cache", Globals.PHYSICAL_ADD_LEN, address, true);
-                    // write that block to DL1 cache 
-                    drt_in = false; //write-through
-                    ad_out = new bool[Globals.PHYSICAL_ADD_LEN];
-                    dt_out = new byte[Simulator.my_l2cache.PAYLOAD_SIZE];
+                    //////// write a block to L1 cache
+                    drt_in = false;
                     drt_out = false;
                     Simulator.my_dl1cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out);
                     Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, true);
+                    //now let's write to memory
+                    Simulator.my_memory.write_to_memory(address, temp_data, 8);
+                    Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true);
                 }
-                else
+            }
+            //////////////////////////////////////////////////////////////////////////////////////
+            else
+            {
+                //write to dl1 has been successful
+                Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, true);
+                //now let's write to l2 cache
+                drt_in = false; // write-through
+                drt_out = false;
+                if (!(Simulator.my_l2cache.write_to_cache(address, 8, temp_data, drt_in, ad_out, dt_out, ref drt_out)))
                 {
                     //write to l2 has not been successful
+                    Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, false);
                     //now let's write to memory
                     Simulator.my_memory.write_to_memory(address, temp_data, 8);
                     Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true);
@@ -280,15 +317,15 @@ namespace Cache_Simulation
                     drt_out = false;
                     Simulator.my_l2cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out);
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true);
-                    Simulator.my_dl1cache.write_to_cache(temp_block_address, 64, temp_block, drt_in, ad_out, dt_out, ref drt_out);
-                    Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, true);
                 }
-            }
-            else
-            {
-                Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, false);
-                //write to dl1 has not been successful
-
+                else
+                {
+                    //write to l2 has been successful
+                    Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true);
+                    //now let's write to memory
+                    Simulator.my_memory.write_to_memory(address, temp_data, 8);
+                    Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true);
+                }
             }
         }
     }

@@ -342,15 +342,35 @@ namespace Cache_Simulation
             myPen3 = new System.Drawing.Pen(Color.FromArgb(255, 0, 0, 255), 6);
             System.Drawing.Graphics formGraphics = CreateGraphics();
 
-            myPen1.EndCap = LineCap.RoundAnchor;
-            formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
+            if (read_write == "write")
+            {
+                myPen1.EndCap = LineCap.RoundAnchor;
+                formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
+            }
+
+            else
+            {
+                myPen1.EndCap = LineCap.ArrowAnchor;
+                formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
+            }
+            
             myPen1.Dispose();
 
             formGraphics.DrawLine(myPen2, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y);
             myPen2.Dispose();
 
-            myPen3.StartCap = LineCap.ArrowAnchor;
-            formGraphics.DrawLine(myPen3, dest_x, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y);
+            if (read_write == "write")
+            {
+                myPen3.StartCap = LineCap.ArrowAnchor;
+                formGraphics.DrawLine(myPen3, dest_x, dest_y, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y);
+            }
+            else
+            {
+                myPen3.EndCap = LineCap.RoundAnchor;
+                formGraphics.DrawLine(myPen3, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y, dest_x, dest_y );
+            }
+
+            
             myPen3.Dispose();
 
             addr_show(addr, size);

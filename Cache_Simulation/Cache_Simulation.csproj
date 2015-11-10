@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Memory.cs" />
     <Compile Include="Memory_Controller.cs" />
+    <Compile Include="Page_Table.cs" />
     <Compile Include="pte.cs" />
     <Compile Include="Simulator.cs">
       <SubType>Form</SubType>

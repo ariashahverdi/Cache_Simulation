@@ -27,6 +27,8 @@ namespace Cache_Simulation
         public static cache my_dl1cache = new cache(8, 64, 24, 64);
         public static cache my_l2cache = new cache(8, 512, 21, 64);
 
+        public static Page_Table my_page_table = new Page_Table(1024, "test.txt");
+
         public CPU_Frm form_cpu = new CPU_Frm();
 
         int speed_val;
@@ -172,7 +174,7 @@ namespace Cache_Simulation
             */
             ////////////////////////////////////////////////////////////
             my_memory.random_initialize();
-
+            my_page_table.initialize();
 
             // Initialize the Program Counter
             my_cpu.PC = Globals.PC_INIT;

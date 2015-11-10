@@ -17,7 +17,7 @@ namespace Cache_Simulation
             main_mem = new byte[size];
         }
 
-        private void add_instruction(ulong inst, ulong address)
+        public void add_instruction(ulong inst, ulong address)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -39,12 +39,12 @@ namespace Cache_Simulation
             }
 
             // test program                                                         ops1s2dt_s1s2dtXX
-            add_instruction(0xC404000000000005, 104); // R1 = R0 + 5  f2B_binary -> 11000100_00000100
-            add_instruction(0xC408000000000001, 112); // R2 = R0 + 1  f2B_binary -> 11000100_00001000
-            add_instruction(0xC488000000000001, 120); // R2 = R2 + 1  f2B_binary -> 11000100_10001000
-            add_instruction(0x4080000000000000, 128); // Mem[0] = R2  f2B_binary -> 01000000_10000000
-            add_instruction(0x000C000000000000, 136); // R3 = Mem [0] f2B_binary -> 00000000_00001100
-            add_instruction(0x80D0000000000078, 144); //Beq R3,R1,120 f2B_binary -> 10000000_11010000
+            //add_instruction(0xC404000000000005, 104); // R1 = R0 + 5  f2B_binary -> 11000100_00000100
+            //add_instruction(0xC408000000000001, 112); // R2 = R0 + 1  f2B_binary -> 11000100_00001000
+            //add_instruction(0xC488000000000001, 120); // R2 = R2 + 1  f2B_binary -> 11000100_10001000
+            //add_instruction(0x4080000000000000, 128); // Mem[0] = R2  f2B_binary -> 01000000_10000000
+            //add_instruction(0x000C000000000000, 136); // R3 = Mem [0] f2B_binary -> 00000000_00001100
+            //add_instruction(0x80D0000000000078, 144); //Beq R3,R1,120 f2B_binary -> 10000000_11010000
 
 
             return;

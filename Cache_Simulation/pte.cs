@@ -13,7 +13,7 @@ namespace Cache_Simulation
         int UNUSED_SIZE;
         bool[] unused;
 
-        bool valid;
+        public bool valid;
 
         int VIRTUAL_SIZE;
         bool[] page_addr_tag;
@@ -37,7 +37,7 @@ namespace Cache_Simulation
 
             //Initialize the tlb randomly
             for (int i = 0; i < 4; i++) prot[i] = Convert.ToBoolean(Simulator.rand.Next(2));
-            valid = Convert.ToBoolean(Simulator.rand.Next(2));
+            valid = false; //Convert.ToBoolean(Simulator.rand.Next(2));
             for (int i = 0; i < VIRTUAL_SIZE; i++) page_addr_tag[i] = Convert.ToBoolean(Simulator.rand.Next(2));
             for (int i = 0; i < PHYSICAL_SIZE; i++) phys_addr[i] = Convert.ToBoolean(Simulator.rand.Next(2));
 

@@ -21,12 +21,16 @@ namespace Cache_Simulation
 
         public bool search_pt(ulong vaddress, ref ulong paddress)
         {
+            ulong page_offset = (vaddress & (0xFFF));
+            vaddress = (vaddress >> 12);
             int iterator = 0;
             while (entries[iterator].valid == true)
             {
                 if (entries[iterator].virtual_address == vaddress)
                 {
                     paddress = entries[iterator].physical_address;
+                    paddress = paddress << 12;
+                    paddress = paddress | page_offset; 
                     return true;
                 }
                 iterator++;

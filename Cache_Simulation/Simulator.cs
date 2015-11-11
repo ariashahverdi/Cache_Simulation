@@ -182,7 +182,14 @@ namespace Cache_Simulation
 
             // Disply
             pc_counter.Text = my_cpu.PC.ToString();
-            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC + i]; }
+
+            ulong virtual_address = 0;
+            for (ulong i = 0; i < 8; i++)
+            {
+                my_page_table.search_pt((my_cpu.PC + i), ref virtual_address);
+                Globals.cur_inst[i] = my_memory.main_mem[virtual_address];
+            }
+
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
             inst_show();
             form_cpu.Refresh();
@@ -197,7 +204,12 @@ namespace Cache_Simulation
 
             pc_counter.Text = my_cpu.PC.ToString();
 
-            for (ulong i = 0; i < 8; i++) { Globals.cur_inst[i] = my_memory.main_mem[my_cpu.PC + i - 8]; }
+            ulong virtual_address = 0;
+            for (ulong i = 0; i < 8; i++)
+            {
+                my_page_table.search_pt((my_cpu.PC + i), ref virtual_address);
+                Globals.cur_inst[i] = my_memory.main_mem[virtual_address];
+            }
             inst.Text = BitConverter.ToString(Globals.cur_inst).Replace("-", " ");
 
             inst_show();

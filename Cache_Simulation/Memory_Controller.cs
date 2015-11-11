@@ -13,18 +13,24 @@ namespace Cache_Simulation
         {
             status = 0;
         }
+        public ulong address_translator(ulong virtual_address)
+        {
+            ulong physical_address = 0;
+            Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+            return physical_address;
+        }
         public void fetch_instructions(ulong cpu_pc, byte[] ir1, byte[] ir2)
         {
-            ulong temp_pc = cpu_pc;
+            ulong physical_pc = address_translator(cpu_pc);
             bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
             bool[] next_address = new bool[Globals.PHYSICAL_ADD_LEN];
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                address[Globals.PHYSICAL_ADD_LEN-i-1] = (((temp_pc >> i) & 1) == 1);
+                address[Globals.PHYSICAL_ADD_LEN-i-1] = (((physical_pc >> i) & 1) == 1);
             }
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                next_address[Globals.PHYSICAL_ADD_LEN - i - 1] = (((temp_pc+8) >> i) & 1) == 1;
+                next_address[Globals.PHYSICAL_ADD_LEN - i - 1] = (((physical_pc + 8) >> i) & 1) == 1;
             }
 
             //check for il1 cache
@@ -115,13 +121,13 @@ namespace Cache_Simulation
 
         public void read_operand(ulong cpu_address, ref ulong data)
         {
-            ulong temp_address = cpu_address;
+            ulong physical_pc = address_translator(cpu_address);
             byte[] temp_data = new byte[8];
             bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
 
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                address[Globals.PHYSICAL_ADD_LEN - i - 1] = (((temp_address >> i) & 1) == 1);
+                address[Globals.PHYSICAL_ADD_LEN - i - 1] = (((physical_pc >> i) & 1) == 1);
             }
 
             //check for dl1 cache
@@ -204,11 +210,12 @@ namespace Cache_Simulation
 
         public void write_operand(ulong cpu_address, ulong data)
         {
+            ulong physical_pc = address_translator(cpu_address);
             byte[] temp_data = new byte[8];
             bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
             {
-                address[Globals.PHYSICAL_ADD_LEN-i-1] = (((cpu_address >> i) & 1) == 1);
+                address[Globals.PHYSICAL_ADD_LEN-i-1] = (((physical_pc >> i) & 1) == 1);
             }
             for (int i = 0; i < 8; i++)
             {

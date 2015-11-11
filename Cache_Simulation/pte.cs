@@ -18,8 +18,18 @@ namespace Cache_Simulation
         int VIRTUAL_SIZE;
         bool[] page_addr_tag;
 
+        public ulong physical_address;
+        public ulong virtual_address;
+
         int PHYSICAL_SIZE;
-        bool[] phys_addr;
+        public bool[] phys_addr;
+
+        public pte()
+        {
+            valid = false;
+            virtual_address = 0;
+            physical_address = 0;
+        }
 
         public pte(int V_S, int P_S)
         {
@@ -43,6 +53,7 @@ namespace Cache_Simulation
 
 
         }
+
 
         public bool get_pte(bool[] page_addr_tag_in, bool[] phys_addr_out, bool[] prot_out)
         {

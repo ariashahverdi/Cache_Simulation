@@ -16,12 +16,32 @@ namespace Cache_Simulation
         {
             size = n;
             entries = new pte[size];
-
             program_file_name = file_name;
+        }
+
+        public bool search_pt(ulong vaddress, ref ulong paddress)
+        {
+            int iterator = 0;
+            while (entries[iterator].valid == true)
+            {
+                if (entries[iterator].virtual_address == vaddress)
+                {
+                    paddress = entries[iterator].physical_address;
+                    return true;
+                }
+                iterator++;
+            }
+            return false;
         }
 
         public void initialize()
         {
+            // initialize the PTPTEs
+            for(int i=0; i<size; i++)
+            {
+                entries[i] = new pte();
+            }
+
             string line;
             // Read the file and display it line by line.
             System.IO.StreamReader file = new System.IO.StreamReader("../../test.txt");
@@ -31,43 +51,33 @@ namespace Cache_Simulation
                 string[] words = line.Split(delimiterChars);
                 int page_size = Convert.ToInt32(words[0]);
                 ulong address = Convert.ToUInt64(words[1]);
-                for (int i = 0; i < page_size; i++)
-                {
-                    ulong instruction = Convert.ToUInt64(words[2+i], 16); 
-                    Simulator.my_memory.add_instruction(instruction, (address+Convert.ToUInt64(8* i)));
-                }
 
-                /*
                 // add the page_table entry
                 int iterator = 0;
-                while(entries[iterator].valid == false)
+
+                while(entries[iterator].valid == true)
                 {
                     iterator++;
                 }
 
-                bool[] virtual_address = new bool[Globals.VIRTUAL_ADD_LEN - Globals.PAGE_OFF_LEN];
-                bool[] physical_address = new bool[Globals.PHYSICAL_ADD_LEN - Globals.PAGE_OFF_LEN];
-                bool[] protection = new bool[4];
-                protection[0] = false; protection[1] = false; protection[2] = false; protection[3] = false;
-
                 ulong vaddress = (address >> 12);
+                
+                entries[iterator].valid = true;
+                entries[iterator].virtual_address = vaddress;
+                entries[iterator].physical_address = Convert.ToUInt64(Simulator.rand.Next(Convert.ToInt32(Simulator.my_memory.size >> 12)));
 
-                for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+
+                ulong phys_address = 0;
+                search_pt(address, ref phys_address);
+                for (int i = 0; i < page_size; i++)
                 {
-                    virtual_address[Globals.VIRTUAL_ADD_LEN - Globals.PAGE_OFF_LEN - i - 1] = (((vaddress >> i) & 1) == 1);
+                    ulong instruction = Convert.ToUInt64(words[2 + i], 16);
+                    Simulator.my_memory.add_instruction(instruction, (phys_address + Convert.ToUInt64(8 * i)));
                 }
 
-                
-
-                add some code here
-
-
-                
-
-                entries[iterator].set_pte(virtual_address, physical_address, protection);
-                */
             }
             file.Close();
         }
+
     }
 }

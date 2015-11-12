@@ -8,15 +8,68 @@ namespace Cache_Simulation
 {
     public class Memory_Controller
     {
-        int status;
         public Memory_Controller()
         {
-            status = 0;
         }
         public ulong address_translator(ulong virtual_address)
         {
             ulong physical_address = 0;
-            Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+            bool[] vaddress = new bool[Globals.VIRTUAL_ADD_LEN];
+            for (int i = 0; i < Globals.VIRTUAL_ADD_LEN; i++)
+            {
+                vaddress[Globals.VIRTUAL_ADD_LEN - i - 1] = (((virtual_address >> i) & 1) == 1);
+            }
+            bool[] temp_protection = new bool[4];
+            bool[] paddress = new bool[Globals.PHYSICAL_ADD_LEN];
+            // check for ITLB
+            if(!(Simulator.my_itlb.read_from_tlb(vaddress, paddress, temp_protection)))
+            {
+                Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
+
+                // check for TLB
+                if (!(Simulator.my_tlb.read_from_tlb(vaddress, paddress, temp_protection)))
+                {
+                    Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
+
+
+                    // check for Page Table
+                    Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+                    Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+                    for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                    {
+                        ulong one = 1;
+                        if((physical_address & Convert.ToUInt64(one << i)) == 0)
+                        {
+                            paddress[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
+                        }
+                        else
+                        {
+                            paddress[Globals.PHYSICAL_ADD_LEN - i - 1] = true;
+                        }
+                    }
+
+                    // write to tlb and itlb
+                    Simulator.my_tlb.write_to_tlb(vaddress, paddress, temp_protection);
+                    Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                    Simulator.my_itlb.write_to_tlb(vaddress, paddress, temp_protection);
+                    Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                }
+                else
+                {
+                    Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+
+                    // write to ITLB
+                    Simulator.my_itlb.write_to_tlb(vaddress, paddress, temp_protection);
+                    Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                }
+            }
+            else
+            {
+                Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+            }
+
+
+
             return physical_address;
         }
         public void fetch_instructions(ulong cpu_pc, byte[] ir1, byte[] ir2)

@@ -80,6 +80,75 @@ namespace Cache_Simulation
 
             return physical_address;
         }
+        public ulong data_address_translator(ulong virtual_address)
+        {
+            ulong physical_address = 0;
+            bool[] vaddress = new bool[Globals.VIRTUAL_ADD_LEN];
+            for (int i = 0; i < Globals.VIRTUAL_ADD_LEN; i++)
+            {
+                vaddress[Globals.VIRTUAL_ADD_LEN - i - 1] = (((virtual_address >> i) & 1) == 1);
+            }
+            bool[] temp_protection = new bool[4];
+            bool[] paddress = new bool[Globals.PHYSICAL_ADD_LEN];
+            // check for DTLB
+            if (!(Simulator.my_dtlb.read_from_tlb(vaddress, paddress, temp_protection)))
+            {
+                Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
+
+                // check for TLB
+                if (!(Simulator.my_tlb.read_from_tlb(vaddress, paddress, temp_protection)))
+                {
+                    Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
+
+
+                    // check for Page Table
+                    Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+                    Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+                    for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                    {
+                        ulong one = 1;
+                        if ((physical_address & Convert.ToUInt64(one << i)) == 0)
+                        {
+                            paddress[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
+                        }
+                        else
+                        {
+                            paddress[Globals.PHYSICAL_ADD_LEN - i - 1] = true;
+                        }
+                    }
+
+                    // write to tlb and dtlb
+                    Simulator.my_tlb.write_to_tlb(vaddress, paddress, temp_protection);
+                    Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                    Simulator.my_dtlb.write_to_tlb(vaddress, paddress, temp_protection);
+                    Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                    return physical_address;
+                }
+                else
+                {
+                    Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+
+                    // write to DTLB
+                    Simulator.my_dtlb.write_to_tlb(vaddress, paddress, temp_protection);
+                    Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                }
+            }
+            else
+            {
+                Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+            }
+
+            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+            {
+                if (paddress[Globals.PHYSICAL_ADD_LEN - i - 1])
+                {
+                    ulong one = 1;
+                    physical_address |= (one << i);
+                }
+            }
+
+            return physical_address;
+        }
         public void fetch_instructions(ulong cpu_pc, byte[] ir1, byte[] ir2)
         {
             ulong physical_pc = address_translator(cpu_pc);
@@ -182,7 +251,7 @@ namespace Cache_Simulation
 
         public void read_operand(ulong cpu_address, ref ulong data)
         {
-            ulong physical_pc = address_translator(cpu_address);
+            ulong physical_pc = data_address_translator(cpu_address);
             byte[] temp_data = new byte[8];
             bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
 
@@ -271,7 +340,7 @@ namespace Cache_Simulation
 
         public void write_operand(ulong cpu_address, ulong data)
         {
-            ulong physical_pc = address_translator(cpu_address);
+            ulong physical_pc = data_address_translator(cpu_address);
             byte[] temp_data = new byte[8];
             bool[] address = new bool[Globals.PHYSICAL_ADD_LEN];
             for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)

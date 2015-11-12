@@ -40,7 +40,7 @@ namespace Cache_Simulation
                         ulong one = 1;
                         if((physical_address & Convert.ToUInt64(one << i)) == 0)
                         {
-                            paddress[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
+                            paddress[Globals.PHYSICAL_ADD_LEN-i-1] = false;
                         }
                         else
                         {
@@ -53,6 +53,7 @@ namespace Cache_Simulation
                     Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
                     Simulator.my_itlb.write_to_tlb(vaddress, paddress, temp_protection);
                     Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
+                    return physical_address;
                 }
                 else
                 {
@@ -68,7 +69,14 @@ namespace Cache_Simulation
                 Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
             }
 
-
+            for(int i=0; i<Globals.PHYSICAL_ADD_LEN; i++)
+            {
+                if(paddress[Globals.PHYSICAL_ADD_LEN-i-1])
+                {
+                    ulong one = 1;
+                    physical_address |= (one << i);
+                }
+            }
 
             return physical_address;
         }

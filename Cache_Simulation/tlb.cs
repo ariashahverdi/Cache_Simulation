@@ -63,7 +63,7 @@ namespace Cache_Simulation
                 {
                     for (int j = 0; j < 4; j++) prot[j] = prot_temp[j];
                     for (int j = 0; j < PHYSICAL_SIZE; j++) p_addr[j] = phy_addr_tag[j];
-                    for (int j = 0; j < Globals.PAGE_OFF_LEN; j++) p_addr[j] = page_offset[j];
+                    for (int j = 0; j < Globals.PAGE_OFF_LEN; j++) p_addr[j+ PHYSICAL_SIZE] = page_offset[j];
 
                     return true;
                 }

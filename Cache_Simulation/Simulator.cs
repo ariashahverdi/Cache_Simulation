@@ -356,7 +356,7 @@ namespace Cache_Simulation
 
             if (read_write == "write")
             {
-                myPen1.EndCap = LineCap.RoundAnchor;
+                //myPen1.EndCap = LineCap.RoundAnchor;
                 formGraphics.DrawLine(myPen1, tempx + cpu_x - (cpu_x - dest_x) / 2, cpu_y, cpu_x, cpu_y);
             }
 
@@ -378,7 +378,7 @@ namespace Cache_Simulation
             }
             else
             {
-                myPen3.EndCap = LineCap.RoundAnchor;
+                //myPen3.EndCap = LineCap.RoundAnchor;
                 formGraphics.DrawLine(myPen3, tempx + cpu_x - (cpu_x - dest_x) / 2, dest_y, dest_x, dest_y );
             }
 
@@ -423,32 +423,34 @@ namespace Cache_Simulation
 
         public void addr_show(bool []addr, int size)
         {
-            int bytes = addr.Length / 8;
-            if ((addr.Length % 8) != 0) bytes++;
-            byte[] arr2 = new byte[bytes];
-            int bitIndex = 0, byteIndex = 0;
+            //byte[] addr_byte = new byte[addr.Length / 8];
+            ulong addr_val = 0;   
             for (int i = 0; i < addr.Length; i++)
             {
-                if (addr[i])
+                if (addr[addr.Length - i - 1])
                 {
-                    arr2[byteIndex] |= (byte)(((byte)1) << bitIndex);
+                    ulong one = 1;
+                    addr_val |= (one << i);
                 }
-                bitIndex++;
-                if (bitIndex == 8)
-                {
-                    bitIndex = 0;
-                    byteIndex++;
-                }
+            }
+            byte[] addr_byte = BitConverter.GetBytes(addr_val);
+            byte temp;
+            for(int i=0;i<addr_byte.Length/2;i++)
+            {
+                temp = addr_byte[i];
+                addr_byte[i] = addr_byte[addr_byte.Length - i - 1];
+                addr_byte[addr_byte.Length - i - 1] = temp;
             }
             if (size == Globals.VIRTUAL_ADD_LEN)
             {
-                v_addr_stat.Text = BitConverter.ToString(arr2).Replace("-", " ");
+                v_addr_stat.Text = BitConverter.ToString(addr_byte).Replace("-", " ").Substring(6,17);
                 v_addr_stat.Visible = true;
                 v_addr_stat.Refresh();
             }
             else
             {
-                p_addr_stat.Text = BitConverter.ToString(arr2).Replace("-", " ");
+                string test = BitConverter.ToString(addr_byte).Replace("-", " ");
+                p_addr_stat.Text = BitConverter.ToString(addr_byte).Replace("-", " ").Substring(9, 14);
                 p_addr_stat.Visible = true;
                 p_addr_stat.Refresh();
             }

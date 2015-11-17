@@ -29,7 +29,7 @@ namespace Cache_Simulation
 
         public static Page_Table my_page_table = new Page_Table(1024, "test.txt");
 
-        public CPU_Frm form_cpu = new CPU_Frm();
+        public CPU_FRM form_cpu = new CPU_FRM();
 
         int speed_val;
         int [] loc = new int[24];
@@ -259,8 +259,32 @@ namespace Cache_Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            form_cpu = new CPU_Frm();
+            form_cpu = new CPU_FRM();
             form_cpu.Show();
+        }
+
+        private void pt_show_Click(object sender, EventArgs e)
+        {
+            PT_FRM form_pt = new PT_FRM();
+            form_pt.ShowDialog();
+        }
+
+        private void l3_cache_show_Click(object sender, EventArgs e)
+        {
+            L3Cache_FRM form_l3cache = new L3Cache_FRM();
+            form_l3cache.ShowDialog();
+        }
+
+        private void mem_show_Click(object sender, EventArgs e)
+        {
+            MEM_FRM form_mem = new MEM_FRM();
+            form_mem.ShowDialog();
+        }
+
+        private void disk_show_Click(object sender, EventArgs e)
+        {
+            DISK_FRM form_disk = new DISK_FRM();
+            form_disk.ShowDialog();
         }
 
         public int get_idx(string indata)
@@ -277,6 +301,25 @@ namespace Cache_Simulation
                 case "l3cache": return 8;
                 case "mem": return 9;
                 case "disk": return 10;
+
+                default: return 0;
+            }
+        }
+
+        public int get_exec_time(string indata)
+        {
+            switch (indata)
+            {
+                case "itlb": return Globals.L1_HIT;
+                case "dtlb": return Globals.L1_HIT;
+                case "tlb": return Globals.L2_HIT;
+                case "pt": return Globals.L3_HIT;
+                case "il1cache": return Globals.L1_HIT;
+                case "dl1cache": return Globals.L1_HIT;
+                case "l2cache": return Globals.L2_HIT;
+                case "l3cache": return Globals.L3_HIT;
+                case "mem": return Globals.MEM_ACCESS;
+                case "disk": return Globals.DISK_ACCESS;
 
                 default: return 0;
             }
@@ -342,7 +385,7 @@ namespace Cache_Simulation
             int dest_y = loc[2 * idx + 1];
 
             int tempx;
-            if (idx == 9) tempx = 40;
+            if (idx == 9) tempx = 40; //To Mem
             else if (idx == 10) tempx = -50;
             else tempx = 0;
 
@@ -396,6 +439,10 @@ namespace Cache_Simulation
             addr_hide();
             hit_miss_hide();
             rw_hide();
+
+            Globals.EXEC_TIME += get_exec_time(block);
+            exe_time.Text = Globals.EXEC_TIME.ToString();
+            exe_time.Refresh();
         }
 
 
@@ -482,7 +529,6 @@ namespace Cache_Simulation
         {
             return Convert.ToInt32(speed.Text);
         }
-
 
 
     }

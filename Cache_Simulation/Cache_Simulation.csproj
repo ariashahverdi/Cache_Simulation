@@ -55,11 +55,17 @@
       <DependentUpon>cache_block.cs</DependentUpon>
     </Compile>
     <Compile Include="CPU.cs" />
-    <Compile Include="CPU_Frm.cs">
+    <Compile Include="CPU_FRM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CPU_Frm.Designer.cs">
-      <DependentUpon>CPU_Frm.cs</DependentUpon>
+    <Compile Include="CPU_FRM.Designer.cs">
+      <DependentUpon>CPU_FRM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DISK_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DISK_FRM.Designer.cs">
+      <DependentUpon>DISK_FRM.cs</DependentUpon>
     </Compile>
     <Compile Include="dL1Cache_FRM.cs">
       <SubType>Form</SubType>
@@ -91,10 +97,28 @@
     <Compile Include="L2Cache_FRM.Designer.cs">
       <DependentUpon>L2Cache_FRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="L3Cache_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="L3Cache_FRM.Designer.cs">
+      <DependentUpon>L3Cache_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Memory.cs" />
     <Compile Include="Memory_Controller.cs" />
+    <Compile Include="MEM_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MEM_FRM.Designer.cs">
+      <DependentUpon>MEM_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Page_Table.cs" />
     <Compile Include="pte.cs" />
+    <Compile Include="PT_FRM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PT_FRM.Designer.cs">
+      <DependentUpon>PT_FRM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Simulator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,8 +143,8 @@
     <EmbeddedResource Include="cache_block.resx">
       <DependentUpon>cache_block.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CPU_Frm.resx">
-      <DependentUpon>CPU_Frm.cs</DependentUpon>
+    <EmbeddedResource Include="CPU_FRM.resx">
+      <DependentUpon>CPU_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dL1Cache_FRM.resx">
       <DependentUpon>dL1Cache_FRM.cs</DependentUpon>
@@ -136,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="L2Cache_FRM.resx">
       <DependentUpon>L2Cache_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MEM_FRM.resx">
+      <DependentUpon>MEM_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simulator.resx">
       <DependentUpon>Simulator.cs</DependentUpon>

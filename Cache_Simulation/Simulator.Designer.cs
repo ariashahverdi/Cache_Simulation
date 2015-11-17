@@ -57,6 +57,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.p_addr_stat = new System.Windows.Forms.Label();
             this.read_write_stat = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.exe_time = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // start
@@ -192,6 +194,7 @@
             this.l3_cache_show.TabIndex = 15;
             this.l3_cache_show.Text = "L3 Cache";
             this.l3_cache_show.UseVisualStyleBackColor = true;
+            this.l3_cache_show.Click += new System.EventHandler(this.l3_cache_show_Click);
             // 
             // itlb_show
             // 
@@ -263,6 +266,7 @@
             this.pt_show.TabIndex = 22;
             this.pt_show.Text = "Page Table";
             this.pt_show.UseVisualStyleBackColor = true;
+            this.pt_show.Click += new System.EventHandler(this.pt_show_Click);
             // 
             // mem_show
             // 
@@ -272,6 +276,7 @@
             this.mem_show.TabIndex = 23;
             this.mem_show.Text = "Main Memory";
             this.mem_show.UseVisualStyleBackColor = true;
+            this.mem_show.Click += new System.EventHandler(this.mem_show_Click);
             // 
             // disk_show
             // 
@@ -281,6 +286,7 @@
             this.disk_show.TabIndex = 24;
             this.disk_show.Text = "Disk";
             this.disk_show.UseVisualStyleBackColor = true;
+            this.disk_show.Click += new System.EventHandler(this.disk_show_Click);
             // 
             // hit_miss_stat
             // 
@@ -353,11 +359,32 @@
             this.read_write_stat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.read_write_stat.Visible = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(834, 456);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(131, 20);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "Execution Time";
+            // 
+            // exe_time
+            // 
+            this.exe_time.AutoSize = true;
+            this.exe_time.Location = new System.Drawing.Point(1045, 456);
+            this.exe_time.Name = "exe_time";
+            this.exe_time.Size = new System.Drawing.Size(18, 20);
+            this.exe_time.TabIndex = 32;
+            this.exe_time.Text = "0";
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 649);
+            this.Controls.Add(this.exe_time);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.read_write_stat);
             this.Controls.Add(this.p_addr_stat);
             this.Controls.Add(this.label8);
@@ -426,6 +453,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label p_addr_stat;
         private System.Windows.Forms.Label read_write_stat;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label exe_time;
     }
 }
 

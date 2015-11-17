@@ -1,6 +1,6 @@
 ﻿namespace Cache_Simulation
 {
-    partial class CPU_Frm
+    partial class CPU_FRM
     {
         /// <summary>
         /// Required designer variable.

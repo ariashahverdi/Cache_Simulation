@@ -18,6 +18,15 @@ public static class Globals
     public const int BYTE_OFF_LEN = 6; // 6 bits
     public const int DATA_BYTE_LEN = 8; // 8 bytes
 
+    public const int L1_HIT = 4;
+    public const int L2_HIT = 8;
+    public const int L3_HIT = 16;
+
+    public const int MEM_ACCESS = 100;
+    public const int DISK_ACCESS = 100000;
+
+    public static int EXEC_TIME = 0;
+
 }
 
 namespace Cache_Simulation

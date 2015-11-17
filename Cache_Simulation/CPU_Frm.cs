@@ -11,9 +11,9 @@ using System.Threading;
 
 namespace Cache_Simulation
 {
-    public partial class CPU_Frm : Form
+    public partial class CPU_FRM : Form
     {
-        public CPU_Frm()
+        public CPU_FRM()
         {
             InitializeComponent();
         }

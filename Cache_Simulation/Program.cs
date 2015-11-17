@@ -18,7 +18,7 @@ public static class Globals
     public const int BYTE_OFF_LEN = 6; // 6 bits
     public const int DATA_BYTE_LEN = 8; // 8 bytes
 
-    public const int L1_HIT = 4;
+    public const int L1_HIT = 4; 
     public const int L2_HIT = 8;
     public const int L3_HIT = 16;
 

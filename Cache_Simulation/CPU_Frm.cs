@@ -28,8 +28,7 @@ namespace Cache_Simulation
             textBox5.Text = BitConverter.ToString(Simulator.my_cpu.IR1).Replace("-", " ");
             textBox6.Text = BitConverter.ToString(Simulator.my_cpu.IR2).Replace("-", " ");
 
-            textBox7.Text = Simulator.my_cpu.PC
-                .ToString();
+            textBox7.Text = Simulator.my_cpu.PC.ToString();
 
         }
 

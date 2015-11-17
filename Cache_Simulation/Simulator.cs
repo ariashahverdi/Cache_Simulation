@@ -31,6 +31,7 @@ namespace Cache_Simulation
         public static Page_Table my_page_table = new Page_Table(1024, "test.txt");
 
         public CPU_FRM form_cpu = new CPU_FRM();
+        public STAT_FRM form_stat = new STAT_FRM();
 
         int speed_val;
         int [] loc = new int[24];
@@ -314,7 +315,7 @@ namespace Cache_Simulation
                 case "itlb": return Globals.L1_HIT;
                 case "dtlb": return Globals.L1_HIT;
                 case "tlb": return Globals.L2_HIT;
-                case "pt": return Globals.L3_HIT;
+                case "pt": return Globals.MEM_ACCESS;
                 case "il1cache": return Globals.L1_HIT;
                 case "dl1cache": return Globals.L1_HIT;
                 case "l2cache": return Globals.L2_HIT;
@@ -444,6 +445,8 @@ namespace Cache_Simulation
             Globals.EXEC_TIME += get_exec_time(block);
             exe_time.Text = Globals.EXEC_TIME.ToString();
             exe_time.Refresh();
+
+            form_stat.Refresh();
         }
 
 
@@ -531,6 +534,10 @@ namespace Cache_Simulation
             return Convert.ToInt32(speed.Text);
         }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            form_stat = new STAT_FRM();
+            form_stat.Show();
+        }
     }
 }

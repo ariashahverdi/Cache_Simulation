@@ -25,7 +25,7 @@ namespace Cache_Simulation
             for (int i = (page_num-1)*page_size; i <page_num*page_size; i++)
             {
                 string[] data = new string[2] { num.ToString(), val.ToString() };
-                data = new string[] { i.ToString(), Simulator.my_memory.main_mem[i].ToString() };
+                data = new string[] { i.ToString(), Simulator.my_memory.main_mem[i].ToString("X") };
                 mem_show.Rows.Add(data);
                 mem_show.FirstDisplayedScrollingRowIndex = mem_show.RowCount - 1;
 

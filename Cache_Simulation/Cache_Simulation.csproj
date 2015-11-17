@@ -146,6 +146,9 @@
     <EmbeddedResource Include="CPU_FRM.resx">
       <DependentUpon>CPU_FRM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DISK_FRM.resx">
+      <DependentUpon>DISK_FRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dL1Cache_FRM.resx">
       <DependentUpon>dL1Cache_FRM.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,8 +164,14 @@
     <EmbeddedResource Include="L2Cache_FRM.resx">
       <DependentUpon>L2Cache_FRM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="L3Cache_FRM.resx">
+      <DependentUpon>L3Cache_FRM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MEM_FRM.resx">
       <DependentUpon>MEM_FRM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PT_FRM.resx">
+      <DependentUpon>PT_FRM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simulator.resx">
       <DependentUpon>Simulator.cs</DependentUpon>

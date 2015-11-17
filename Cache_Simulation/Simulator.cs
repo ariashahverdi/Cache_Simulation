@@ -26,6 +26,7 @@ namespace Cache_Simulation
         public static cache my_il1cache = new cache(4, 128, 23, 64);
         public static cache my_dl1cache = new cache(8, 64, 24, 64);
         public static cache my_l2cache = new cache(8, 512, 21, 64);
+        public static cache my_l3cache = new cache(1024, 1, 30, 64);
 
         public static Page_Table my_page_table = new Page_Table(1024, "test.txt");
 

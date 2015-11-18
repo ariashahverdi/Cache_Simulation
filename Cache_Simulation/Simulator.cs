@@ -446,7 +446,21 @@ namespace Cache_Simulation
             exe_time.Text = Globals.EXEC_TIME.ToString();
             exe_time.Refresh();
 
-            form_stat.Refresh();
+
+            Globals.il1cache_hit = rand.Next(100); Globals.il1cache_miss = rand.Next(100); Globals.il1cache_access = Globals.il1cache_hit + Globals.il1cache_miss;
+            Globals.dl1cache_hit = rand.Next(100); Globals.dl1cache_miss = rand.Next(100); Globals.dl1cache_access = Globals.dl1cache_hit + Globals.dl1cache_miss;
+            Globals.l2cache_hit = rand.Next(100); Globals.l2cache_miss = rand.Next(100); Globals.l2cache_access = Globals.l2cache_hit + Globals.l2cache_miss;
+            Globals.l3cache_hit = rand.Next(100); Globals.l3cache_miss = rand.Next(100); Globals.l3cache_access = Globals.l3cache_hit + Globals.l3cache_miss;
+
+            Globals.itlb_hit = rand.Next(100); Globals.itlb_miss = rand.Next(100); Globals.itlb_access = Globals.itlb_hit + Globals.itlb_miss;
+            Globals.dtlb_hit = rand.Next(100); Globals.dtlb_miss = rand.Next(100); Globals.dtlb_access = Globals.dtlb_hit + Globals.dtlb_miss;
+            Globals.tlb_hit = rand.Next(100); Globals.tlb_miss = rand.Next(100); Globals.tlb_access = Globals.tlb_hit + Globals.tlb_miss;
+            Globals.pt_hit = rand.Next(100); Globals.pt_miss = rand.Next(100); Globals.pt_access = Globals.pt_hit + Globals.pt_miss;
+
+            Globals.mem_access += 1;
+            Globals.disk_access += 1;
+
+        form_stat.refresh();
         }
 
 

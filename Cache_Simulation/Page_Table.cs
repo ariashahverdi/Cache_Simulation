@@ -48,13 +48,13 @@ namespace Cache_Simulation
 
             string line;
             // Read the file and display it line by line.
-            System.IO.StreamReader file = new System.IO.StreamReader("../../test.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader("../../test.hex");
             char[] delimiterChars = { ' ' };
             while ((line = file.ReadLine()) != null)
             {
                 string[] words = line.Split(delimiterChars);
-                int page_size = Convert.ToInt32(words[0]);
-                ulong address = Convert.ToUInt64(words[1]);
+                int page_size = Convert.ToInt32(words[1]);
+                ulong address = Convert.ToUInt64(words[0]);
 
                 // add the page_table entry
                 int iterator = 0;

@@ -86,7 +86,7 @@ namespace Cache_Simulation
                     {
                         R[dst_reg] = R[src1_reg] + R[src2_reg];
                     }
-                    else if(src2_add_mode == 1)
+                    else if(src2_add_mode == 3)
                     {
                         R[dst_reg] = R[src1_reg] + inst_addr;
                     }

@@ -446,7 +446,7 @@ namespace Cache_Simulation
             exe_time.Text = Globals.EXEC_TIME.ToString();
             exe_time.Refresh();
 
-
+            /*
             Globals.il1cache_hit = rand.Next(100); Globals.il1cache_miss = rand.Next(100); Globals.il1cache_access = Globals.il1cache_hit + Globals.il1cache_miss;
             Globals.dl1cache_hit = rand.Next(100); Globals.dl1cache_miss = rand.Next(100); Globals.dl1cache_access = Globals.dl1cache_hit + Globals.dl1cache_miss;
             Globals.l2cache_hit = rand.Next(100); Globals.l2cache_miss = rand.Next(100); Globals.l2cache_access = Globals.l2cache_hit + Globals.l2cache_miss;
@@ -459,6 +459,7 @@ namespace Cache_Simulation
 
             Globals.mem_access += 1;
             Globals.disk_access += 1;
+            */
 
         form_stat.refresh();
         }

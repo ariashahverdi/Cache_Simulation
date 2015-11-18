@@ -9,15 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-public static class ModifyProgressBarColor
-{
-    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-    static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
-    public static void SetState(this ProgressBar pBar, int state)
-    {
-        SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
-    }
-}
+using System.Threading;
+
+
 
 namespace Cache_Simulation
 {
@@ -33,7 +27,6 @@ namespace Cache_Simulation
             itlb_hit.Value = (int)((Globals.itlb_hit / Globals.itlb_access)*100);
             itlb_miss.Value = (int)((Globals.itlb_miss / Globals.itlb_access) * 100);
             ModifyProgressBarColor.SetState(itlb_miss, 2);
-
 
             dtlb_hit.Value = (int)((Globals.dtlb_hit / Globals.dtlb_access) * 100);
             dtlb_miss.Value = (int)((Globals.dtlb_miss / Globals.dtlb_access) * 100);
@@ -65,7 +58,19 @@ namespace Cache_Simulation
 
             mem_access.Value = Globals.mem_access;
             disk_access.Value = Globals.disk_access;
+
+            Application.DoEvents();
         }
 
+    }
+}
+
+public static class ModifyProgressBarColor
+{
+    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+    static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+    public static void SetState(this ProgressBar pBar, int state)
+    {
+        SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
     }
 }

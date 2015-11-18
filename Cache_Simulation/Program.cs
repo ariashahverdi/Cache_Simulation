@@ -33,7 +33,7 @@ public static class Globals
     public static double l2cache_hit, l2cache_miss, l2cache_access = 1;
     public static double l3cache_hit, l3cache_miss, l3cache_access = 1;
 
-    public static double itlb_hit, itlb_miss, itlb_access = 1;
+    public static double itlb_hit , itlb_miss, itlb_access = 1;
     public static double dtlb_hit, dtlb_miss, dtlb_access = 1;
     public static double tlb_hit, tlb_miss, tlb_access = 1;
     public static double pt_hit, pt_miss, pt_access = 1;

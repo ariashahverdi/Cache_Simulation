@@ -20,7 +20,6 @@ namespace Cache_Simulation
         public STAT_FRM()
         {
             InitializeComponent();
-            ModifyProgressBarColor.SetState(itlb_miss, 2);
         }
 
         public void refresh()

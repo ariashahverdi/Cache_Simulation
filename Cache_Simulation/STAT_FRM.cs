@@ -20,6 +20,7 @@ namespace Cache_Simulation
         public STAT_FRM()
         {
             InitializeComponent();
+            //ModifyProgressBarColor.SetState(itlb_miss, 2);
         }
 
         public void refresh()
@@ -28,14 +29,17 @@ namespace Cache_Simulation
             {
                 itlb_hit.Value = (int)((Globals.itlb_hit / (Globals.itlb_hit + Globals.itlb_miss)) * 100);
                 itlb_miss.Value = (int)((Globals.itlb_miss / (Globals.itlb_hit + Globals.itlb_miss)) * 100);
-                //ModifyProgressBarColor.SetState(itlb_miss, 2);
+               // ModifyProgressBarColor.SetState(itlb_miss, 2);
+               // itlb_miss.Refresh();
             }
             else
             {
                 itlb_hit.Value = (int)((Globals.itlb_hit / 1) * 100);
                 itlb_miss.Value = (int)((Globals.itlb_miss / 1) * 100);
-                //ModifyProgressBarColor.SetState(itlb_miss, 2);
+               // ModifyProgressBarColor.SetState(itlb_miss, 2);
+                //itlb_miss.Refresh();
             }
+            //itlb_miss.SetState(2); 
 
             if ((Globals.dtlb_hit + Globals.dtlb_miss) != 0)
             {
@@ -137,12 +141,3 @@ namespace Cache_Simulation
     }
 }
 
-public static class ModifyProgressBarColor
-{
-    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-    static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
-    public static void SetState(this ProgressBar pBar, int state)
-    {
-        SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
-    }
-}

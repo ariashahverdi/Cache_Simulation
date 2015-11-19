@@ -28,15 +28,15 @@ public static class Globals
     public static int EXEC_TIME = 0;
 
 
-    public static double il1cache_hit, il1cache_miss, il1cache_access = 1;
-    public static double dl1cache_hit, dl1cache_miss, dl1cache_access = 1;
-    public static double l2cache_hit, l2cache_miss, l2cache_access = 1;
-    public static double l3cache_hit, l3cache_miss, l3cache_access = 1;
+    public static double il1cache_hit = 0, il1cache_miss =0;
+    public static double dl1cache_hit =0, dl1cache_miss =0;
+    public static double l2cache_hit =0 , l2cache_miss =0;
+    public static double l3cache_hit =0, l3cache_miss =0;
 
-    public static double itlb_hit , itlb_miss, itlb_access = 1;
-    public static double dtlb_hit, dtlb_miss, dtlb_access = 1;
-    public static double tlb_hit, tlb_miss, tlb_access = 1;
-    public static double pt_hit, pt_miss, pt_access = 1;
+    public static double itlb_hit , itlb_miss;
+    public static double dtlb_hit, dtlb_miss;
+    public static double tlb_hit, tlb_miss;
+    public static double pt_hit, pt_miss;
 
     public static int mem_access = 1;
     public static int disk_access = 1;

@@ -24,16 +24,18 @@ namespace Cache_Simulation
             // check for ITLB
             if(!(Simulator.my_itlb.read_from_tlb(vaddress, paddress, temp_protection)))
             {
+                Globals.itlb_miss++;
                 Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
-
                 // check for TLB
                 if (!(Simulator.my_tlb.read_from_tlb(vaddress, paddress, temp_protection)))
                 {
+                    Globals.tlb_miss++;
                     Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
-
 
                     // check for Page Table
                     Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+
+                    Globals.pt_hit++;
                     Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
                     for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
                     {
@@ -57,8 +59,8 @@ namespace Cache_Simulation
                 }
                 else
                 {
+                    Globals.tlb_hit++;
                     Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
-
                     // write to ITLB
                     Simulator.my_itlb.write_to_tlb(vaddress, paddress, temp_protection);
                     Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
@@ -66,6 +68,7 @@ namespace Cache_Simulation
             }
             else
             {
+                Globals.itlb_hit++;
                 Program.my_sim.DrawLine("itlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
             }
 
@@ -93,16 +96,17 @@ namespace Cache_Simulation
             // check for DTLB
             if (!(Simulator.my_dtlb.read_from_tlb(vaddress, paddress, temp_protection)))
             {
+                Globals.dtlb_miss++;
                 Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
-
                 // check for TLB
                 if (!(Simulator.my_tlb.read_from_tlb(vaddress, paddress, temp_protection)))
                 {
+                    Globals.tlb_miss++;
                     Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
-
 
                     // check for Page Table
                     Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+                    Globals.pt_hit++;
                     Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
                     for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
                     {
@@ -126,8 +130,8 @@ namespace Cache_Simulation
                 }
                 else
                 {
+                    Globals.tlb_hit++;
                     Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
-
                     // write to DTLB
                     Simulator.my_dtlb.write_to_tlb(vaddress, paddress, temp_protection);
                     Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "write");
@@ -135,6 +139,7 @@ namespace Cache_Simulation
             }
             else
             {
+                Globals.dtlb_hit++;
                 Program.my_sim.DrawLine("dtlb", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
             }
 
@@ -166,14 +171,17 @@ namespace Cache_Simulation
             //check for il1 cache
             if (!(Simulator.my_il1cache.read_from_cache(address, 8, ir1)))
             {
+                Globals.il1cache_miss++;
                 Program.my_sim.DrawLine("il1cache", Globals.PHYSICAL_ADD_LEN, address, false, "read");
                 //check for l2 cache
                 if (!(Simulator.my_l2cache.read_from_cache(address, 8, ir1)))
                 {
                     // L2 is missed
+                    Globals.l2cache_miss++;
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, false, "read");
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, ir1, 8);
+                    Globals.mem_access++;
                     Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true, "read");
 
                     // read 64 bytes from main memory
@@ -204,6 +212,7 @@ namespace Cache_Simulation
                 else
                 {
                     // L2 is hit
+                    Globals.l2cache_hit++;
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true, "read");
                     // read the block from L2 cache and write the value to iL1
                     // read 64 bytes from L2 Cache
@@ -231,6 +240,7 @@ namespace Cache_Simulation
             }
             else
             {
+                Globals.il1cache_hit++;
                 Program.my_sim.DrawLine("il1cache", Globals.PHYSICAL_ADD_LEN, address, true, "read");
             }
             /*
@@ -263,14 +273,17 @@ namespace Cache_Simulation
             //check for dl1 cache
             if (!(Simulator.my_dl1cache.read_from_cache(address, 8, temp_data)))
             {
+                Globals.dl1cache_miss++;
                 Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, false, "read");
                 //check for l2 cache
                 if (!(Simulator.my_l2cache.read_from_cache(address, 8, temp_data)))
                 {
                     // L2 is missed
+                    Globals.l2cache_miss ++;
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, false, "read");
                     //check for memory
                     Simulator.my_memory.read_from_memory(address, temp_data, 8);
+                    Globals.mem_access++;
                     Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true, "read");
 
                     // read 64 bytes from main memory
@@ -301,6 +314,7 @@ namespace Cache_Simulation
                 else
                 {
                     // L2 is hit
+                    Globals.l2cache_hit++;
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true, "read");
                     // read the block from L2 cache and write the value to dL1
                     // read 64 bytes from L2 Cache
@@ -328,6 +342,7 @@ namespace Cache_Simulation
             }
             else
             {
+                Globals.dl1cache_hit++;
                 Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, true, "read");
             }
 
@@ -361,6 +376,7 @@ namespace Cache_Simulation
             if (!(Simulator.my_dl1cache.write_to_cache(address, 8, temp_data, drt_in, ad_out, dt_out, ref drt_out)))
             {
                 //write to dl1 has not been successful
+                Globals.dl1cache_miss++;
                 Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, false, "write");
                 //now let's write to l2 cache
                 drt_in = false; // write-through
@@ -368,9 +384,11 @@ namespace Cache_Simulation
                 if (!(Simulator.my_l2cache.write_to_cache(address, 8, temp_data, drt_in, ad_out, dt_out, ref drt_out)))
                 {
                     //write to l2 has not been successful
+                    Globals.l2cache_miss++;
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, false, "write");
                     //now let's write to memory
                     Simulator.my_memory.write_to_memory(address, temp_data, 8);
+                    Globals.mem_access++;
                     Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, address, true, "write");
                     // now lets read 64 bytes from memory
                     byte[] temp_block = new byte[64];
@@ -396,6 +414,7 @@ namespace Cache_Simulation
                 else
                 {
                     //write to l2 has been successful
+                    Globals.l2cache_hit++;
                     Program.my_sim.DrawLine("l2cache", Globals.PHYSICAL_ADD_LEN, address, true, "write");
                     // now lets write 64 bytes to dl1
                     // read 64 bytes from l2
@@ -425,6 +444,7 @@ namespace Cache_Simulation
             else
             {
                 //write to dl1 has been successful
+                Globals.dl1cache_hit ++;
                 Program.my_sim.DrawLine("dl1cache", Globals.PHYSICAL_ADD_LEN, address, true, "write");
                 //now let's write to l2 cache
                 drt_in = false; // write-through

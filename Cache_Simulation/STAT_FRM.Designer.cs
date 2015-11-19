@@ -51,34 +51,36 @@ namespace Cache_Simulation
             this.pt_label = new System.Windows.Forms.Label();
             this.mem_label = new System.Windows.Forms.Label();
             this.disk_label = new System.Windows.Forms.Label();
-            this.itlb_hit = new NewProgressBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.itlb_miss = new NewProgressBar();
-            this.dtlb_miss = new NewProgressBar();
-            this.dtlb_hit = new NewProgressBar();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tlb_miss = new NewProgressBar();
-            this.tlb_hit = new NewProgressBar();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pt_miss = new NewProgressBar();
-            this.pt_hit = new NewProgressBar();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.il1cache_miss = new NewProgressBar();
-            this.il1cache_hit = new NewProgressBar();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.dl1cache_miss = new NewProgressBar();
-            this.dl1cache_hit = new NewProgressBar();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.l2cache_miss = new NewProgressBar();
-            this.l2cache_hit = new NewProgressBar();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.l3cache_miss = new NewProgressBar();
-            this.l3cache_hit = new NewProgressBar();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.mem_access = new NewProgressBar();
+            this.itlb_hit_num = new System.Windows.Forms.TextBox();
+            this.itlb_miss_num = new System.Windows.Forms.TextBox();
             this.disk_access = new NewProgressBar();
+            this.mem_access = new NewProgressBar();
+            this.dtlb_miss = new NewProgressBar();
+            this.dtlb_hit = new NewProgressBar();
+            this.itlb_miss = new NewProgressBar();
+            this.itlb_hit = new NewProgressBar();
+            this.tlb_miss = new NewProgressBar();
+            this.tlb_hit = new NewProgressBar();
+            this.pt_miss = new NewProgressBar();
+            this.pt_hit = new NewProgressBar();
+            this.il1cache_miss = new NewProgressBar();
+            this.il1cache_hit = new NewProgressBar();
+            this.dl1cache_miss = new NewProgressBar();
+            this.dl1cache_hit = new NewProgressBar();
+            this.l2cache_miss = new NewProgressBar();
+            this.l2cache_hit = new NewProgressBar();
+            this.l3cache_miss = new NewProgressBar();
+            this.l3cache_hit = new NewProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -201,14 +203,6 @@ namespace Cache_Simulation
             this.disk_label.TabIndex = 16;
             this.disk_label.Text = "Disk Access";
             // 
-            // itlb_hit
-            // 
-            this.itlb_hit.ForeColor = System.Drawing.Color.Green;
-            this.itlb_hit.Location = new System.Drawing.Point(89, 79);
-            this.itlb_hit.Name = "itlb_hit";
-            this.itlb_hit.Size = new System.Drawing.Size(160, 35);
-            this.itlb_hit.TabIndex = 22;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -217,30 +211,6 @@ namespace Cache_Simulation
             this.pictureBox1.Size = new System.Drawing.Size(188, 252);
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
-            // 
-            // itlb_miss
-            // 
-            this.itlb_miss.ForeColor = System.Drawing.Color.Red;
-            this.itlb_miss.Location = new System.Drawing.Point(89, 161);
-            this.itlb_miss.Name = "itlb_miss";
-            this.itlb_miss.Size = new System.Drawing.Size(160, 35);
-            this.itlb_miss.TabIndex = 24;
-            // 
-            // dtlb_miss
-            // 
-            this.dtlb_miss.ForeColor = System.Drawing.Color.Red;
-            this.dtlb_miss.Location = new System.Drawing.Point(297, 161);
-            this.dtlb_miss.Name = "dtlb_miss";
-            this.dtlb_miss.Size = new System.Drawing.Size(160, 35);
-            this.dtlb_miss.TabIndex = 28;
-            // 
-            // dtlb_hit
-            // 
-            this.dtlb_hit.ForeColor = System.Drawing.Color.Green;
-            this.dtlb_hit.Location = new System.Drawing.Point(297, 79);
-            this.dtlb_hit.Name = "dtlb_hit";
-            this.dtlb_hit.Size = new System.Drawing.Size(160, 35);
-            this.dtlb_hit.TabIndex = 26;
             // 
             // pictureBox2
             // 
@@ -251,22 +221,6 @@ namespace Cache_Simulation
             this.pictureBox2.TabIndex = 27;
             this.pictureBox2.TabStop = false;
             // 
-            // tlb_miss
-            // 
-            this.tlb_miss.ForeColor = System.Drawing.Color.Red;
-            this.tlb_miss.Location = new System.Drawing.Point(509, 161);
-            this.tlb_miss.Name = "tlb_miss";
-            this.tlb_miss.Size = new System.Drawing.Size(160, 35);
-            this.tlb_miss.TabIndex = 32;
-            // 
-            // tlb_hit
-            // 
-            this.tlb_hit.ForeColor = System.Drawing.Color.Green;
-            this.tlb_hit.Location = new System.Drawing.Point(509, 79);
-            this.tlb_hit.Name = "tlb_hit";
-            this.tlb_hit.Size = new System.Drawing.Size(160, 35);
-            this.tlb_hit.TabIndex = 30;
-            // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -275,22 +229,6 @@ namespace Cache_Simulation
             this.pictureBox3.Size = new System.Drawing.Size(188, 252);
             this.pictureBox3.TabIndex = 31;
             this.pictureBox3.TabStop = false;
-            // 
-            // pt_miss
-            // 
-            this.pt_miss.ForeColor = System.Drawing.Color.Red;
-            this.pt_miss.Location = new System.Drawing.Point(718, 161);
-            this.pt_miss.Name = "pt_miss";
-            this.pt_miss.Size = new System.Drawing.Size(160, 35);
-            this.pt_miss.TabIndex = 36;
-            // 
-            // pt_hit
-            // 
-            this.pt_hit.ForeColor = System.Drawing.Color.Green;
-            this.pt_hit.Location = new System.Drawing.Point(718, 79);
-            this.pt_hit.Name = "pt_hit";
-            this.pt_hit.Size = new System.Drawing.Size(160, 35);
-            this.pt_hit.TabIndex = 34;
             // 
             // pictureBox4
             // 
@@ -301,22 +239,6 @@ namespace Cache_Simulation
             this.pictureBox4.TabIndex = 35;
             this.pictureBox4.TabStop = false;
             // 
-            // il1cache_miss
-            // 
-            this.il1cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.il1cache_miss.Location = new System.Drawing.Point(89, 444);
-            this.il1cache_miss.Name = "il1cache_miss";
-            this.il1cache_miss.Size = new System.Drawing.Size(160, 35);
-            this.il1cache_miss.TabIndex = 40;
-            // 
-            // il1cache_hit
-            // 
-            this.il1cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.il1cache_hit.Location = new System.Drawing.Point(89, 362);
-            this.il1cache_hit.Name = "il1cache_hit";
-            this.il1cache_hit.Size = new System.Drawing.Size(160, 35);
-            this.il1cache_hit.TabIndex = 38;
-            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Peru;
@@ -325,22 +247,6 @@ namespace Cache_Simulation
             this.pictureBox5.Size = new System.Drawing.Size(188, 252);
             this.pictureBox5.TabIndex = 39;
             this.pictureBox5.TabStop = false;
-            // 
-            // dl1cache_miss
-            // 
-            this.dl1cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.dl1cache_miss.Location = new System.Drawing.Point(298, 444);
-            this.dl1cache_miss.Name = "dl1cache_miss";
-            this.dl1cache_miss.Size = new System.Drawing.Size(160, 35);
-            this.dl1cache_miss.TabIndex = 43;
-            // 
-            // dl1cache_hit
-            // 
-            this.dl1cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.dl1cache_hit.Location = new System.Drawing.Point(298, 362);
-            this.dl1cache_hit.Name = "dl1cache_hit";
-            this.dl1cache_hit.Size = new System.Drawing.Size(160, 35);
-            this.dl1cache_hit.TabIndex = 41;
             // 
             // pictureBox6
             // 
@@ -351,22 +257,6 @@ namespace Cache_Simulation
             this.pictureBox6.TabIndex = 42;
             this.pictureBox6.TabStop = false;
             // 
-            // l2cache_miss
-            // 
-            this.l2cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.l2cache_miss.Location = new System.Drawing.Point(510, 444);
-            this.l2cache_miss.Name = "l2cache_miss";
-            this.l2cache_miss.Size = new System.Drawing.Size(160, 35);
-            this.l2cache_miss.TabIndex = 46;
-            // 
-            // l2cache_hit
-            // 
-            this.l2cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.l2cache_hit.Location = new System.Drawing.Point(510, 362);
-            this.l2cache_hit.Name = "l2cache_hit";
-            this.l2cache_hit.Size = new System.Drawing.Size(160, 35);
-            this.l2cache_hit.TabIndex = 44;
-            // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Peru;
@@ -375,22 +265,6 @@ namespace Cache_Simulation
             this.pictureBox7.Size = new System.Drawing.Size(188, 252);
             this.pictureBox7.TabIndex = 45;
             this.pictureBox7.TabStop = false;
-            // 
-            // l3cache_miss
-            // 
-            this.l3cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.l3cache_miss.Location = new System.Drawing.Point(718, 444);
-            this.l3cache_miss.Name = "l3cache_miss";
-            this.l3cache_miss.Size = new System.Drawing.Size(160, 35);
-            this.l3cache_miss.TabIndex = 49;
-            // 
-            // l3cache_hit
-            // 
-            this.l3cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.l3cache_hit.Location = new System.Drawing.Point(718, 362);
-            this.l3cache_hit.Name = "l3cache_hit";
-            this.l3cache_hit.Size = new System.Drawing.Size(160, 35);
-            this.l3cache_hit.TabIndex = 47;
             // 
             // pictureBox8
             // 
@@ -419,13 +293,25 @@ namespace Cache_Simulation
             this.pictureBox10.TabIndex = 51;
             this.pictureBox10.TabStop = false;
             // 
-            // mem_access
+            // itlb_hit_num
             // 
-            this.mem_access.ForeColor = System.Drawing.Color.Blue;
-            this.mem_access.Location = new System.Drawing.Point(89, 630);
-            this.mem_access.Name = "mem_access";
-            this.mem_access.Size = new System.Drawing.Size(368, 35);
-            this.mem_access.TabIndex = 52;
+            this.itlb_hit_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.itlb_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.itlb_hit_num.Location = new System.Drawing.Point(122, 120);
+            this.itlb_hit_num.Name = "itlb_hit_num";
+            this.itlb_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.itlb_hit_num.TabIndex = 54;
+            this.itlb_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // itlb_miss_num
+            // 
+            this.itlb_miss_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.itlb_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.itlb_miss_num.Location = new System.Drawing.Point(122, 202);
+            this.itlb_miss_num.Name = "itlb_miss_num";
+            this.itlb_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.itlb_miss_num.TabIndex = 55;
+            this.itlb_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // disk_access
             // 
@@ -435,11 +321,149 @@ namespace Cache_Simulation
             this.disk_access.Size = new System.Drawing.Size(368, 35);
             this.disk_access.TabIndex = 53;
             // 
+            // mem_access
+            // 
+            this.mem_access.ForeColor = System.Drawing.Color.Blue;
+            this.mem_access.Location = new System.Drawing.Point(89, 630);
+            this.mem_access.Name = "mem_access";
+            this.mem_access.Size = new System.Drawing.Size(368, 35);
+            this.mem_access.TabIndex = 52;
+            // 
+            // dtlb_miss
+            // 
+            this.dtlb_miss.ForeColor = System.Drawing.Color.Red;
+            this.dtlb_miss.Location = new System.Drawing.Point(297, 161);
+            this.dtlb_miss.Name = "dtlb_miss";
+            this.dtlb_miss.Size = new System.Drawing.Size(160, 35);
+            this.dtlb_miss.TabIndex = 28;
+            // 
+            // dtlb_hit
+            // 
+            this.dtlb_hit.ForeColor = System.Drawing.Color.Green;
+            this.dtlb_hit.Location = new System.Drawing.Point(297, 79);
+            this.dtlb_hit.Name = "dtlb_hit";
+            this.dtlb_hit.Size = new System.Drawing.Size(160, 35);
+            this.dtlb_hit.TabIndex = 26;
+            // 
+            // itlb_miss
+            // 
+            this.itlb_miss.ForeColor = System.Drawing.Color.Red;
+            this.itlb_miss.Location = new System.Drawing.Point(89, 161);
+            this.itlb_miss.Name = "itlb_miss";
+            this.itlb_miss.Size = new System.Drawing.Size(160, 35);
+            this.itlb_miss.TabIndex = 24;
+            // 
+            // itlb_hit
+            // 
+            this.itlb_hit.ForeColor = System.Drawing.Color.Green;
+            this.itlb_hit.Location = new System.Drawing.Point(89, 79);
+            this.itlb_hit.Name = "itlb_hit";
+            this.itlb_hit.Size = new System.Drawing.Size(160, 35);
+            this.itlb_hit.TabIndex = 22;
+            // 
+            // tlb_miss
+            // 
+            this.tlb_miss.ForeColor = System.Drawing.Color.Red;
+            this.tlb_miss.Location = new System.Drawing.Point(509, 161);
+            this.tlb_miss.Name = "tlb_miss";
+            this.tlb_miss.Size = new System.Drawing.Size(160, 35);
+            this.tlb_miss.TabIndex = 32;
+            // 
+            // tlb_hit
+            // 
+            this.tlb_hit.ForeColor = System.Drawing.Color.Green;
+            this.tlb_hit.Location = new System.Drawing.Point(509, 79);
+            this.tlb_hit.Name = "tlb_hit";
+            this.tlb_hit.Size = new System.Drawing.Size(160, 35);
+            this.tlb_hit.TabIndex = 30;
+            // 
+            // pt_miss
+            // 
+            this.pt_miss.ForeColor = System.Drawing.Color.Red;
+            this.pt_miss.Location = new System.Drawing.Point(718, 161);
+            this.pt_miss.Name = "pt_miss";
+            this.pt_miss.Size = new System.Drawing.Size(160, 35);
+            this.pt_miss.TabIndex = 36;
+            // 
+            // pt_hit
+            // 
+            this.pt_hit.ForeColor = System.Drawing.Color.Green;
+            this.pt_hit.Location = new System.Drawing.Point(718, 79);
+            this.pt_hit.Name = "pt_hit";
+            this.pt_hit.Size = new System.Drawing.Size(160, 35);
+            this.pt_hit.TabIndex = 34;
+            // 
+            // il1cache_miss
+            // 
+            this.il1cache_miss.ForeColor = System.Drawing.Color.Red;
+            this.il1cache_miss.Location = new System.Drawing.Point(89, 444);
+            this.il1cache_miss.Name = "il1cache_miss";
+            this.il1cache_miss.Size = new System.Drawing.Size(160, 35);
+            this.il1cache_miss.TabIndex = 40;
+            // 
+            // il1cache_hit
+            // 
+            this.il1cache_hit.ForeColor = System.Drawing.Color.Green;
+            this.il1cache_hit.Location = new System.Drawing.Point(89, 362);
+            this.il1cache_hit.Name = "il1cache_hit";
+            this.il1cache_hit.Size = new System.Drawing.Size(160, 35);
+            this.il1cache_hit.TabIndex = 38;
+            // 
+            // dl1cache_miss
+            // 
+            this.dl1cache_miss.ForeColor = System.Drawing.Color.Red;
+            this.dl1cache_miss.Location = new System.Drawing.Point(298, 444);
+            this.dl1cache_miss.Name = "dl1cache_miss";
+            this.dl1cache_miss.Size = new System.Drawing.Size(160, 35);
+            this.dl1cache_miss.TabIndex = 43;
+            // 
+            // dl1cache_hit
+            // 
+            this.dl1cache_hit.ForeColor = System.Drawing.Color.Green;
+            this.dl1cache_hit.Location = new System.Drawing.Point(298, 362);
+            this.dl1cache_hit.Name = "dl1cache_hit";
+            this.dl1cache_hit.Size = new System.Drawing.Size(160, 35);
+            this.dl1cache_hit.TabIndex = 41;
+            // 
+            // l2cache_miss
+            // 
+            this.l2cache_miss.ForeColor = System.Drawing.Color.Red;
+            this.l2cache_miss.Location = new System.Drawing.Point(510, 444);
+            this.l2cache_miss.Name = "l2cache_miss";
+            this.l2cache_miss.Size = new System.Drawing.Size(160, 35);
+            this.l2cache_miss.TabIndex = 46;
+            // 
+            // l2cache_hit
+            // 
+            this.l2cache_hit.ForeColor = System.Drawing.Color.Green;
+            this.l2cache_hit.Location = new System.Drawing.Point(510, 362);
+            this.l2cache_hit.Name = "l2cache_hit";
+            this.l2cache_hit.Size = new System.Drawing.Size(160, 35);
+            this.l2cache_hit.TabIndex = 44;
+            // 
+            // l3cache_miss
+            // 
+            this.l3cache_miss.ForeColor = System.Drawing.Color.Red;
+            this.l3cache_miss.Location = new System.Drawing.Point(718, 444);
+            this.l3cache_miss.Name = "l3cache_miss";
+            this.l3cache_miss.Size = new System.Drawing.Size(160, 35);
+            this.l3cache_miss.TabIndex = 49;
+            // 
+            // l3cache_hit
+            // 
+            this.l3cache_hit.ForeColor = System.Drawing.Color.Green;
+            this.l3cache_hit.Location = new System.Drawing.Point(718, 362);
+            this.l3cache_hit.Name = "l3cache_hit";
+            this.l3cache_hit.Size = new System.Drawing.Size(160, 35);
+            this.l3cache_hit.TabIndex = 47;
+            // 
             // STAT_FRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 793);
+            this.Controls.Add(this.itlb_miss_num);
+            this.Controls.Add(this.itlb_hit_num);
             this.Controls.Add(this.disk_access);
             this.Controls.Add(this.mem_access);
             this.Controls.Add(this.dtlb_label);
@@ -535,6 +559,8 @@ namespace Cache_Simulation
         private NewProgressBar l3cache_hit;
         private NewProgressBar mem_access;
         private NewProgressBar disk_access;
+        private TextBox itlb_hit_num;
+        private TextBox itlb_miss_num;
     }
 }
 

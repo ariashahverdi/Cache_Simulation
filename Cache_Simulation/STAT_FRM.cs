@@ -25,20 +25,22 @@ namespace Cache_Simulation
 
         public void refresh()
         {
+            double itlb_hit_val, itlb_miss_val;
             if ((Globals.itlb_hit + Globals.itlb_miss) != 0)
             {
-                itlb_hit.Value = (int)((Globals.itlb_hit / (Globals.itlb_hit + Globals.itlb_miss)) * 100);
-                itlb_miss.Value = (int)((Globals.itlb_miss / (Globals.itlb_hit + Globals.itlb_miss)) * 100);
-               // ModifyProgressBarColor.SetState(itlb_miss, 2);
-               // itlb_miss.Refresh();
+                itlb_hit_val = (Globals.itlb_hit / (Globals.itlb_hit + Globals.itlb_miss) )* 100;
+                itlb_miss_val = (Globals.itlb_miss / (Globals.itlb_hit + Globals.itlb_miss)) * 100;
             }
             else
             {
-                itlb_hit.Value = (int)((Globals.itlb_hit / 1) * 100);
-                itlb_miss.Value = (int)((Globals.itlb_miss / 1) * 100);
-               // ModifyProgressBarColor.SetState(itlb_miss, 2);
-                //itlb_miss.Refresh();
+                itlb_hit_val = (Globals.itlb_hit / 1) * 100;
+                itlb_miss_val = (Globals.itlb_miss / 1) * 100;
             }
+            itlb_hit.Value = (int)itlb_hit_val;
+            itlb_miss.Value = (int)itlb_miss_val;
+            itlb_hit_num.Text = itlb_hit_val.ToString("N" + 3);
+            itlb_miss_num.Text = itlb_miss_val.ToString("N" + 3);
+
             //itlb_miss.SetState(2); 
 
             if ((Globals.dtlb_hit + Globals.dtlb_miss) != 0)

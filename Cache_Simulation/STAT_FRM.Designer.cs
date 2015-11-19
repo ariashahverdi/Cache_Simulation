@@ -63,6 +63,30 @@ namespace Cache_Simulation
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.itlb_hit_num = new System.Windows.Forms.TextBox();
             this.itlb_miss_num = new System.Windows.Forms.TextBox();
+            this.itlb_acs_num = new System.Windows.Forms.TextBox();
+            this.dtlb_acs_num = new System.Windows.Forms.TextBox();
+            this.dtlb_hit_num = new System.Windows.Forms.TextBox();
+            this.dtlb_miss_num = new System.Windows.Forms.TextBox();
+            this.tlb_acs_num = new System.Windows.Forms.TextBox();
+            this.tlb_hit_num = new System.Windows.Forms.TextBox();
+            this.tlb_miss_num = new System.Windows.Forms.TextBox();
+            this.pt_miss_num = new System.Windows.Forms.TextBox();
+            this.pt_hit_num = new System.Windows.Forms.TextBox();
+            this.pt_acs_num = new System.Windows.Forms.TextBox();
+            this.il1cache_miss_num = new System.Windows.Forms.TextBox();
+            this.il1cache_hit_num = new System.Windows.Forms.TextBox();
+            this.dl1cache_hit_num = new System.Windows.Forms.TextBox();
+            this.dl1cache_miss_num = new System.Windows.Forms.TextBox();
+            this.l2cache_hit_num = new System.Windows.Forms.TextBox();
+            this.l2cache_miss_num = new System.Windows.Forms.TextBox();
+            this.l3cache_hit_num = new System.Windows.Forms.TextBox();
+            this.l3cache_miss_num = new System.Windows.Forms.TextBox();
+            this.il1cache_acs_num = new System.Windows.Forms.TextBox();
+            this.dl1cache_acs_num = new System.Windows.Forms.TextBox();
+            this.l2cache_acs_num = new System.Windows.Forms.TextBox();
+            this.l3cache_acs_num = new System.Windows.Forms.TextBox();
+            this.mem_acs_num = new System.Windows.Forms.TextBox();
+            this.disk_acs_num = new System.Windows.Forms.TextBox();
             this.disk_access = new NewProgressBar();
             this.mem_access = new NewProgressBar();
             this.dtlb_miss = new NewProgressBar();
@@ -98,7 +122,7 @@ namespace Cache_Simulation
             this.il1cache_label.AutoSize = true;
             this.il1cache_label.BackColor = System.Drawing.Color.Peru;
             this.il1cache_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.il1cache_label.Location = new System.Drawing.Point(94, 522);
+            this.il1cache_label.Location = new System.Drawing.Point(94, 544);
             this.il1cache_label.Name = "il1cache_label";
             this.il1cache_label.Size = new System.Drawing.Size(151, 20);
             this.il1cache_label.TabIndex = 8;
@@ -109,7 +133,7 @@ namespace Cache_Simulation
             this.tlb_label.AutoSize = true;
             this.tlb_label.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tlb_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tlb_label.Location = new System.Drawing.Point(569, 248);
+            this.tlb_label.Location = new System.Drawing.Point(571, 262);
             this.tlb_label.Name = "tlb_label";
             this.tlb_label.Size = new System.Drawing.Size(41, 20);
             this.tlb_label.TabIndex = 9;
@@ -120,7 +144,7 @@ namespace Cache_Simulation
             this.dtlb_label.AutoSize = true;
             this.dtlb_label.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtlb_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtlb_label.Location = new System.Drawing.Point(335, 248);
+            this.dtlb_label.Location = new System.Drawing.Point(336, 262);
             this.dtlb_label.Name = "dtlb_label";
             this.dtlb_label.Size = new System.Drawing.Size(85, 20);
             this.dtlb_label.TabIndex = 10;
@@ -131,7 +155,7 @@ namespace Cache_Simulation
             this.itlb_label.AutoSize = true;
             this.itlb_label.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.itlb_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itlb_label.Location = new System.Drawing.Point(103, 248);
+            this.itlb_label.Location = new System.Drawing.Point(103, 261);
             this.itlb_label.Name = "itlb_label";
             this.itlb_label.Size = new System.Drawing.Size(132, 20);
             this.itlb_label.TabIndex = 11;
@@ -142,7 +166,7 @@ namespace Cache_Simulation
             this.l3cache_label.AutoSize = true;
             this.l3cache_label.BackColor = System.Drawing.Color.Peru;
             this.l3cache_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l3cache_label.Location = new System.Drawing.Point(737, 522);
+            this.l3cache_label.Location = new System.Drawing.Point(736, 543);
             this.l3cache_label.Name = "l3cache_label";
             this.l3cache_label.Size = new System.Drawing.Size(122, 20);
             this.l3cache_label.TabIndex = 12;
@@ -153,7 +177,7 @@ namespace Cache_Simulation
             this.l2cache_label.AutoSize = true;
             this.l2cache_label.BackColor = System.Drawing.Color.Peru;
             this.l2cache_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l2cache_label.Location = new System.Drawing.Point(529, 522);
+            this.l2cache_label.Location = new System.Drawing.Point(530, 543);
             this.l2cache_label.Name = "l2cache_label";
             this.l2cache_label.Size = new System.Drawing.Size(122, 20);
             this.l2cache_label.TabIndex = 13;
@@ -164,7 +188,7 @@ namespace Cache_Simulation
             this.il2cache_cache.AutoSize = true;
             this.il2cache_cache.BackColor = System.Drawing.Color.Peru;
             this.il2cache_cache.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.il2cache_cache.Location = new System.Drawing.Point(326, 522);
+            this.il2cache_cache.Location = new System.Drawing.Point(326, 543);
             this.il2cache_cache.Name = "il2cache_cache";
             this.il2cache_cache.Size = new System.Drawing.Size(104, 20);
             this.il2cache_cache.TabIndex = 14;
@@ -175,7 +199,7 @@ namespace Cache_Simulation
             this.pt_label.AutoSize = true;
             this.pt_label.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pt_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pt_label.Location = new System.Drawing.Point(749, 248);
+            this.pt_label.Location = new System.Drawing.Point(748, 262);
             this.pt_label.Name = "pt_label";
             this.pt_label.Size = new System.Drawing.Size(99, 20);
             this.pt_label.TabIndex = 15;
@@ -186,7 +210,7 @@ namespace Cache_Simulation
             this.mem_label.AutoSize = true;
             this.mem_label.BackColor = System.Drawing.Color.DarkKhaki;
             this.mem_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mem_label.Location = new System.Drawing.Point(206, 709);
+            this.mem_label.Location = new System.Drawing.Point(206, 716);
             this.mem_label.Name = "mem_label";
             this.mem_label.Size = new System.Drawing.Size(134, 20);
             this.mem_label.TabIndex = 17;
@@ -197,7 +221,7 @@ namespace Cache_Simulation
             this.disk_label.AutoSize = true;
             this.disk_label.BackColor = System.Drawing.Color.DarkKhaki;
             this.disk_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disk_label.Location = new System.Drawing.Point(641, 709);
+            this.disk_label.Location = new System.Drawing.Point(641, 716);
             this.disk_label.Name = "disk_label";
             this.disk_label.Size = new System.Drawing.Size(107, 20);
             this.disk_label.TabIndex = 16;
@@ -206,7 +230,7 @@ namespace Cache_Simulation
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(75, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(75, 41);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(188, 252);
             this.pictureBox1.TabIndex = 23;
@@ -215,7 +239,7 @@ namespace Cache_Simulation
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox2.Location = new System.Drawing.Point(283, 39);
+            this.pictureBox2.Location = new System.Drawing.Point(284, 41);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(188, 252);
             this.pictureBox2.TabIndex = 27;
@@ -224,7 +248,7 @@ namespace Cache_Simulation
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox3.Location = new System.Drawing.Point(495, 39);
+            this.pictureBox3.Location = new System.Drawing.Point(497, 41);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(188, 252);
             this.pictureBox3.TabIndex = 31;
@@ -233,7 +257,7 @@ namespace Cache_Simulation
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox4.Location = new System.Drawing.Point(704, 39);
+            this.pictureBox4.Location = new System.Drawing.Point(703, 41);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(188, 252);
             this.pictureBox4.TabIndex = 35;
@@ -242,7 +266,7 @@ namespace Cache_Simulation
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Peru;
-            this.pictureBox5.Location = new System.Drawing.Point(75, 316);
+            this.pictureBox5.Location = new System.Drawing.Point(75, 323);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(188, 252);
             this.pictureBox5.TabIndex = 39;
@@ -251,7 +275,7 @@ namespace Cache_Simulation
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Peru;
-            this.pictureBox6.Location = new System.Drawing.Point(284, 316);
+            this.pictureBox6.Location = new System.Drawing.Point(284, 323);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(188, 252);
             this.pictureBox6.TabIndex = 42;
@@ -260,7 +284,7 @@ namespace Cache_Simulation
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Peru;
-            this.pictureBox7.Location = new System.Drawing.Point(496, 316);
+            this.pictureBox7.Location = new System.Drawing.Point(497, 323);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(188, 252);
             this.pictureBox7.TabIndex = 45;
@@ -269,7 +293,7 @@ namespace Cache_Simulation
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Peru;
-            this.pictureBox8.Location = new System.Drawing.Point(704, 316);
+            this.pictureBox8.Location = new System.Drawing.Point(703, 323);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(188, 252);
             this.pictureBox8.TabIndex = 48;
@@ -297,7 +321,7 @@ namespace Cache_Simulation
             // 
             this.itlb_hit_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.itlb_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itlb_hit_num.Location = new System.Drawing.Point(122, 120);
+            this.itlb_hit_num.Location = new System.Drawing.Point(119, 129);
             this.itlb_hit_num.Name = "itlb_hit_num";
             this.itlb_hit_num.Size = new System.Drawing.Size(100, 19);
             this.itlb_hit_num.TabIndex = 54;
@@ -307,16 +331,266 @@ namespace Cache_Simulation
             // 
             this.itlb_miss_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.itlb_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itlb_miss_num.Location = new System.Drawing.Point(122, 202);
+            this.itlb_miss_num.Location = new System.Drawing.Point(119, 211);
             this.itlb_miss_num.Name = "itlb_miss_num";
             this.itlb_miss_num.Size = new System.Drawing.Size(100, 19);
             this.itlb_miss_num.TabIndex = 55;
             this.itlb_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // itlb_acs_num
+            // 
+            this.itlb_acs_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.itlb_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.itlb_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itlb_acs_num.Location = new System.Drawing.Point(119, 49);
+            this.itlb_acs_num.Name = "itlb_acs_num";
+            this.itlb_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.itlb_acs_num.TabIndex = 56;
+            this.itlb_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dtlb_acs_num
+            // 
+            this.dtlb_acs_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dtlb_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtlb_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtlb_acs_num.Location = new System.Drawing.Point(328, 49);
+            this.dtlb_acs_num.Name = "dtlb_acs_num";
+            this.dtlb_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.dtlb_acs_num.TabIndex = 57;
+            this.dtlb_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dtlb_hit_num
+            // 
+            this.dtlb_hit_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dtlb_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtlb_hit_num.Location = new System.Drawing.Point(328, 129);
+            this.dtlb_hit_num.Name = "dtlb_hit_num";
+            this.dtlb_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.dtlb_hit_num.TabIndex = 58;
+            this.dtlb_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dtlb_miss_num
+            // 
+            this.dtlb_miss_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dtlb_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtlb_miss_num.Location = new System.Drawing.Point(328, 211);
+            this.dtlb_miss_num.Name = "dtlb_miss_num";
+            this.dtlb_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.dtlb_miss_num.TabIndex = 59;
+            this.dtlb_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tlb_acs_num
+            // 
+            this.tlb_acs_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tlb_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tlb_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tlb_acs_num.Location = new System.Drawing.Point(541, 49);
+            this.tlb_acs_num.Name = "tlb_acs_num";
+            this.tlb_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.tlb_acs_num.TabIndex = 60;
+            this.tlb_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tlb_hit_num
+            // 
+            this.tlb_hit_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tlb_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tlb_hit_num.Location = new System.Drawing.Point(541, 129);
+            this.tlb_hit_num.Name = "tlb_hit_num";
+            this.tlb_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.tlb_hit_num.TabIndex = 61;
+            this.tlb_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tlb_miss_num
+            // 
+            this.tlb_miss_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tlb_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tlb_miss_num.Location = new System.Drawing.Point(541, 211);
+            this.tlb_miss_num.Name = "tlb_miss_num";
+            this.tlb_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.tlb_miss_num.TabIndex = 62;
+            this.tlb_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pt_miss_num
+            // 
+            this.pt_miss_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pt_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pt_miss_num.Location = new System.Drawing.Point(747, 211);
+            this.pt_miss_num.Name = "pt_miss_num";
+            this.pt_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.pt_miss_num.TabIndex = 63;
+            this.pt_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pt_hit_num
+            // 
+            this.pt_hit_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pt_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pt_hit_num.Location = new System.Drawing.Point(747, 129);
+            this.pt_hit_num.Name = "pt_hit_num";
+            this.pt_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.pt_hit_num.TabIndex = 64;
+            this.pt_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pt_acs_num
+            // 
+            this.pt_acs_num.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pt_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pt_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pt_acs_num.Location = new System.Drawing.Point(747, 49);
+            this.pt_acs_num.Name = "pt_acs_num";
+            this.pt_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.pt_acs_num.TabIndex = 65;
+            this.pt_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // il1cache_miss_num
+            // 
+            this.il1cache_miss_num.BackColor = System.Drawing.Color.Peru;
+            this.il1cache_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.il1cache_miss_num.Location = new System.Drawing.Point(119, 490);
+            this.il1cache_miss_num.Name = "il1cache_miss_num";
+            this.il1cache_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.il1cache_miss_num.TabIndex = 66;
+            this.il1cache_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // il1cache_hit_num
+            // 
+            this.il1cache_hit_num.BackColor = System.Drawing.Color.Peru;
+            this.il1cache_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.il1cache_hit_num.Location = new System.Drawing.Point(119, 408);
+            this.il1cache_hit_num.Name = "il1cache_hit_num";
+            this.il1cache_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.il1cache_hit_num.TabIndex = 67;
+            this.il1cache_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dl1cache_hit_num
+            // 
+            this.dl1cache_hit_num.BackColor = System.Drawing.Color.Peru;
+            this.dl1cache_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dl1cache_hit_num.Location = new System.Drawing.Point(328, 408);
+            this.dl1cache_hit_num.Name = "dl1cache_hit_num";
+            this.dl1cache_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.dl1cache_hit_num.TabIndex = 68;
+            this.dl1cache_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dl1cache_miss_num
+            // 
+            this.dl1cache_miss_num.BackColor = System.Drawing.Color.Peru;
+            this.dl1cache_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dl1cache_miss_num.Location = new System.Drawing.Point(328, 490);
+            this.dl1cache_miss_num.Name = "dl1cache_miss_num";
+            this.dl1cache_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.dl1cache_miss_num.TabIndex = 69;
+            this.dl1cache_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l2cache_hit_num
+            // 
+            this.l2cache_hit_num.BackColor = System.Drawing.Color.Peru;
+            this.l2cache_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.l2cache_hit_num.Location = new System.Drawing.Point(541, 408);
+            this.l2cache_hit_num.Name = "l2cache_hit_num";
+            this.l2cache_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.l2cache_hit_num.TabIndex = 70;
+            this.l2cache_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l2cache_miss_num
+            // 
+            this.l2cache_miss_num.BackColor = System.Drawing.Color.Peru;
+            this.l2cache_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.l2cache_miss_num.Location = new System.Drawing.Point(541, 490);
+            this.l2cache_miss_num.Name = "l2cache_miss_num";
+            this.l2cache_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.l2cache_miss_num.TabIndex = 71;
+            this.l2cache_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l3cache_hit_num
+            // 
+            this.l3cache_hit_num.BackColor = System.Drawing.Color.Peru;
+            this.l3cache_hit_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.l3cache_hit_num.Location = new System.Drawing.Point(747, 408);
+            this.l3cache_hit_num.Name = "l3cache_hit_num";
+            this.l3cache_hit_num.Size = new System.Drawing.Size(100, 19);
+            this.l3cache_hit_num.TabIndex = 72;
+            this.l3cache_hit_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l3cache_miss_num
+            // 
+            this.l3cache_miss_num.BackColor = System.Drawing.Color.Peru;
+            this.l3cache_miss_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.l3cache_miss_num.Location = new System.Drawing.Point(747, 490);
+            this.l3cache_miss_num.Name = "l3cache_miss_num";
+            this.l3cache_miss_num.Size = new System.Drawing.Size(100, 19);
+            this.l3cache_miss_num.TabIndex = 73;
+            this.l3cache_miss_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // il1cache_acs_num
+            // 
+            this.il1cache_acs_num.BackColor = System.Drawing.Color.Peru;
+            this.il1cache_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.il1cache_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.il1cache_acs_num.Location = new System.Drawing.Point(119, 331);
+            this.il1cache_acs_num.Name = "il1cache_acs_num";
+            this.il1cache_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.il1cache_acs_num.TabIndex = 74;
+            this.il1cache_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dl1cache_acs_num
+            // 
+            this.dl1cache_acs_num.BackColor = System.Drawing.Color.Peru;
+            this.dl1cache_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dl1cache_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dl1cache_acs_num.Location = new System.Drawing.Point(328, 331);
+            this.dl1cache_acs_num.Name = "dl1cache_acs_num";
+            this.dl1cache_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.dl1cache_acs_num.TabIndex = 75;
+            this.dl1cache_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l2cache_acs_num
+            // 
+            this.l2cache_acs_num.BackColor = System.Drawing.Color.Peru;
+            this.l2cache_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.l2cache_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l2cache_acs_num.Location = new System.Drawing.Point(541, 331);
+            this.l2cache_acs_num.Name = "l2cache_acs_num";
+            this.l2cache_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.l2cache_acs_num.TabIndex = 76;
+            this.l2cache_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // l3cache_acs_num
+            // 
+            this.l3cache_acs_num.BackColor = System.Drawing.Color.Peru;
+            this.l3cache_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.l3cache_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l3cache_acs_num.Location = new System.Drawing.Point(747, 331);
+            this.l3cache_acs_num.Name = "l3cache_acs_num";
+            this.l3cache_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.l3cache_acs_num.TabIndex = 77;
+            this.l3cache_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mem_acs_num
+            // 
+            this.mem_acs_num.BackColor = System.Drawing.Color.DarkKhaki;
+            this.mem_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mem_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mem_acs_num.Location = new System.Drawing.Point(223, 607);
+            this.mem_acs_num.Name = "mem_acs_num";
+            this.mem_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.mem_acs_num.TabIndex = 78;
+            this.mem_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // disk_acs_num
+            // 
+            this.disk_acs_num.BackColor = System.Drawing.Color.DarkKhaki;
+            this.disk_acs_num.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.disk_acs_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disk_acs_num.Location = new System.Drawing.Point(644, 607);
+            this.disk_acs_num.Name = "disk_acs_num";
+            this.disk_acs_num.Size = new System.Drawing.Size(100, 19);
+            this.disk_acs_num.TabIndex = 79;
+            this.disk_acs_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // disk_access
             // 
             this.disk_access.ForeColor = System.Drawing.Color.Blue;
-            this.disk_access.Location = new System.Drawing.Point(510, 630);
+            this.disk_access.Location = new System.Drawing.Point(510, 644);
             this.disk_access.Name = "disk_access";
             this.disk_access.Size = new System.Drawing.Size(368, 35);
             this.disk_access.TabIndex = 53;
@@ -324,7 +598,7 @@ namespace Cache_Simulation
             // mem_access
             // 
             this.mem_access.ForeColor = System.Drawing.Color.Blue;
-            this.mem_access.Location = new System.Drawing.Point(89, 630);
+            this.mem_access.Location = new System.Drawing.Point(89, 644);
             this.mem_access.Name = "mem_access";
             this.mem_access.Size = new System.Drawing.Size(368, 35);
             this.mem_access.TabIndex = 52;
@@ -332,7 +606,7 @@ namespace Cache_Simulation
             // dtlb_miss
             // 
             this.dtlb_miss.ForeColor = System.Drawing.Color.Red;
-            this.dtlb_miss.Location = new System.Drawing.Point(297, 161);
+            this.dtlb_miss.Location = new System.Drawing.Point(298, 174);
             this.dtlb_miss.Name = "dtlb_miss";
             this.dtlb_miss.Size = new System.Drawing.Size(160, 35);
             this.dtlb_miss.TabIndex = 28;
@@ -340,7 +614,7 @@ namespace Cache_Simulation
             // dtlb_hit
             // 
             this.dtlb_hit.ForeColor = System.Drawing.Color.Green;
-            this.dtlb_hit.Location = new System.Drawing.Point(297, 79);
+            this.dtlb_hit.Location = new System.Drawing.Point(298, 92);
             this.dtlb_hit.Name = "dtlb_hit";
             this.dtlb_hit.Size = new System.Drawing.Size(160, 35);
             this.dtlb_hit.TabIndex = 26;
@@ -348,7 +622,7 @@ namespace Cache_Simulation
             // itlb_miss
             // 
             this.itlb_miss.ForeColor = System.Drawing.Color.Red;
-            this.itlb_miss.Location = new System.Drawing.Point(89, 161);
+            this.itlb_miss.Location = new System.Drawing.Point(89, 174);
             this.itlb_miss.Name = "itlb_miss";
             this.itlb_miss.Size = new System.Drawing.Size(160, 35);
             this.itlb_miss.TabIndex = 24;
@@ -356,7 +630,7 @@ namespace Cache_Simulation
             // itlb_hit
             // 
             this.itlb_hit.ForeColor = System.Drawing.Color.Green;
-            this.itlb_hit.Location = new System.Drawing.Point(89, 79);
+            this.itlb_hit.Location = new System.Drawing.Point(89, 92);
             this.itlb_hit.Name = "itlb_hit";
             this.itlb_hit.Size = new System.Drawing.Size(160, 35);
             this.itlb_hit.TabIndex = 22;
@@ -364,7 +638,7 @@ namespace Cache_Simulation
             // tlb_miss
             // 
             this.tlb_miss.ForeColor = System.Drawing.Color.Red;
-            this.tlb_miss.Location = new System.Drawing.Point(509, 161);
+            this.tlb_miss.Location = new System.Drawing.Point(511, 174);
             this.tlb_miss.Name = "tlb_miss";
             this.tlb_miss.Size = new System.Drawing.Size(160, 35);
             this.tlb_miss.TabIndex = 32;
@@ -372,7 +646,7 @@ namespace Cache_Simulation
             // tlb_hit
             // 
             this.tlb_hit.ForeColor = System.Drawing.Color.Green;
-            this.tlb_hit.Location = new System.Drawing.Point(509, 79);
+            this.tlb_hit.Location = new System.Drawing.Point(511, 92);
             this.tlb_hit.Name = "tlb_hit";
             this.tlb_hit.Size = new System.Drawing.Size(160, 35);
             this.tlb_hit.TabIndex = 30;
@@ -380,7 +654,7 @@ namespace Cache_Simulation
             // pt_miss
             // 
             this.pt_miss.ForeColor = System.Drawing.Color.Red;
-            this.pt_miss.Location = new System.Drawing.Point(718, 161);
+            this.pt_miss.Location = new System.Drawing.Point(717, 174);
             this.pt_miss.Name = "pt_miss";
             this.pt_miss.Size = new System.Drawing.Size(160, 35);
             this.pt_miss.TabIndex = 36;
@@ -388,7 +662,7 @@ namespace Cache_Simulation
             // pt_hit
             // 
             this.pt_hit.ForeColor = System.Drawing.Color.Green;
-            this.pt_hit.Location = new System.Drawing.Point(718, 79);
+            this.pt_hit.Location = new System.Drawing.Point(717, 92);
             this.pt_hit.Name = "pt_hit";
             this.pt_hit.Size = new System.Drawing.Size(160, 35);
             this.pt_hit.TabIndex = 34;
@@ -396,7 +670,7 @@ namespace Cache_Simulation
             // il1cache_miss
             // 
             this.il1cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.il1cache_miss.Location = new System.Drawing.Point(89, 444);
+            this.il1cache_miss.Location = new System.Drawing.Point(89, 453);
             this.il1cache_miss.Name = "il1cache_miss";
             this.il1cache_miss.Size = new System.Drawing.Size(160, 35);
             this.il1cache_miss.TabIndex = 40;
@@ -404,7 +678,7 @@ namespace Cache_Simulation
             // il1cache_hit
             // 
             this.il1cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.il1cache_hit.Location = new System.Drawing.Point(89, 362);
+            this.il1cache_hit.Location = new System.Drawing.Point(89, 371);
             this.il1cache_hit.Name = "il1cache_hit";
             this.il1cache_hit.Size = new System.Drawing.Size(160, 35);
             this.il1cache_hit.TabIndex = 38;
@@ -412,7 +686,7 @@ namespace Cache_Simulation
             // dl1cache_miss
             // 
             this.dl1cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.dl1cache_miss.Location = new System.Drawing.Point(298, 444);
+            this.dl1cache_miss.Location = new System.Drawing.Point(298, 453);
             this.dl1cache_miss.Name = "dl1cache_miss";
             this.dl1cache_miss.Size = new System.Drawing.Size(160, 35);
             this.dl1cache_miss.TabIndex = 43;
@@ -420,7 +694,7 @@ namespace Cache_Simulation
             // dl1cache_hit
             // 
             this.dl1cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.dl1cache_hit.Location = new System.Drawing.Point(298, 362);
+            this.dl1cache_hit.Location = new System.Drawing.Point(298, 371);
             this.dl1cache_hit.Name = "dl1cache_hit";
             this.dl1cache_hit.Size = new System.Drawing.Size(160, 35);
             this.dl1cache_hit.TabIndex = 41;
@@ -428,7 +702,7 @@ namespace Cache_Simulation
             // l2cache_miss
             // 
             this.l2cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.l2cache_miss.Location = new System.Drawing.Point(510, 444);
+            this.l2cache_miss.Location = new System.Drawing.Point(511, 453);
             this.l2cache_miss.Name = "l2cache_miss";
             this.l2cache_miss.Size = new System.Drawing.Size(160, 35);
             this.l2cache_miss.TabIndex = 46;
@@ -436,7 +710,7 @@ namespace Cache_Simulation
             // l2cache_hit
             // 
             this.l2cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.l2cache_hit.Location = new System.Drawing.Point(510, 362);
+            this.l2cache_hit.Location = new System.Drawing.Point(511, 371);
             this.l2cache_hit.Name = "l2cache_hit";
             this.l2cache_hit.Size = new System.Drawing.Size(160, 35);
             this.l2cache_hit.TabIndex = 44;
@@ -444,7 +718,7 @@ namespace Cache_Simulation
             // l3cache_miss
             // 
             this.l3cache_miss.ForeColor = System.Drawing.Color.Red;
-            this.l3cache_miss.Location = new System.Drawing.Point(718, 444);
+            this.l3cache_miss.Location = new System.Drawing.Point(717, 453);
             this.l3cache_miss.Name = "l3cache_miss";
             this.l3cache_miss.Size = new System.Drawing.Size(160, 35);
             this.l3cache_miss.TabIndex = 49;
@@ -452,7 +726,7 @@ namespace Cache_Simulation
             // l3cache_hit
             // 
             this.l3cache_hit.ForeColor = System.Drawing.Color.Green;
-            this.l3cache_hit.Location = new System.Drawing.Point(718, 362);
+            this.l3cache_hit.Location = new System.Drawing.Point(717, 371);
             this.l3cache_hit.Name = "l3cache_hit";
             this.l3cache_hit.Size = new System.Drawing.Size(160, 35);
             this.l3cache_hit.TabIndex = 47;
@@ -462,6 +736,30 @@ namespace Cache_Simulation
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 793);
+            this.Controls.Add(this.disk_acs_num);
+            this.Controls.Add(this.mem_acs_num);
+            this.Controls.Add(this.l3cache_acs_num);
+            this.Controls.Add(this.l2cache_acs_num);
+            this.Controls.Add(this.dl1cache_acs_num);
+            this.Controls.Add(this.il1cache_acs_num);
+            this.Controls.Add(this.l3cache_miss_num);
+            this.Controls.Add(this.l3cache_hit_num);
+            this.Controls.Add(this.l2cache_miss_num);
+            this.Controls.Add(this.l2cache_hit_num);
+            this.Controls.Add(this.dl1cache_miss_num);
+            this.Controls.Add(this.dl1cache_hit_num);
+            this.Controls.Add(this.il1cache_hit_num);
+            this.Controls.Add(this.il1cache_miss_num);
+            this.Controls.Add(this.pt_acs_num);
+            this.Controls.Add(this.pt_hit_num);
+            this.Controls.Add(this.pt_miss_num);
+            this.Controls.Add(this.tlb_miss_num);
+            this.Controls.Add(this.tlb_hit_num);
+            this.Controls.Add(this.tlb_acs_num);
+            this.Controls.Add(this.dtlb_miss_num);
+            this.Controls.Add(this.dtlb_hit_num);
+            this.Controls.Add(this.dtlb_acs_num);
+            this.Controls.Add(this.itlb_acs_num);
             this.Controls.Add(this.itlb_miss_num);
             this.Controls.Add(this.itlb_hit_num);
             this.Controls.Add(this.disk_access);
@@ -504,6 +802,7 @@ namespace Cache_Simulation
             this.Controls.Add(this.pictureBox10);
             this.Name = "STAT_FRM";
             this.Text = "STAT_FRM";
+            this.Load += new System.EventHandler(this.STAT_FRM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -561,6 +860,30 @@ namespace Cache_Simulation
         private NewProgressBar disk_access;
         private TextBox itlb_hit_num;
         private TextBox itlb_miss_num;
+        private TextBox itlb_acs_num;
+        private TextBox dtlb_acs_num;
+        private TextBox dtlb_hit_num;
+        private TextBox dtlb_miss_num;
+        private TextBox tlb_acs_num;
+        private TextBox tlb_hit_num;
+        private TextBox tlb_miss_num;
+        private TextBox pt_miss_num;
+        private TextBox pt_hit_num;
+        private TextBox pt_acs_num;
+        private TextBox il1cache_miss_num;
+        private TextBox il1cache_hit_num;
+        private TextBox dl1cache_hit_num;
+        private TextBox dl1cache_miss_num;
+        private TextBox l2cache_hit_num;
+        private TextBox l2cache_miss_num;
+        private TextBox l3cache_hit_num;
+        private TextBox l3cache_miss_num;
+        private TextBox il1cache_acs_num;
+        private TextBox dl1cache_acs_num;
+        private TextBox l2cache_acs_num;
+        private TextBox l3cache_acs_num;
+        private TextBox mem_acs_num;
+        private TextBox disk_acs_num;
     }
 }
 

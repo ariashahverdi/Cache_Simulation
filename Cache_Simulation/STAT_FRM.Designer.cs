@@ -559,7 +559,7 @@ public class NewProgressBar : ProgressBar
         Rectangle rec = new Rectangle(0, 0, this.Width, this.Height);
         if (ProgressBarRenderer.IsSupported)
             ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rec);
-        rec.Width = (int)((rec.Width * scaleFactor) - 4);
+        rec.Width = (int)((rec.Width * scaleFactor));
         rec.Height = rec.Height - 4;
         e.Graphics.FillRectangle(brush, 2, 2, rec.Width, rec.Height);
     }

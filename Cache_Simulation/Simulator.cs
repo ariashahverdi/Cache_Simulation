@@ -33,7 +33,6 @@ namespace Cache_Simulation
         public CPU_FRM form_cpu = new CPU_FRM();
         public STAT_FRM form_stat = new STAT_FRM();
 
-        int speed_val;
         int [] loc = new int[24];
 
 

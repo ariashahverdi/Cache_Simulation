@@ -13,6 +13,8 @@ namespace Cache_Simulation
         public byte[] IR1;
         public byte[] IR2;
 
+        public bool is_halted;
+
         public ulong PC;
 
         private int opcode;
@@ -23,6 +25,7 @@ namespace Cache_Simulation
         private int src2_reg;
         private int dst_reg;
         private ulong inst_addr;
+
 
         private void opcode_decoder()
         {
@@ -52,6 +55,7 @@ namespace Cache_Simulation
             IR1 = new byte[8];
             IR2 = new byte[8];
             PC = 0;
+            is_halted = false;
         }
 
         public void fetch()
@@ -82,6 +86,13 @@ namespace Cache_Simulation
                     }
                     break;
                 case 3: // add instruction
+                    if((src1_add_mode == 3)&& (src2_add_mode == 3) && (dst_add_mode == 3) && (src1_reg == 3) && (src2_reg == 3) && (dst_reg == 3) )
+                    {
+                        //halt instrucstion
+                        is_halted = true;
+                        break;
+                    }
+
                     if(src2_add_mode == 0)
                     {
                         R[dst_reg] = R[src1_reg] + R[src2_reg];

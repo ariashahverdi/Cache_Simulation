@@ -20,6 +20,7 @@ namespace Cache_Simulation
         private void button1_Click(object sender, EventArgs e)
         {
             int page_num = Convert.ToInt32(speed.Text);
+            page_num++;
             int page_size = 1 << 12;
             mem_show.AllowUserToAddRows = false; //Disable The last Row
             for (int i = (page_num-1)*page_size; i <page_num*page_size; i++)

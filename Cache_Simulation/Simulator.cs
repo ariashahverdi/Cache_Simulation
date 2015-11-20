@@ -18,6 +18,7 @@ namespace Cache_Simulation
         public static Memory_Controller my_memctrl = new Memory_Controller();
         public static CPU my_cpu = new CPU();
         public static Memory my_memory = new Memory(Globals.MEM_SIZE);
+        public static Hard_Disk my_hard_disk = new Hard_Disk(Globals.HD_SIZE);
 
         public static tlb my_itlb = new tlb(4, 32, 31, 24);
         public static tlb my_dtlb = new tlb(4, 16, 31, 24);

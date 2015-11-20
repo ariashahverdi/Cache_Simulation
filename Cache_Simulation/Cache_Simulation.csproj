@@ -80,6 +80,7 @@
     <Compile Include="dTLB_FRM.Designer.cs">
       <DependentUpon>dTLB_FRM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hard_Disk.cs" />
     <Compile Include="iL1Cache_FRM.cs">
       <SubType>Form</SubType>
     </Compile>

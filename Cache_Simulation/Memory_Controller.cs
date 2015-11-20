@@ -33,16 +33,82 @@ namespace Cache_Simulation
                     Program.my_sim.DrawLine("tlb", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
 
                     // check for Page Table
-                    Simulator.my_page_table.search_pt(virtual_address, ref physical_address);
+                    if (!(Simulator.my_page_table.search_pt(virtual_address, ref physical_address)))
+                    {
+                        //page fault occurred
+                        Globals.pt_miss++;
+                        Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, false, "read");
 
-                    Globals.pt_hit++;
-                    Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+                        // handle page fault
+                        ulong virtual_replaced_address = 0;
+                        if(!(Simulator.my_page_table.is_mem_available(physical_address, ref virtual_replaced_address)))
+                        {
+                            // write page back to hard disk
+                            byte[] data2 = new byte[4096];
+                            bool[] bool_phys_page_address2 = new bool[Globals.PHYSICAL_ADD_LEN];
+                            for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                            {
+                                bool_phys_page_address2[Globals.PHYSICAL_ADD_LEN - i - 1] = (((physical_address >> i) & 1) == 1);
+                            }
+
+                            Simulator.my_memory.read_from_memory(bool_phys_page_address2, data2, 4096);
+                            Globals.mem_access++;
+                            Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, bool_phys_page_address2, true, "read");
+
+                            Simulator.my_hard_disk.write_to_page_in_hard_disk(virtual_replaced_address, data2, 4096);
+
+                            bool[] bool_virtual_page_address2 = new bool[Globals.VIRTUAL_ADD_LEN];
+                            for (int i = 0; i < Globals.VIRTUAL_ADD_LEN; i++)
+                            {
+                                bool_virtual_page_address2[Globals.VIRTUAL_ADD_LEN - i - 1] = (((virtual_replaced_address >> i) & 1) == 1);
+                            }
+                            Globals.disk_access++;
+                            Program.my_sim.DrawLine("disk", Globals.VIRTUAL_ADD_LEN, bool_virtual_page_address2, true, "write");
+
+                        }
+
+                        ulong virtual_page_address = (virtual_address & 0xFFFFFFFFFFFFF000);
+                        byte[] data = new byte[4096];
+                        Simulator.my_hard_disk.read_page_from_disk(virtual_page_address, data);
+
+                        bool[] bool_virtual_page_address = new bool[Globals.VIRTUAL_ADD_LEN];
+                        for (int i = 0; i < Globals.VIRTUAL_ADD_LEN; i++)
+                        {
+                            bool_virtual_page_address[Globals.VIRTUAL_ADD_LEN - i - 1] = (((virtual_page_address >> i) & 1) == 1);
+                        }
+                        Globals.disk_access++;
+                        Program.my_sim.DrawLine("disk", Globals.VIRTUAL_ADD_LEN, bool_virtual_page_address, true, "read");
+
+
+                        bool[] bool_phys_page_address = new bool[Globals.PHYSICAL_ADD_LEN];
+                        for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
+                        {
+                            bool_phys_page_address[Globals.PHYSICAL_ADD_LEN - i - 1] = (((physical_address >> i) & 1) == 1);
+                        }
+                        for(int i=0; i<12; i++)
+                        {
+                            bool_phys_page_address[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
+                        }
+
+                        Simulator.my_memory.write_to_memory(bool_phys_page_address, data, 4096);
+                        Globals.mem_access++;
+                        Program.my_sim.DrawLine("mem", Globals.PHYSICAL_ADD_LEN, bool_phys_page_address, true, "write");
+
+                        Simulator.my_page_table.set_valid(virtual_address, physical_address);
+                    }
+                    else
+                    {
+                        // no page fault
+                        Globals.pt_hit++;
+                        Program.my_sim.DrawLine("pt", Globals.VIRTUAL_ADD_LEN, vaddress, true, "read");
+                    }
+
                     for (int i = 0; i < Globals.PHYSICAL_ADD_LEN; i++)
                     {
                         ulong one = 1;
-                        if((physical_address & Convert.ToUInt64(one << i)) == 0)
+                        if ((physical_address & Convert.ToUInt64(one << i)) == 0)
                         {
-                            paddress[Globals.PHYSICAL_ADD_LEN-i-1] = false;
+                            paddress[Globals.PHYSICAL_ADD_LEN - i - 1] = false;
                         }
                         else
                         {

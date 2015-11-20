@@ -9,6 +9,7 @@ public static class Globals
     public static ulong PC_INIT = 104;
 
     public static int MEM_SIZE = 65536;
+    public static int HD_SIZE = 65536;
 
     public static byte[] cur_inst = new byte[8];
 
@@ -38,8 +39,8 @@ public static class Globals
     public static double tlb_hit, tlb_miss;
     public static double pt_hit, pt_miss;
 
-    public static int mem_access = 1;
-    public static int disk_access = 1;
+    public static int mem_access = 0;
+    public static int disk_access = 0;
 }
 
 namespace Cache_Simulation

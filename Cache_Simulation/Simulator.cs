@@ -561,7 +561,8 @@ namespace Cache_Simulation
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            my_assembler.assemble();
+
+            my_assembler.assemble(filename_text.Text); //Name of the file.
         }
 
         private void button3_Click(object sender, EventArgs e)

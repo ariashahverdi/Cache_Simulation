@@ -9,17 +9,18 @@ namespace Cache_Simulation
     public class Assembler
     {
 
-        public void assemble()
+        public void assemble(string fn)
         {
             int instruction_counter = 0;
             ulong starting_point;
+            
 
             // create the file and write it.
             System.IO.StreamWriter hex_file = new System.IO.StreamWriter("../../test.hex", false);
 
             string line;
             // Read the file and display it line by line.
-            System.IO.StreamReader file = new System.IO.StreamReader("../../test.asm");
+            System.IO.StreamReader file = new System.IO.StreamReader("../../"+fn);
             char[] delimiterChars = { ' ', ',' };
             byte[,] current_instruction = new byte[1024, 8];
             while ((line = file.ReadLine()) != null)

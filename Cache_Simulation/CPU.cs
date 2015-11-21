@@ -24,6 +24,9 @@ namespace Cache_Simulation
         private int src1_reg;
         private int src2_reg;
         private int dst_reg;
+        private int src1_offset;
+        private int src2_offset;
+        private int dst_offset;
         private ulong inst_addr;
 
 
@@ -42,6 +45,24 @@ namespace Cache_Simulation
             {
                 ulong temp = Convert.ToUInt64(IR1[i]);
                 inst_addr |= temp << (8 * (7 - i));
+            }
+            src1_offset = 0;
+            for (int i = 2; i < 4; i++)
+            {
+                int temp = Convert.ToInt32(IR1[i]);
+                src1_offset |= temp << (8 * (7 - i));
+            }
+            src2_offset = 0;
+            for (int i = 4; i < 6; i++)
+            {
+                int temp = Convert.ToInt32(IR1[i]);
+                src2_offset |= temp << (8 * (7 - i));
+            }
+            dst_offset = 0;
+            for (int i = 6; i < 8; i++)
+            {
+                int temp = Convert.ToInt32(IR1[i]);
+                dst_offset |= temp << (8 * (7 - i));
             }
         }
 
@@ -72,12 +93,28 @@ namespace Cache_Simulation
             switch (opcode)
             {
                 case 0: // load instruction
-                    ulong in_data = 0;
-                    Simulator.my_memctrl.read_operand(inst_addr, ref in_data);
-                    R[dst_reg] = in_data;
+                    if ((dst_add_mode == 0)&&(src1_add_mode == 3))
+                    {
+                        ulong in_data = 0;
+                        Simulator.my_memctrl.read_operand(inst_addr, ref in_data);
+                        R[dst_reg] = in_data;
+                    }
+                    else if ((dst_add_mode == 0)&&(src1_add_mode == 2))
+                    {
+                        ulong in_data = 0;
+                        Simulator.my_memctrl.read_operand(Convert.ToUInt64(src1_offset)+8*R[src1_reg], ref in_data);
+                        R[dst_reg] = in_data;
+                    }
                     break;
                case 1: // store insruction
-                    Simulator.my_memctrl.write_operand(inst_addr, R[src1_reg]);
+                    if ((src1_add_mode == 0) && (dst_add_mode == 3))
+                    {
+                        Simulator.my_memctrl.write_operand(inst_addr, R[src1_reg]);
+                    }
+                    else if ((src1_add_mode == 0) && (dst_add_mode == 2))
+                    {
+                        Simulator.my_memctrl.write_operand(Convert.ToUInt64(dst_offset) + 8*R[dst_reg], R[src1_reg]);
+                    }
                     break;
                 case 2: // branch instruction
                     if(R[src1_reg] != R[src2_reg])

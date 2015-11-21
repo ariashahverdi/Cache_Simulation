@@ -20,10 +20,10 @@ namespace Cache_Simulation
 
         public void Refresh()
         {
-            textBox1.Text = Simulator.my_cpu.R[0].ToString();
-            textBox2.Text = Simulator.my_cpu.R[1].ToString();
-            textBox3.Text = Simulator.my_cpu.R[2].ToString();
-            textBox4.Text = Simulator.my_cpu.R[3].ToString();
+            textBox1.Text = Simulator.my_cpu.R[0].ToString("X");
+            textBox2.Text = Simulator.my_cpu.R[1].ToString("X");
+            textBox3.Text = Simulator.my_cpu.R[2].ToString("X");
+            textBox4.Text = Simulator.my_cpu.R[3].ToString("X");
 
             textBox5.Text = BitConverter.ToString(Simulator.my_cpu.IR1).Replace("-", " ");
             textBox6.Text = BitConverter.ToString(Simulator.my_cpu.IR2).Replace("-", " ");
@@ -34,10 +34,10 @@ namespace Cache_Simulation
 
         private void CPU_Frm_Activated(object sender, EventArgs e)
         {
-            textBox1.Text = Simulator.my_cpu.R[0].ToString();
-            textBox2.Text = Simulator.my_cpu.R[1].ToString();
-            textBox3.Text = Simulator.my_cpu.R[2].ToString();
-            textBox4.Text = Simulator.my_cpu.R[3].ToString();
+            textBox1.Text = Simulator.my_cpu.R[0].ToString("X");
+            textBox2.Text = Simulator.my_cpu.R[1].ToString("X");
+            textBox3.Text = Simulator.my_cpu.R[2].ToString("X");
+            textBox4.Text = Simulator.my_cpu.R[3].ToString("X");
 
             textBox5.Text = BitConverter.ToString(Simulator.my_cpu.IR1).Replace("-", " ");
             textBox6.Text = BitConverter.ToString(Simulator.my_cpu.IR2).Replace("-", " ");

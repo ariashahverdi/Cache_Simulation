@@ -139,7 +139,7 @@ namespace Cache_Simulation
                             dest_reg = dest_reg << 2;
                             current_instruction[instruction_counter, 1] |= Convert.ToByte(dest_reg);
                             current_instruction[instruction_counter, 0] |= 0x02;
-                            int index = Convert.ToInt32(destination[1]) - 0X30;
+                            int index = Convert.ToInt32(destination[1]);
                             current_instruction[instruction_counter, 7] = Convert.ToByte(index & 0xFF);
                             current_instruction[instruction_counter, 6] = Convert.ToByte((index & 0xFF00) >> 8);
                         }
@@ -207,7 +207,7 @@ namespace Cache_Simulation
                             src1_reg = src1_reg << 6;
                             current_instruction[instruction_counter, 1] |= Convert.ToByte(src1_reg);
                             current_instruction[instruction_counter, 0] |= 0x20;
-                            int index = Convert.ToInt32(source1[1]) - 0X30;
+                            int index = Convert.ToInt32(source1[1]);
                             current_instruction[instruction_counter, 3] = Convert.ToByte(index & 0xFF);
                             current_instruction[instruction_counter, 2] = Convert.ToByte((index & 0xFF00) >> 8);
                         }
@@ -275,7 +275,7 @@ namespace Cache_Simulation
                             src2_reg = src2_reg << 4;
                             current_instruction[instruction_counter, 1] |= Convert.ToByte(src2_reg);
                             current_instruction[instruction_counter, 0] |= 0x08;
-                            int index = Convert.ToInt32(source2[1]) - 0X30;
+                            int index = Convert.ToInt32(source2[1]);
                             current_instruction[instruction_counter, 5] = Convert.ToByte(index & 0xFF);
                             current_instruction[instruction_counter, 4] = Convert.ToByte((index & 0xFF00) >> 8);
                         }

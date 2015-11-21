@@ -93,7 +93,7 @@ namespace Cache_Simulation
             switch (opcode)
             {
                 case 0: // load instruction
-                    if ((dst_add_mode == 0)&&(src1_add_mode == 3))
+                    if ((dst_add_mode == 0)&&(src1_add_mode == 1))
                     {
                         ulong in_data = 0;
                         Simulator.my_memctrl.read_operand(inst_addr, ref in_data);
@@ -107,7 +107,7 @@ namespace Cache_Simulation
                     }
                     break;
                case 1: // store insruction
-                    if ((src1_add_mode == 0) && (dst_add_mode == 3))
+                    if ((src1_add_mode == 0) && (dst_add_mode == 1))
                     {
                         Simulator.my_memctrl.write_operand(inst_addr, R[src1_reg]);
                     }

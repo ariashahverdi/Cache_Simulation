@@ -47,6 +47,24 @@ namespace Cache_Simulation
                     case "add":
                         current_instruction[instruction_counter, 0] |= 0xC0;
                         break;
+                    case "data":
+                        byte current_data = Convert.ToByte(words[8]);
+                        current_instruction[instruction_counter, 7] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[7]);
+                        current_instruction[instruction_counter, 6] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[6]);
+                        current_instruction[instruction_counter, 5] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[5]);
+                        current_instruction[instruction_counter, 4] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[4]);
+                        current_instruction[instruction_counter, 3] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[3]);
+                        current_instruction[instruction_counter, 2] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[2]);
+                        current_instruction[instruction_counter, 1] = Convert.ToByte(current_data);
+                        current_data = Convert.ToByte(words[1]);
+                        current_instruction[instruction_counter, 0] = Convert.ToByte(current_data);
+                        break;
                     case "halt":
                         current_instruction[instruction_counter, 0] |= 0xFF;
                         current_instruction[instruction_counter, 1] |= 0xFF;
@@ -92,7 +110,7 @@ namespace Cache_Simulation
                 char[] delimiter = { '(', ')' };
 
                 /////////////////////////////////////////////////////// Destination
-                if(words[0] == "halt")
+                if((words[0] == "halt") || (words[0]=="data"))
                 {
                     //don't do anything
                 }
@@ -157,7 +175,7 @@ namespace Cache_Simulation
 
                 /////////////////////////////////////////////////////// Source 1
 
-                if (words[0] == "halt")
+                if ((words[0] == "halt") || (words[0] == "data"))
                 {
                     //don't do anything
                 }
@@ -225,7 +243,7 @@ namespace Cache_Simulation
 
                 /////////////////////////////////////////////////////// Source 2
 
-                if (words[0] == "halt")
+                if ((words[0] == "halt") || (words[0] == "data"))
                 {
                     //don't do anything
                 }
